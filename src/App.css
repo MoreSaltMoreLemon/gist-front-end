@@ -1,33 +1,174 @@
-.App {
-  text-align: center;
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr 50px;
+  grid-template-areas:
+    "header"
+    "body"
+    "footer"
+}
+.app-header {
+  background-color: grey;
+  grid-area: header;
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.app-header nav {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  width: 10%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+.app-body { 
+  height: calc(100vh - 100px);
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "drawer-left content drawer-right"
+}
+
+.app-footer {
+  background-color: grey;
+  grid-area: footer;
+}
+
+.drawer-left, .drawer-right {
+  background-color: lightgray;
+}
+.drawer-left {
+  grid-area: drawer-left;
+}
+
+.drawer-right {
+  grid-area: drawer-right;
+}
+
+.content-container {
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+    "header" 
+    "body";
+}
+
+.content-header {
+  grid-area: header;
+  background-color: lightgray;
+}
+
+.content-body {
+  grid-area: body;
+  background-color: white;
+}
+
+.recipe-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-grow: 1;
 }
 
-.App-link {
-  color: #61dafb;
+.recipe-form footer {
+  position: relative;
+  height: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.recipe-step-card {
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-auto-rows: 50px 1fr;
+  grid-template-areas: 
+  "empty ratio-bar"
+  "ingredients ingredients";
+}
+
+.step-ratio-bar {
+  grid-area: ratio-bar;
+  background-color: #c0c0c0;
+}
+
+.step-add-button {
+  background-color: #a7a7a7;
+  border-radius: 5pxv;
+  position: absolute;
+  height: 40px;
+  width: 50px;
+  right: 10px;
+  top: 10px;
+}
+.recipe-ingredients {
+  grid-area: ingredients;
+  background-color: #c0c0c0;
+}
+
+.ingredient-card {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-auto-rows: 1fr;
+  grid-template-areas: "ratio ingredient"
+}
+
+.ingredient-ratio {
+  grid-area: ratio;
+  background-color: #a7a7a7;
+  text-align: right;
+}
+
+
+.ingredient-properties {
+  grid-area: ingredient;
+  background-color: #a7a7a7;
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 3fr .5fr;
+  grid-template-areas: "ingredient quantity unit action submit";
+  gap: .5rem;
+}
+
+
+
+.ingredient-name { 
+  grid-area: ingredient; 
+}
+
+.ingredient-quantity { 
+  grid-area: quantity;
+  text-align: right;
+}
+.ingredient-unit { 
+  grid-area: unit;
+  text-align: left;
+}
+.ingredient-action { 
+  grid-area: action;
+  text-align: left;
+}
+
+input {
+  background-color: rgba(0, 0, 0, 0);
+  /* border: none; */
+  border-top: none;
+  border-right: none;
+  border-bottom: solid rgba(0, 0, 0, .1);
+  border-left: solid rgba(0, 0, 0, .1);
+}
+
+input.ingredient-name , input.ingredient-quantity,
+input.ingredient-unit, input.ingredient-action {
+  width: 100%;
+}
+
+.ingredient-submit { 
+  grid-area: submit;
+  border: none;
+  background-color: grey;
+  border-radius: 5px;
 }
