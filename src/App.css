@@ -61,6 +61,9 @@
 .content-header {
   grid-area: header;
   background-color: lightgray;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-template-areas: 'doughnut recipe-header'
 }
 
 .content-body {
@@ -72,6 +75,20 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+}
+
+.recipe-graph-doughnut-container {
+  grid-area: doughnut;
+  height: 300px;
+  width: 300px;
+}
+
+.recipe-graph-doughnut {
+  
+}
+
+.recipe-header {
+  grid-area: recipe-header;
 }
 
 .recipe-form footer {
@@ -105,6 +122,7 @@
   right: 10px;
   top: 10px;
 }
+
 .recipe-ingredients {
   grid-area: ingredients;
   background-color: #c0c0c0;
@@ -121,6 +139,8 @@
   grid-area: ratio;
   background-color: #a7a7a7;
   text-align: right;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 
@@ -133,11 +153,14 @@
   gap: .5rem;
 }
 
-
-
-.ingredient-name { 
-  grid-area: ingredient; 
+.ingredient-color-swatch {
+  height: 25px;
+  width: 25px;
+  margin: 2px;
+  border-radius: 5px;
 }
+
+.ingredient-name { grid-area: ingredient; }
 
 .ingredient-quantity { 
   grid-area: quantity;
