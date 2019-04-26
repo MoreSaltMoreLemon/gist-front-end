@@ -1,13 +1,11 @@
 import React from 'react';
-import ContentHeader from './ContentHeader'
-import ContentBody from './ContentBody'
+import RecipeForm from './RecipeForm'
 
 
 const ContentContainer = (props) => {
   return (
     <div className='content-container'>
-      <ContentHeader />
-      <ContentBody />
+      <RecipeForm />
     </div>
   );
 };

@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
+import Avatar from './Avatar'
 
 const blankRecipe = {
   name: '',
+  description: '',
   createdBy: []
+}
+
+const placeholderUser = {
+  username: 'Sally',
+  avatarImageUrl: ''
 }
 
 class RecipeHeaderForm extends Component {
@@ -13,6 +20,7 @@ class RecipeHeaderForm extends Component {
 
     this.state = {
       name: recipe.name,
+      description: recipe.description,
       createdBy: recipe.createdBy
     }
   }
@@ -29,6 +37,15 @@ class RecipeHeaderForm extends Component {
           onChange={this.handleChange}
           value={this.state.name}
         ></input>
+        <input
+          type='textarea'
+          name='description'
+          className='recipe-description'
+          placeholder='Recipe Description'
+          onChange={this.handleChange}
+          value={this.state.name}
+        ></input>
+        <Avatar user={placeholderUser} />
       </form>
     )
   }

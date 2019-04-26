@@ -1,11 +1,11 @@
 import React from 'react';
-import RecipeForm from './RecipeForm'
+import RecipeStepsForm from './RecipeStepsForm'
 
 
 const ContentBody = (props) => {
   return (
     <div className='content-body'>
-      <RecipeForm />
+      <RecipeStepsForm />
     </div>
   );
 };
