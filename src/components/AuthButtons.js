@@ -3,7 +3,7 @@ import * as React from 'react';
 // Sign Up / Register
 function SignUp (props) {
     return (
-      <div>
+      <div className="button">
         SignUp
       </div>
     );
@@ -12,7 +12,7 @@ function SignUp (props) {
 // Sign In / Login
 function SignIn (props) {
     return (
-      <div>
+      <div className="button">
         SignIn
       </div>
     );
@@ -21,7 +21,7 @@ function SignIn (props) {
 // Sign Out / Logout
 function SignOut (props) {
     return (
-      <div>
+      <div className="button">
         SignOut
       </div>
     );

@@ -1,13 +1,6 @@
-
 import React, { Component } from 'react';
 import { GithubPicker } from 'react-color'
-
-
-const defaultColors = [
-  '#b80200', '#db3e00', '#fcca01', '#008b02'
-]
-
-const randomColor = () => defaultColors[Math.floor(Math.random() * defaultColors.length)]
+import { defaultColors, randomColor } from '../helpers/colors'
 
 const blankIngredient = {
   color: randomColor(), 
@@ -36,7 +29,10 @@ class IngredientForm extends Component {
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value })
   
-  handleColorChange = e => this.setState({ color: e.hex, showColorPicker: false })
+  handleColorChange = e => {
+    console.log(e.hsl)
+    this.setState({ color: e.hex, showColorPicker: false })
+  }
   
   showColorPickerDisplay = () => this.setState({ showColorPicker: true })
   hideColorPickerDisplay = () => this.setState({ showColorPicker: false })
@@ -51,7 +47,7 @@ class IngredientForm extends Component {
       <form 
         className='ingredient-card ingredient-form'
         onSubmit={this.handleSubmit}>
-        <div className='ingredient-ratio'>
+        <div className='ingredient-ratio-container'>
           <div 
               className='ingredient-color-swatch'
               style={{backgroundColor: this.state.color}}
@@ -64,6 +60,7 @@ class IngredientForm extends Component {
                 name='color'
                 className='ingredient-color-picker'
                 color={this.state.color}
+                colors={defaultColors}
                 onChange={this.handleColorChange} 
               /> 
               :
@@ -104,11 +101,11 @@ class IngredientForm extends Component {
             onChange={this.handleChange}
             value={this.state.action}
           ></input>
-          <input 
+          {/* <input 
             type="submit"
             className='ingredient-submit' 
             value="Add"
-          ></input>
+          ></input> */}
         </div>
       </form>
     )
@@ -116,3 +113,9 @@ class IngredientForm extends Component {
 };
 
 export default IngredientForm;
+
+const hslToString = ({h, s, l}) => {
+  const hsl = `hsl(${Math.floor(h)}, ${Math.floor(s)}%, ${Math.floor(l)}%)`
+  console.log(hsl)
+  return hsl
+}

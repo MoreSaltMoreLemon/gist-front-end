@@ -8,7 +8,7 @@ const ContentHeader = (props) => {
       <div className='recipe-graph-doughnut-container'>
         <Doughnut className='recipe-graph-doughnut' />
       </div>
-      <RecipeHeader />
+      <RecipeHeader recipe={{name: 'Recipe Name'}} />
     </div>
   );
 };

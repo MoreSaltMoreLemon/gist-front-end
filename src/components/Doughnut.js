@@ -8,36 +8,37 @@ import { ResponsivePie } from '@nivo/pie'
 
 const data = [
   {
-    "id": "make",
-    "label": "make",
-    "value": 132,
-    "color": "hsl(185, 70%, 50%)"
+    id: 'broc',
+    color: '#008b02',
+    label: 'Broccoli, yum',
+    value: 3000,
+    unit: 'g',
+    action: 'dice'
   },
   {
-    "id": "c",
-    "label": "c",
-    "value": 335,
-    "color": "hsl(143, 70%, 50%)"
+    id: 'cheez',
+    color: '#fab71f',
+    label: 'Cheezie Sauce, yum',
+    value: 5000,
+    unit: 'g'
   },
   {
-    "id": "haskell",
-    "label": "haskell",
-    "value": 526,
-    "color": "hsl(315, 70%, 50%)"
+    id: 'cream',
+    color: '#f9d2f3',
+    label: 'Heavy Cream',
+    value: 7000,
+    unit: 'g'
   },
   {
-    "id": "sass",
-    "label": "sass",
-    "value": 521,
-    "color": "hsl(48, 70%, 50%)"
-  },
-  {
-    "id": "lisp",
-    "label": "lisp",
-    "value": 486,
-    "color": "hsl(189, 70%, 50%)"
+    id: 'salt',
+    color: '#e7e7e7',
+    label: 'Salt, Kosher',
+    value: 300,
+    unit: 'g'
   }
 ]
+
+const colors = data.map(element => element.color)
 
 const Doughnut = (/* {data} */) => (
     <ResponsivePie
@@ -51,9 +52,7 @@ const Doughnut = (/* {data} */) => (
         innerRadius={0.5}
         padAngle={0.7}
         cornerRadius={3}
-        colors={{
-            "scheme": "nivo"
-        }}
+        colors={colors}
         borderWidth={1}
         borderColor={{
             "from": "color",
@@ -97,56 +96,6 @@ const Doughnut = (/* {data} */) => (
                 "rotation": -45,
                 "lineWidth": 6,
                 "spacing": 10
-            }
-        ]}
-        fill={[
-            {
-                "match": {
-                    "id": "ruby"
-                },
-                "id": "dots"
-            },
-            {
-                "match": {
-                    "id": "c"
-                },
-                "id": "dots"
-            },
-            {
-                "match": {
-                    "id": "go"
-                },
-                "id": "dots"
-            },
-            {
-                "match": {
-                    "id": "python"
-                },
-                "id": "dots"
-            },
-            {
-                "match": {
-                    "id": "scala"
-                },
-                "id": "lines"
-            },
-            {
-                "match": {
-                    "id": "lisp"
-                },
-                "id": "lines"
-            },
-            {
-                "match": {
-                    "id": "elixir"
-                },
-                "id": "lines"
-            },
-            {
-                "match": {
-                    "id": "javascript"
-                },
-                "id": "lines"
             }
         ]}
         legends={[
