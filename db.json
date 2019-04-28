@@ -1,0 +1,193 @@
+{
+	"users": [
+		{
+			"id": 1,
+			"username": "ezra",
+			"password_digest": "password",
+			"email": "ezra@mail.com"
+		}
+  ],
+  "recipes": [
+    {
+      "id": 1,
+      "userId": 1,
+      "name": "steak",
+      "scale_factor": 1,
+      "yield_in_grams": 500,
+      "yield": 1,
+      "yield_unit_id": 1,
+      "yield_unit": {
+        "name": "each"
+      },
+      "public": true,
+      "steps": [
+        {
+          "id": 1,
+          "recipe_id": 1,
+          "sequence_order": 1,
+          "name": "Roast",
+          "yield_in_grams": 500,
+          "yield": 1,
+          "yield_unit_id": 1,
+          "yield_unit": {
+            "name": "each"
+          },
+          "prep_time_minutes": 2,
+          "post_prep_time_minutes": 20,
+          "step_ingredients": [
+            {
+              "id": 1,
+              "step_id": 1,
+              "sequence_order": 1,
+              "ingredient_id": 1,
+              "recipe_id": "null",
+              "quantity_in_grams": 500,
+              "quantity": 1,
+              "unit_id": 1,
+              "unit": {
+                "id": 1,
+                "name": "each",
+                "gram_conversion_factor": 500
+              },
+              "fixed": false,
+              "ingredient": {
+                "name": "steak"
+              }
+            },
+            {
+              "id": 2,
+              "step_id": 1,
+              "sequence_order": 2,
+              "ingredient_id": 2,
+              "recipe_id": "null",
+              "quantity_in_grams": 2,
+              "quantity": 1,
+              "unit_id": 1,
+              "unit": {
+                "id": 1,
+                "name": "pinch",
+                "gram_conversion_factor": 2
+              },
+              "fixed": false,
+              "ingredient": {
+                "id": 2,
+                "name": "salt"
+              }
+            },
+            {
+              "id": 3,
+              "step_id": 1,
+              "sequence_order": 3,
+              "ingredient_id": "null",
+              "recipe_id": 2,
+              "quantity_in_grams": 300,
+              "quantity": 1,
+              "unit_id":3,
+              "unit": {
+                "id": 3,
+                "name": "pinch",
+                "gram_conversion_factor": 2
+              },
+              "fixed": false,
+              "ingredient": {
+                "id": 2,
+                "name": "salt"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "name": "cheese sauce",
+      "scale_factor": 1,
+      "yield_in_grams": 500,
+      "yield": 1,
+      "yield_unit_id": 1,
+      "yield_unit": {
+        "name": "each"
+      },
+      "public": true,
+      "steps": [
+        {
+          "id": 2,
+          "recipe_id": 2,
+          "sequence_order": 1,
+          "name": "Combine",
+          "yield_in_grams": 500,
+          "yield": 1,
+          "yield_unit_id": 1,
+          "yield_unit": {
+            "name": "each"
+          },
+          "prep_time_minutes": 2,
+          "post_prep_time_minutes": 20,
+          "step_ingredients": [
+            {
+              "id": 4,
+              "step_id": 2,
+              "sequence_order": 1,
+              "ingredient_id": 5,
+              "recipe_id": "null",
+              "quantity_in_grams": 500,
+              "quantity": 1,
+              "unit_id": 1,
+              "unit": {
+                "id": 1,
+                "name": "each",
+                "gram_conversion_factor": 500
+              },
+              "fixed": false,
+              "ingredient": {
+                "id": 5,
+                "name": "cheese"
+              }
+            },
+            {
+              "id": 2,
+              "step_id": 1,
+              "sequence_order": 2,
+              "ingredient_id": 2,
+              "recipe_id": "null",
+              "quantity_in_grams": 2,
+              "quantity": 1,
+              "unit_id": 1,
+              "unit": {
+                "id": 1,
+                "name": "pinch",
+                "gram_conversion_factor": 2
+              },
+              "fixed": false,
+              "ingredient": {
+                "id": 2,
+                "name": "salt"
+              }
+            },
+            {
+              "id": 3,
+              "step_id": 1,
+              "sequence_order": 3,
+              "ingredient_id": "null",
+              "recipe_id": 2,
+              "quantity_in_grams": 300,
+              "quantity": 1,
+              "unit_id":3,
+              "unit": {
+                "id": 3,
+                "name": "pinch",
+                "gram_conversion_factor": 2
+              },
+              "fixed": false,
+              "ingredient": {
+                "id": 2,
+                "name": "salt"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

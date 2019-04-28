@@ -18,6 +18,7 @@ import {
 } from '../helpers/ingredientHelpers'
 
 const recipeReducer = (state, action) => {
+  console.log("RECIPE REDUCER", state, action)
   switch (action.type) {
     // payload: recipe: { id }
     case 'SET_RECIPE':
@@ -54,4 +55,4 @@ const recipeReducer = (state, action) => {
   }
 }
 
-export { recipeReducer }
+export default recipeReducer

@@ -1,7 +1,8 @@
 function addStep(state, action) {
   const modifiedRecipe = Object.assign(action.recipe)
   const recipeSteps = modifiedRecipe.steps.slice()
-  recipeSteps.
+  recipeSteps.push(action.step)
+  modifiedRecipe.steps = recipeSteps
   return {...state, recipe: modifiedRecipe }
 }
 

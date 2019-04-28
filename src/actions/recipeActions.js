@@ -1,4 +1,5 @@
 function setRecipeAction(recipe) {
+  console.log("SET RECIPE", recipe)
   return { 
     type: 'SET_RECIPE',
     recipe

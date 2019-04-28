@@ -1,4 +1,4 @@
-import httpRequestJWT from './httpHelpers'
+import { httpRequestJWT } from '../helpers/httpHelpers'
 import { 
   setRecipeAction, 
   editRecipeAction, 
@@ -7,7 +7,9 @@ import {
 import { RECIPES_URL } from '../routes'
 
 async function getRecipe(recipe, dispatch, jwt='') {
-  const requestedRecipe = await httpRequestJWT(`${RECIPES_URL}/${recipe.id}`, 'get', {}, jwt)
+  const response = await httpRequestJWT(`${RECIPES_URL}/${recipe.id}`, 'get', {}, jwt)
+  const requestedRecipe = await response.json()
+  console.log("GET RECIPE", requestedRecipe)
   dispatch(setRecipeAction(requestedRecipe))
 }
 
