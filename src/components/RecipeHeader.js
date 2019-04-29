@@ -7,9 +7,12 @@ const RecipeHeader = ({recipe}) => {
       { 
         false 
         ? 
-        <h1 className='recipe-title'>{recipe.name}</h1>
+        <div className='recipe-header-display'>
+          <h1 className='recipe-title'>{recipe.name}</h1>
+          <h3 className='recipe-title'>{recipe.description}</h3>
+        </div>
         :
-        <RecipeHeaderForm />
+        <RecipeHeaderForm recipe={recipe}/>
       }
     </div>
   )

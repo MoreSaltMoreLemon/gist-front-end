@@ -1,25 +1,8 @@
 
-import React, { useReducer } from 'react';
+import React from 'react';
 import IngredientCard from './IngredientCard'
-import IngredientForm from './IngredientForm'
 import StepRatioBar from './StepRatioBar'
 import StepNameForm from './StepNameForm'
-
-const stepReducer = (state, action) => {
-  let ingredients
-  switch (action.type) {
-    case 'ADD_INGREDIENT':
-       ingredients = state.ingredients.concat(action.ingredient)
-      return {...state, ingredients}
-    case 'REMOVE_INGREDIENT':
-      ingredients = state.ingredients.filter(ing => {
-        return ing.name !== action.ingredient.name
-      })
-      return {...state, ingredients}
-    default:
-      return state
-  }
-}
 
 const totalIngredientQuantities = (ingredients) => {
   return ingredients.reduce((acc, ingredient) => {
@@ -29,10 +12,11 @@ const totalIngredientQuantities = (ingredients) => {
 
 
 const RecipeStepCard = ({ingredients}) => {
-  // const [state, dispatch] = useReducer(stepReducer, ingredients)
-  const total = totalIngredientQuantities(ingredients)
+  // ingredients = ingredients || [{ quantity: 0, unit: '', name: '', action: ''}]
+  console.log("RECIPE STEP CARD", ingredients)
+  const total = ingredients ? totalIngredientQuantities(ingredients) : 1
 
-  const ingredientCards = ingredients.map(ingredient => {
+  const ingredientCards = (ingredients) => ingredients.map(ingredient => {
     return <IngredientCard key={ingredient.quantity} ingredient={ingredient} total={total}/>
   })
   
@@ -41,12 +25,8 @@ const RecipeStepCard = ({ingredients}) => {
       <StepNameForm />
       <StepRatioBar ingredients={ingredients} total={total}/>
       <div className='recipe-ingredients'>
-        {ingredientCards}
+        {ingredients && ingredients.length !== 0 ? ingredientCards(ingredients) : null}
         <IngredientCard />
-        <button 
-          className='ingredient-add button' 
-          value="Add"
-        ></button>
       </div>
     </div>
   );

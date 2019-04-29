@@ -5,15 +5,19 @@ import AppHeader from './containers/AppHeader'
 import AppBody from './containers/AppBody'
 import AppFooter from './containers/AppFooter'
 
-const App = () => {
 
-  return (
-    <div className='app-container'>
-      <AppHeader />
-      <AppBody />
-      <AppFooter />
-    </div>
-  )
+
+class App extends Component {
+  render() {
+    return (
+      <div className='app-container'>
+        <AppHeader />
+        <AppBody />
+        <AppFooter />
+      </div>
+    )
+  }
 }
 
-export default App;
+
+export default App

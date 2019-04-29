@@ -2,14 +2,15 @@ import { httpRequestJWT } from '../helpers/httpHelpers'
 import { 
   setRecipeAction, 
   editRecipeAction, 
-  removeRecipeAction 
+  clearRecipeAction 
 } from './recipeActions'
 import { RECIPES_URL } from '../routes'
 
 async function getRecipe(recipe, dispatch, jwt='') {
   const response = await httpRequestJWT(`${RECIPES_URL}/${recipe.id}`, 'get', {}, jwt)
   const requestedRecipe = await response.json()
-  console.log("GET RECIPE", requestedRecipe)
+  // debugger
+  // console.log("GET RECIPE", requestedRecipe)
   dispatch(setRecipeAction(requestedRecipe))
 }
 
@@ -25,7 +26,7 @@ async function updateRecipe(recipe, dispatch, jwt='') {
 
 async function removeRecipe(recipe, dispatch, jwt='') {
   const updatedRecipe = await httpRequestJWT(`${RECIPES_URL}/${recipe.id}`, 'delete', {recipe: {id: recipe.id}}, jwt)
-  dispatch(removeRecipeAction(updatedRecipe))
+  dispatch(clearRecipeAction(updatedRecipe))
 }
 
 export {

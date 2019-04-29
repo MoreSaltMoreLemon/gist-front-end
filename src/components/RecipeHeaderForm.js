@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import Avatar from './Avatar'
+import { connect } from 'react-redux'
 
-const blankRecipe = {
-  name: '',
-  description: '',
-  createdBy: []
-}
+import { createRecipe } from '../actions/asyncRecipeActionWrappers'
+import { editRecipeAction } from '../actions/recipeActions'
+
+
 
 const placeholderUser = {
   username: 'Sally',
@@ -15,22 +14,27 @@ const placeholderUser = {
 class RecipeHeaderForm extends Component {
   constructor(props) {
     super(props)
-
-    let recipe = props.recipe || blankRecipe
-
+    debugger
     this.state = {
-      name: recipe.name,
-      description: recipe.description,
-      createdBy: recipe.createdBy
+      name: props.recipe.name || '',
+      description: props.recipe.description || ''
     }
   }
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value })
+  
+  handleSubmit = e => {
+    e.preventDefault()
+    this.props.editRecipe({})
+  }
 
   render() {
     return (
-      <form className='recipe-header form'>
+      <form 
+        className='recipe-header-form'
+        onSubmit={this.handleSubmit}>
         <input 
+          type="text"
           name="name"
           className='recipe-title'
           placeholder='Recipe Name'
@@ -43,12 +47,25 @@ class RecipeHeaderForm extends Component {
           className='recipe-description'
           placeholder='Recipe Description'
           onChange={this.handleChange}
-          value={this.state.name}
+          value={this.state.description}
         ></input>
-        <Avatar user={placeholderUser} />
+        <input
+          type='submit'
+          name='submit'
+          className='recipe-submit button'
+          value='Submit'
+        ></input>
       </form>
     )
   }
 }
 
-export default RecipeHeaderForm
+const mapDispatchToProps = dispatch => {
+  return {
+    createRecipe: (recipe, jwt = '') => createRecipe(recipe, dispatch, jwt),
+    editRecipe:   (recipe) => dispatch(editRecipeAction(recipe))
+  }
+}
+
+
+export default connect(null, mapDispatchToProps)(RecipeHeaderForm)

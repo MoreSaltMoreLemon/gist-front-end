@@ -5,20 +5,20 @@ import {
 } from '../helpers/recipeHelpers'
 
 import { 
-  addStep, 
-  editStep, 
-  removeStep 
-} from '../helpers/stepHelpers'
+  addSubRecipe, 
+  editSubRecipe, 
+  removeSubRecipe,
+  reOrderSubRecipes
+} from '../helpers/subRecipeHelpers'
 
 import { 
   addIngredient, 
-  addRecipeAsIngredient,
   editIngredient, 
   removeIngredient 
 } from '../helpers/ingredientHelpers'
 
-const recipeReducer = (state, action) => {
-  console.log("RECIPE REDUCER", state, action)
+const recipeReducer = (state = {}, action) => {
+  // console.log("RECIPE REDUCER", state, action)
   switch (action.type) {
     // payload: recipe: { id }
     case 'SET_RECIPE':
@@ -27,27 +27,27 @@ const recipeReducer = (state, action) => {
     case 'EDIT_RECIPE': 
       return editRecipe(state, action)
     // payload: recipe: { id }
-    case 'REMOVE_RECIPE': 
+    case 'CLEAR_RECIPE': 
       return removeRecipe(state, action)
-    // payload: recipe: { id }, step: { properties }
-    case 'ADD_STEP':  
-      return addStep(state, action)
-    // payload: recipe: { id }, step: { id, properties }
-    case 'EDIT_STEP': 
-      return editStep(state, action)
-    // payload: recipe: { id }, step: { id }
-    case 'REMOVE_STEP': 
-      return removeStep(state, action)
-    // payload: recipe: { id }, step: { id }, ingredient: { properties }
+    // payload: recipe: { id }, sub_recipe: { properties }
+    case 'ADD_SUB_RECIPE':  
+      return addSubRecipe(state, action)
+    // payload: recipe: { id }, recipe_sub_recipe: { id }, sub_recipe: { id, properties }
+    case 'EDIT_SUB_RECIPE': 
+      return editSubRecipe(state, action)
+    // payload: recipe: { id }, sub_recipe: { id }
+    case 'REMOVE_SUB_RECIPE': 
+      return removeSubRecipe(state, action)
+    // payload: recipe: { id }, sub_recipe: { id, sequence }
+    case 'REORDER_SUB_RECIPES':
+      return reOrderSubRecipes(state, action)
+    // payload: recipe: { id }, sub_recipe: { id }, ingredient: { properties }
     case 'ADD_INGREDIENT': 
       return addIngredient(state, action)
-    // payload: recipe: { id }, step: { id }, recipeIngredient: { recipe }
-    case 'ADD_RECIPE_AS_INGREDIENT': 
-      return addRecipeAsIngredient(state, action)
-    // payload: recipe: { id }, step: { id }, ingredient: { id, properties }
+    // payload: recipe: { id }, sub_recipe: { id }, ingredient: { id, properties }
     case 'EDIT_INGREDIENT': 
       return editIngredient(state, action)
-    // payload: recipe: { id }, step: { id }, ingredient: { id }
+    // payload: recipe: { id }, sub_recipe: { id }, ingredient: { id }
     case 'REMOVE_INGREDIENT': 
       return removeIngredient(state, action)
     default:

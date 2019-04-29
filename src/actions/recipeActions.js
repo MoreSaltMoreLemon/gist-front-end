@@ -13,9 +13,9 @@ function editRecipeAction(recipe) {
   }
 }
 
-function removeRecipeAction(recipe) {
+function clearRecipeAction(recipe) {
   return { 
-    type: 'REMOVE_RECIPE',
+    type: 'CLEAR_RECIPE',
     recipe
   }
 }
@@ -23,5 +23,5 @@ function removeRecipeAction(recipe) {
 export {
   setRecipeAction,
   editRecipeAction,
-  removeRecipeAction
+  clearRecipeAction
 }

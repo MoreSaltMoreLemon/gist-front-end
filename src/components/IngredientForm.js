@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { GithubPicker } from 'react-color'
 import { defaultColors, randomColor } from '../helpers/colors'
+
+import { 
+  addIngredientAction,
+  addRecipeAsIngredientAction,
+  editIngredientAction,
+  removeIngredientAction
+} from '../actions/ingredientActions'
 
 const blankIngredient = {
   color: randomColor(), 
@@ -29,10 +37,7 @@ class IngredientForm extends Component {
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value })
   
-  handleColorChange = e => {
-    console.log(e.hsl)
-    this.setState({ color: e.hex, showColorPicker: false })
-  }
+  handleColorChange = e => this.setState({ color: e.hex, showColorPicker: false })
   
   showColorPickerDisplay = () => this.setState({ showColorPicker: true })
   hideColorPickerDisplay = () => this.setState({ showColorPicker: false })
@@ -110,12 +115,14 @@ class IngredientForm extends Component {
       </form>
     )
   }
-};
-
-export default IngredientForm;
-
-const hslToString = ({h, s, l}) => {
-  const hsl = `hsl(${Math.floor(h)}, ${Math.floor(s)}%, ${Math.floor(l)}%)`
-  console.log(hsl)
-  return hsl
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addIngredient:    (ingredient) => dispatch(addIngredientAction(ingredient)),
+    editIngredient:   (ingredient) => dispatch(editIngredientAction(ingredient)),
+    removeIngredient: (ingredient) => dispatch(removeIngredientAction(ingredient))
+  }
+}
+
+export default connect(undefined, mapDispatchToProps)(IngredientForm)

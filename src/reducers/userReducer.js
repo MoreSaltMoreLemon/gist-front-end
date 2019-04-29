@@ -1,11 +1,10 @@
-import { setUserAction, getUserAction, }
-
-const userReducer = (state, action) => {
-  console.log("USER REDUCER", state, action)
+const userReducer = (state = {}, action) => {
+  // console.log("USER REDUCER", state, action)
   switch (action.type) {
-    // payload: user: { id }
-    case 'SET_RECIPE':
-      return setRecipe(state, action)
+    case 'SET_USER':
+      return {...action.user}
+    case 'CLEAR_USER':
+      return {}
     default:
       return state
   }

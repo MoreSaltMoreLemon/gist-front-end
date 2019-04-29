@@ -51,7 +51,9 @@
               },
               "fixed": false,
               "ingredient": {
-                "name": "steak"
+                "id": 1,
+                "name": "steak",
+                "color": "#008b02"
               }
             },
             {
@@ -71,7 +73,8 @@
               "fixed": false,
               "ingredient": {
                 "id": 2,
-                "name": "salt"
+                "name": "salt",
+                "color": "#008b02"
               }
             },
             {
@@ -91,7 +94,8 @@
               "fixed": false,
               "ingredient": {
                 "id": 2,
-                "name": "salt"
+                "name": "salt",
+                "color": "#008b02"
               }
             }
           ]
@@ -116,6 +120,7 @@
           "recipe_id": 2,
           "sequence_order": 1,
           "name": "Combine",
+          "color": "#008b02",
           "yield_in_grams": 500,
           "yield": 1,
           "yield_unit_id": 1,
@@ -142,7 +147,8 @@
               "fixed": false,
               "ingredient": {
                 "id": 5,
-                "name": "cheese"
+                "name": "cheese",
+                "color": "#008b02"
               }
             },
             {
@@ -162,7 +168,8 @@
               "fixed": false,
               "ingredient": {
                 "id": 2,
-                "name": "salt"
+                "name": "salt",
+                "color": "#008b02"
               }
             },
             {
@@ -182,7 +189,8 @@
               "fixed": false,
               "ingredient": {
                 "id": 2,
-                "name": "salt"
+                "name": "salt",
+                "color": "#008b02"
               }
             }
           ]

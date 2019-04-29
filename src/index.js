@@ -7,15 +7,11 @@ import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-import recipeReducer from './reducers/recipeReducer'
+import rootReducer from './reducers/rootReducer'
 
-const initialStore = {
-  user: {},
-  jwt: {},
-  recipes: {}
-}
-
-const store = createStore(initialStore)
+const store = createStore(rootReducer,
+                          window.__REDUX_DEVTOOLS_EXTENSION__ &&
+                          window.__REDUX_DEVTOOLS_EXTENSION__())
 
 ReactDOM.render(
   <Provider store={store}>
