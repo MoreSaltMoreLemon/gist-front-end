@@ -104,24 +104,41 @@
   height: 50px;
 }
 
-.recipe-step-card {
+/* .recipe-step-card { */
+.step-name-container {
   width: 100%;
   height: auto;
   min-height: 100px;
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-auto-rows: 30px 1fr;
+  grid-auto-rows: 30px auto 30px 30px;
   grid-template-areas: 
   "step-name ratio-bar"
-  "ingredients ingredients";
+  "ingredients ingredients"
+  "empty yield"
+  "empty edit-buttons";
 }
 
-.step-name-container {
+.step-properties {
   display: grid;
   grid-template-columns: 1fr 29px;
   grid-template-areas: "step-name color-swatch";
   gap: .5rem;
 }
+
+.step-yield-container {
+  grid-area: yield
+}
+
+.step-edit-buttons {
+  grid-area: edit-buttons;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-areas: "empty save delete";
+}
+
+.step-submit { grid-area: save }
+.step-delete { grid-area: delete }
 
 .step-color {
   grid-area: color-swatch;
@@ -196,8 +213,8 @@
   grid-area: ingredient;
   background-color: #a7a7a7;
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr 3fr;
-  grid-template-areas: "ingredient quantity unit action"; /* submit"; */
+  grid-template-columns: 3fr 1fr 1fr 3fr .5fr .5fr;
+  grid-template-areas: "ingredient quantity unit action submit delete";
   gap: .5rem;
 }
 
@@ -219,7 +236,7 @@
 }
 
 .ingredient-name, .ingredient-quantity, 
-.ingredient-unit, .ingredient-action {
+.ingredient-unit, .ingredient-instruction {
   line-height: 30px;
 }
 
@@ -235,7 +252,7 @@
   grid-area: unit;
   text-align: left;
 }
-.ingredient-action { 
+.ingredient-instruction { 
   grid-area: action;
   text-align: left;
 }
@@ -251,16 +268,19 @@ input {
 }
 
 input.ingredient-name , input.ingredient-quantity,
-input.ingredient-unit, input.ingredient-action {
+input.ingredient-unit, input.ingredient-instruction {
   width: 100%;
 }
 
-.ingredient-submit { 
-  grid-area: submit;
+.ingredient-submit,
+.ingredient-delete {
   border: none;
   background-color: grey;
   border-radius: 5px;
 }
+.ingredient-submit { grid-area: submit; }
+
+.ingredient-delete { grid-area: delete; }
 
 .avatar {
   position: relative;

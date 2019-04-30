@@ -4,11 +4,10 @@ import { GithubPicker } from 'react-color'
 import { defaultColors, randomColor } from '../helpers/colors'
 
 import { 
-  addIngredientAction,
-  addRecipeAsIngredientAction,
-  editIngredientAction,
-  removeIngredientAction
-} from '../actions/ingredientActions'
+  addStepIngredientAction,
+  editStepIngredientAction,
+  removeStepIngredientAction
+} from '../actions/stepIngredientActions'
 
 const blankIngredient = {
   color: randomColor(), 
@@ -18,21 +17,14 @@ const blankIngredient = {
   action: ''
 }
 
-class IngredientForm extends Component {
+class StepIngredientForm extends Component {
   constructor(props) {
     super(props)
-    
-    let ingredient = props.ingredient || blankIngredient
 
-    this.state = {
-      showColorPicker: false,
-      color: ingredient.color,
-      name: ingredient.name,
-      quantity: ingredient.quantity,
-      unit: ingredient.unit,
-      action: ingredient.action,
+    let step_ingredient = props.step_ingredient || blankIngredient
+    if (!step_ingredient.color) step_ingredient.color = randomColor()
 
-    }
+    this.state = { ...step_ingredient, showColorPicker: false }
   }
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value })
@@ -44,7 +36,18 @@ class IngredientForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    // debugger
     console.log("SUBMIT INGREDIENT STATE", this.state)
+    if (this.props.isEditForm) {
+      this.props.editStepIngredient(this.state)
+    } else {
+      this.props.addStepIngredient(this.state)
+    }
+    this.props.setShowForm(false)
+  }
+
+  handleDelete = e => {
+    this.props.removeIngredient()
   }
 
   render() {
@@ -96,21 +99,26 @@ class IngredientForm extends Component {
             className='ingredient-unit'
             placeholder='Unit'
             onChange={this.handleChange}
-            value={this.state.unit}
+            value={this.state.unit_id}
           ></input>
           <input 
-            name='action' 
+            name='instruction' 
             type="text" 
-            className='ingredient-action'
-            placeholder='What to do'
+            className='ingredient-instruction'
+            placeholder='Instructions'
             onChange={this.handleChange}
-            value={this.state.action}
+            value={this.state.instruction}
           ></input>
-          {/* <input 
+          <input 
             type="submit"
             className='ingredient-submit' 
-            value="Add"
-          ></input> */}
+            value="Save"
+          ></input>
+          <input 
+            type="button"
+            className='ingredient-delete' 
+            value="Delete"
+          ></input>
         </div>
       </form>
     )
@@ -119,10 +127,10 @@ class IngredientForm extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addIngredient:    (ingredient) => dispatch(addIngredientAction(ingredient)),
-    editIngredient:   (ingredient) => dispatch(editIngredientAction(ingredient)),
-    removeIngredient: (ingredient) => dispatch(removeIngredientAction(ingredient))
+    addStepIngredient:    (ingredient) => dispatch(addStepIngredientAction(ingredient)),
+    editStepIngredient:   (ingredient) => dispatch(editStepIngredientAction(ingredient)),
+    removeStepIngredient: (ingredient) => dispatch(removeStepIngredientAction(ingredient))
   }
 }
 
-export default connect(undefined, mapDispatchToProps)(IngredientForm)
+export default connect(undefined, mapDispatchToProps)(StepIngredientForm)

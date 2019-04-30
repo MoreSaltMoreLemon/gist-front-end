@@ -6,41 +6,40 @@ import { ResponsivePie } from '@nivo/pie'
 // website examples showcase many properties,
 // you'll often use just a few of them.
 
-const data = [
+const defaultDoughnutData = [
   {
-    id: 'broc',
-    color: '#008b02',
-    label: 'Broccoli, yum',
-    value: 3000,
-    unit: 'g',
-    action: 'dice'
+    id: '',
+    color: '#3e323c',
+    label: '',
+    value: 100, 
+    unit: '',
+    action: ''
   },
   {
-    id: 'cheez',
-    color: '#fab71f',
-    label: 'Cheezie Sauce, yum',
-    value: 5000,
-    unit: 'g'
-  },
-  {
-    id: 'cream',
-    color: '#f9d2f3',
-    label: 'Heavy Cream',
-    value: 7000,
-    unit: 'g'
-  },
-  {
-    id: 'salt',
-    color: '#e7e7e7',
-    label: 'Salt, Kosher',
-    value: 300,
-    unit: 'g'
+    id: '',
+    color: '#3e323c',
+    label: '',
+    value: 100, 
+    unit: '',
+    action: ''
   }
 ]
 
-const colors = data.map(element => element.color)
+function mapRecipeStepsToDoughnutData(recipe_steps) {
+  return recipe_steps.map(step =>
+    ({id: step.name, color: step.color, label: step.name, value: step.yield, unit: step.yield_unit_id})
+  )
+}
 
-const Doughnut = (/* {data} */) => (
+
+
+
+const Doughnut = ({recipe}) => {
+  const data = !!(recipe && recipe.recipe_steps) ? mapRecipeStepsToDoughnutData(recipe.recipe_steps) : defaultDoughnutData
+  // debugger
+  const colors = data.map(element => element.color)
+  console.log('Doughnut', recipe, data)
+  return (
     <ResponsivePie
         data={data}
         margin={{
@@ -119,6 +118,7 @@ const Doughnut = (/* {data} */) => (
             }
         ]}
     />
-)
+  )
+}
 
 export default Doughnut

@@ -4,21 +4,28 @@ import {
   removeRecipe 
 } from '../helpers/recipeHelpers'
 
-import { 
-  addSubRecipe, 
-  editSubRecipe, 
-  removeSubRecipe,
-  reOrderSubRecipes
-} from '../helpers/subRecipeHelpers'
+import {
+  addRecipeStep,
+  editRecipeStep,
+  removeRecipeStep,
+  reorderRecipeSteps,
+  reorderRecipeStepContents
+} from '../helpers/recipeStepHelpers'
 
 import { 
-  addIngredient, 
-  editIngredient, 
-  removeIngredient 
-} from '../helpers/ingredientHelpers'
+  addStepSubRecipe, 
+  editStepSubRecipe, 
+  removeStepSubRecipe
+} from '../helpers/stepSubRecipeHelpers'
+
+import { 
+  addStepIngredient, 
+  editStepIngredient, 
+  removeStepIngredient  
+} from '../helpers/stepIngredientHelpers'
 
 const recipeReducer = (state = {}, action) => {
-  // console.log("RECIPE REDUCER", state, action)
+  console.log("RECIPE REDUCER", state, action)
   switch (action.type) {
     // payload: recipe: { id }
     case 'SET_RECIPE':
@@ -30,26 +37,32 @@ const recipeReducer = (state = {}, action) => {
     case 'CLEAR_RECIPE': 
       return removeRecipe(state, action)
     // payload: recipe: { id }, sub_recipe: { properties }
-    case 'ADD_SUB_RECIPE':  
-      return addSubRecipe(state, action)
-    // payload: recipe: { id }, recipe_sub_recipe: { id }, sub_recipe: { id, properties }
-    case 'EDIT_SUB_RECIPE': 
-      return editSubRecipe(state, action)
+    case 'ADD_RECIPE_STEP':
+      return addRecipeStep(state, action)
+    case 'EDIT_RECIPE_STEP':
+      return editRecipeStep(state, action)
+    case 'REMOVE_RECIPE_STEP':
+      return removeRecipeStep(state, action)
+    case 'REORDER_RECIPE_STEPS':
+      return reorderRecipeSteps(state, action)
+    case 'REORDER_RECIPE_STEP_CONTENTS':
+      return reorderRecipeStepContents(state, action)
+    case 'ADD_STEP_SUB_RECIPE':  
+      return addStepSubRecipe(state, action)
+    case 'EDIT_STEP_SUB_RECIPE': 
+      return editStepSubRecipe(state, action)
     // payload: recipe: { id }, sub_recipe: { id }
-    case 'REMOVE_SUB_RECIPE': 
-      return removeSubRecipe(state, action)
-    // payload: recipe: { id }, sub_recipe: { id, sequence }
-    case 'REORDER_SUB_RECIPES':
-      return reOrderSubRecipes(state, action)
+    case 'REMOVE_STEP_SUB_RECIPE': 
+      return removeStepSubRecipe(state, action)
     // payload: recipe: { id }, sub_recipe: { id }, ingredient: { properties }
-    case 'ADD_INGREDIENT': 
-      return addIngredient(state, action)
+    case 'ADD_STEP_INGREDIENT': 
+      return addStepIngredient(state, action)
     // payload: recipe: { id }, sub_recipe: { id }, ingredient: { id, properties }
-    case 'EDIT_INGREDIENT': 
-      return editIngredient(state, action)
+    case 'EDIT_STEP_INGREDIENT': 
+      return editStepIngredient(state, action)
     // payload: recipe: { id }, sub_recipe: { id }, ingredient: { id }
-    case 'REMOVE_INGREDIENT': 
-      return removeIngredient(state, action)
+    case 'REMOVE_STEP_INGREDIENT': 
+      return removeStepIngredient(state, action)
     default:
       return state
   }

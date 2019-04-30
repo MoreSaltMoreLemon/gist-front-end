@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
 
 import { isEmpty } from '../helpers/miscHelpers'
 
 import Doughnut from '../components/Doughnut'
 import RecipeHeader from '../components/RecipeHeader'
-import SubRecipeContainer from './RecipeStepsContainer'
+import RecipeStepsContainer from './RecipeStepsContainer'
 
 import {
   getRecipe,
@@ -52,6 +52,7 @@ const placeholderIngredients = [
 ]
 
 const RecipeForm = (props) => {
+
   useEffect(() => {
     console.log("RECIPE FORM USE EFFECT", props)
     if (isEmpty(props.recipe)) {
@@ -66,12 +67,12 @@ const RecipeForm = (props) => {
     <div className='content-container'>
       <div className='content-header' style={{'height': '300px', 'width': '300px'}}>
         <div className='recipe-graph-doughnut-container'>
-          <Doughnut className='recipe-graph-doughnut' subRecipes={props.recipe}/>
+          <Doughnut className='recipe-graph-doughnut' recipe={props.recipe}/>
         </div>
       <RecipeHeader recipe={props.recipe} />
     </div>
       <div className='content-body'>
-        <SubRecipeContainer subRecipes={props.recipe} />
+        <RecipeStepsContainer recipe={props.recipe} />
       </div>
     </div>
   )

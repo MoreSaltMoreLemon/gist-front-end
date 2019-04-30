@@ -14,7 +14,7 @@ const placeholderUser = {
 class RecipeHeaderForm extends Component {
   constructor(props) {
     super(props)
-    debugger
+    // debugger
     this.state = {
       name: props.recipe.name || '',
       description: props.recipe.description || ''
@@ -25,7 +25,8 @@ class RecipeHeaderForm extends Component {
   
   handleSubmit = e => {
     e.preventDefault()
-    this.props.editRecipe({})
+    this.props.editRecipe({...this.state})
+    this.props.setShowEditForm(false)
   }
 
   render() {

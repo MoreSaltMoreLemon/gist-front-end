@@ -3,6 +3,7 @@ function setRecipe(state, action) {
 }
 
 function editRecipe(state, action) {
+  // debugger
   return {...state, ...action.recipe}
 }
 
