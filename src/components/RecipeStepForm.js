@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import { GithubPicker } from 'react-color'
 import { defaultColors, randomColor } from '../helpers/colors'
+import RecipeStepRatioBar from './RecipeStepRatioBar'
 
 import { editRecipeStepAction, removeRecipeStepAction } from '../actions/recipeStepActions'
 
@@ -73,8 +74,9 @@ class RecipeStepForm extends Component {
               :
               null
             }
-          </div>
+          </div> 
         </div>
+        <RecipeStepRatioBar step_ingredients={this.props.recipe_step.step_ingredients} total={this.props.total}/>
         <div className='recipe-ingredients'>
           {this.props.children}
         </div>

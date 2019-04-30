@@ -27,7 +27,7 @@ const defaultDoughnutData = [
 
 function mapRecipeStepsToDoughnutData(recipe_steps) {
   return recipe_steps.map(step =>
-    ({id: step.name, color: step.color, label: step.name, value: step.yield, unit: step.yield_unit_id})
+    ({id: step.name, color: step.color, label: step.name, value: Number(step.yield), unit: step.yield_unit_id})
   )
 }
 

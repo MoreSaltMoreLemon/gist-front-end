@@ -2,7 +2,6 @@
 import React from 'react';
 import StepIngredientCard from './StepIngredientCard'
 import StepContentShowForms from './StepContentShowForms'
-import RecipeStepRatioBar from './RecipeStepRatioBar'
 import RecipeStepForm from './RecipeStepForm'
 
 const totalIngredientQuantities = (ingredients) => {
@@ -35,13 +34,14 @@ const totalIngredientQuantities = (ingredients) => {
 
 const RecipeStepCard = ({recipe_step}) => {
   let contents = []
+  let total = 1 // total the quantity of all of the ingredients in grams || each
   if (recipe_step.step_ingredients &&
       recipe_step.step_sub_recipes) {
         contents = [...recipe_step.step_ingredients, ...recipe_step.step_sub_recipes]
+        total = contents.reduce((acc, el) => acc += Number(el.quantity), 0)
       } 
   const sequence = []
-  
-  const total = 1; // total the quantity of all of the ingredients in grams || each
+  console.log("TOTAL", total)
 
   contents.map(content => {
       sequence[content.sequence_order] = (
@@ -56,7 +56,10 @@ const RecipeStepCard = ({recipe_step}) => {
   
   return (
     <div className='recipe-step-card'>
-      <RecipeStepForm recipe_step={recipe_step}>
+      <RecipeStepForm 
+        recipe_step={recipe_step}
+        total={total}
+      >
         {sequence}
         <StepContentShowForms />
       </RecipeStepForm>
