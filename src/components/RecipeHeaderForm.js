@@ -1,32 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { createRecipe } from '../actions/asyncRecipeActionWrappers'
 import { editRecipeAction } from '../actions/recipeActions'
 
-
-
-const placeholderUser = {
-  username: 'Sally',
-  avatarImageUrl: ''
-}
 
 class RecipeHeaderForm extends Component {
   constructor(props) {
     super(props)
     // debugger
-    this.state = {
-      name: props.recipe.name || '',
-      description: props.recipe.description || ''
-    }
+    this.state = { ...this.props.recipe }
   }
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value })
   
   handleSubmit = e => {
     e.preventDefault()
-    this.props.editRecipe({...this.state})
-    this.props.setShowEditForm(false)
+    this.props.editRecipe({...this.state}, 
+      () => this.props.setShowEditForm(false))
   }
 
   render() {
@@ -39,6 +29,7 @@ class RecipeHeaderForm extends Component {
           name="name"
           className='recipe-title'
           placeholder='Recipe Name'
+          required
           onChange={this.handleChange}
           value={this.state.name}
         ></input>
@@ -63,8 +54,10 @@ class RecipeHeaderForm extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createRecipe: (recipe, jwt = '') => createRecipe(recipe, dispatch, jwt),
-    editRecipe:   (recipe) => dispatch(editRecipeAction(recipe))
+    editRecipe: async (recipe, callbackFn) => {
+      dispatch(await editRecipeAction(recipe))
+      callbackFn()
+    }
   }
 }
 

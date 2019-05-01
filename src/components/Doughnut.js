@@ -8,7 +8,7 @@ import { ResponsivePie } from '@nivo/pie'
 
 const defaultDoughnutData = [
   {
-    id: '',
+    id: '1',
     color: '#3e323c',
     label: '',
     value: 100, 
@@ -16,7 +16,7 @@ const defaultDoughnutData = [
     action: ''
   },
   {
-    id: '',
+    id: '2',
     color: '#3e323c',
     label: '',
     value: 100, 
@@ -26,8 +26,8 @@ const defaultDoughnutData = [
 ]
 
 function mapRecipeStepsToDoughnutData(recipe_steps) {
-  return recipe_steps.map(step =>
-    ({id: step.name, color: step.color, label: step.name, value: Number(step.yield), unit: step.yield_unit_id})
+  return recipe_steps.map((step, index) =>
+    ({id: step.name, color: (step.color || '#3e323c'), label: step.name, value: Number(step.yield), unit: step.yield_unit_id})
   )
 }
 
@@ -38,7 +38,7 @@ const Doughnut = ({recipe}) => {
   const data = !!(recipe && recipe.recipe_steps) ? mapRecipeStepsToDoughnutData(recipe.recipe_steps) : defaultDoughnutData
   // debugger
   const colors = data.map(element => element.color)
-  console.log('Doughnut', recipe, data)
+  // console.log('Doughnut', recipe, data)
   return (
     <ResponsivePie
         data={data}

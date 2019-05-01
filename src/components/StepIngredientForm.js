@@ -11,10 +11,10 @@ import {
 
 const blankIngredient = {
   color: randomColor(), 
-  name: '', 
+  ingredient: {name: ''}, 
   quantity: 0, 
   unit: '',
-  action: ''
+  instruction: ''
 }
 
 class StepIngredientForm extends Component {
@@ -24,7 +24,9 @@ class StepIngredientForm extends Component {
     let step_ingredient = props.step_ingredient || blankIngredient
     if (!step_ingredient.color) step_ingredient.color = randomColor()
 
-    this.state = { ...step_ingredient, showColorPicker: false }
+    const ingredientName = step_ingredient.ingredient.name
+
+    this.state = { ...step_ingredient, showColorPicker: false, ingredientName }
   }
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value })
@@ -39,15 +41,15 @@ class StepIngredientForm extends Component {
     // debugger
     console.log("SUBMIT INGREDIENT STATE", this.state)
     if (this.props.isEditForm) {
-      this.props.editStepIngredient(this.state)
+      this.props.editStepIngredient(this.state, () => this.props.setShowForm(false))
     } else {
-      this.props.addStepIngredient(this.state)
+      // debugger
+      this.props.addStepIngredient(this.props.recipe_step.id, this.state, () => this.props.setShowForm(false))
     }
-    this.props.setShowForm(false)
   }
 
   handleDelete = e => {
-    this.props.removeIngredient()
+    this.props.removeStepIngredient(this.state)
   }
 
   render() {
@@ -78,12 +80,12 @@ class StepIngredientForm extends Component {
         </div>
         <div className='ingredient-properties'>
           <input 
-            name='name' 
+            name='ingredientName' 
             type="text" 
             className='ingredient-name'
             placeholder='Ingredient Name'
             onChange={this.handleChange}
-            value={this.state.name}
+            value={this.state.ingredientName}
           ></input>
           <input 
             name='quantity' 
@@ -118,6 +120,7 @@ class StepIngredientForm extends Component {
             type="button"
             className='ingredient-delete' 
             value="Delete"
+            onClick={this.handleDelete}
           ></input>
         </div>
       </form>
@@ -127,9 +130,15 @@ class StepIngredientForm extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addStepIngredient:    (ingredient) => dispatch(addStepIngredientAction(ingredient)),
-    editStepIngredient:   (ingredient) => dispatch(editStepIngredientAction(ingredient)),
-    removeStepIngredient: (ingredient) => dispatch(removeStepIngredientAction(ingredient))
+    addStepIngredient:    async (recipe_step_id, step_ingredient, callbackFn) => {
+      dispatch(await addStepIngredientAction(recipe_step_id, step_ingredient))
+      callbackFn()
+    },
+    editStepIngredient:   async (step_ingredient, callbackFn) => {
+      dispatch(await editStepIngredientAction(step_ingredient))
+      callbackFn()
+    },
+    removeStepIngredient: async (step_ingredient) => dispatch(await removeStepIngredientAction(step_ingredient))
   }
 }
 

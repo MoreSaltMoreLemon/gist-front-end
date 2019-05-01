@@ -1,8 +1,8 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import StepIngredientForm from './StepIngredientForm'
 import StepSubRecipeForm from './StepSubRecipeForm'
 
-function StepContentShowForms() {
+function StepContentShowForms({recipe_step}) {
   const [showStepIngredientForm, setShowStepIngredientForm] = useState(false)
   const [showStepSubRecipeForm, setShowStepSubRecipeForm] = useState(false)
   
@@ -21,8 +21,22 @@ function StepContentShowForms() {
         </>
         : null
       }
-      { showStepIngredientForm ? <StepIngredientForm isEditForm={false} setShowForm={setShowStepIngredientForm}/> : null }
-      { showStepSubRecipeForm ? <StepSubRecipeForm isEditForm={false} setShowForm={setShowStepSubRecipeForm}/> : null }
+      { showStepIngredientForm ? 
+          <StepIngredientForm 
+            isEditForm={false} 
+            recipe_step={recipe_step} 
+            setShowForm={setShowStepIngredientForm}/> 
+        : 
+        null 
+      }
+      { showStepSubRecipeForm ? 
+          <StepSubRecipeForm 
+            isEditForm={false} 
+            recipe_step={recipe_step} 
+            setShowForm={setShowStepSubRecipeForm}/> 
+        : 
+        null 
+      }
     </div>
   )
 }

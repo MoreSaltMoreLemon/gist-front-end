@@ -5,22 +5,22 @@ import RecipeStepCard from '../components/RecipeStepCard'
 import { addRecipeStepAction } from '../actions/recipeStepActions'
 
 const newStep = {
-  id: undefined,
-  instruction: "mix",
-  name: "steve",
-  recipe_id: 1,
-  sequence_order: 0,
-  step_ingredients: undefined,
-  step_sub_recipes: undefined,
-  yeild_in_grams: undefined,
-  yield: undefined,
-  yield_unit_id: 1, 
+  // id: undefined,
+  // instruction: "mix",
+  // name: "steve",
+  // recipe_id: 1,
+  // sequence_order: 0,
+  // step_ingredients: undefined,
+  // step_sub_recipes: undefined,
+  // yeild_in_grams: undefined,
+  // yield: undefined,
+  // yield_unit_id: 1, 
 }
 
 
 const RecipeStepsContainer = ({recipe, addRecipeStep}) => {
-  const renderRecipeSteps = recipe_steps => recipe_steps.map(recipe_step => {
-      return <RecipeStepCard key={recipe_step.name + recipe_step.id} recipe_step={recipe_step} />
+  const renderRecipeSteps = recipe_steps => recipe_steps.map((recipe_step, index) => {
+      return <RecipeStepCard key={'recipeStepCard' + recipe_step.id + index} recipe_step={recipe_step} />
     }
   )
 
@@ -32,7 +32,7 @@ const RecipeStepsContainer = ({recipe, addRecipeStep}) => {
           type='submit' 
           className='step-add-button' 
           value='Add Step'
-          onClick={() => addRecipeStep(newStep)}
+          onClick={() => addRecipeStep(recipe.id, newStep)}
         >Add Step</button>
       </footer>
     </div>
@@ -42,7 +42,7 @@ const RecipeStepsContainer = ({recipe, addRecipeStep}) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addRecipeStep:  (recipe, recipe_step) => dispatch(addRecipeStepAction(recipe, recipe_step))
+    addRecipeStep:  async (recipe_id, recipe_step) => dispatch(await addRecipeStepAction(recipe_id, recipe_step))
   }
 }
 

@@ -43,6 +43,7 @@ class RecipeStepForm extends Component {
   }
 
   render() {
+    // debugger
     return (
       <form 
         className='step-name-container form'
@@ -118,8 +119,8 @@ class RecipeStepForm extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    editRecipeStep:   (subRecipe) => dispatch(editRecipeStepAction(subRecipe)),
-    removeRecipeStep: (subRecipe) => dispatch(removeRecipeStepAction(subRecipe))
+    editRecipeStep:   async (recipe_step) => dispatch(await editRecipeStepAction(recipe_step)),
+    removeRecipeStep: async (recipe_step) => dispatch(await removeRecipeStepAction(recipe_step))
   }
 }
 

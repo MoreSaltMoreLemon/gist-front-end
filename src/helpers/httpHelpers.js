@@ -15,7 +15,6 @@ function httpRequestJWT(url, method='GET', data={}, jwt = '') {
   if (method.toLowerCase() === 'get') delete init.body;
   else if (method.toLowerCase() === 'post' && init.body.id) delete init.body.id;
   if (jwt === '') delete init.headers['Authorization']
-
   return fetch( url, init);
 }
 

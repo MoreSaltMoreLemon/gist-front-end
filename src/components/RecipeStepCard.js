@@ -4,12 +4,6 @@ import StepIngredientCard from './StepIngredientCard'
 import StepContentShowForms from './StepContentShowForms'
 import RecipeStepForm from './RecipeStepForm'
 
-const totalIngredientQuantities = (ingredients) => {
-  return ingredients.reduce((acc, ingredient) => {
-    return acc + ingredient.quantity
-  }, 0)
-}
-
 // recipe_step
 // id: 1
 // instruction: "mix"
@@ -41,12 +35,11 @@ const RecipeStepCard = ({recipe_step}) => {
         total = contents.reduce((acc, el) => acc += Number(el.quantity), 0)
       } 
   const sequence = []
-  console.log("TOTAL", total)
 
-  contents.map(content => {
+  contents.forEach((content, index) => {
       sequence[content.sequence_order] = (
         <StepIngredientCard 
-          key={content.id} 
+          key={'stepIngredientCard' + content.id + index} 
           is_sub_recipe={content.is_sub_recipe}
           step_ingredient={content} 
           total={total}
@@ -61,7 +54,7 @@ const RecipeStepCard = ({recipe_step}) => {
         total={total}
       >
         {sequence}
-        <StepContentShowForms />
+        <StepContentShowForms recipe_step={recipe_step}/>
       </RecipeStepForm>
     </div>
   );

@@ -1,4 +1,9 @@
-function setRecipe(state, action) {
+function getRecipe(state, action) {
+  return {...action.recipe}
+}
+
+function createRecipe(state, action) {
+  // debugger
   return {...action.recipe}
 }
 
@@ -12,7 +17,8 @@ function removeRecipe(state, action) {
 }
 
 export {
-  setRecipe,
+  getRecipe,
+  createRecipe,
   editRecipe, 
   removeRecipe
 }

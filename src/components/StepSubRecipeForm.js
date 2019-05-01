@@ -1,21 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { GithubPicker } from 'react-color'
-import { defaultColors, randomColor } from '../helpers/colors'
+import { defaultColors } from '../helpers/colors'
 
 import { 
   addStepSubRecipeAction,
   editStepSubRecipeAction,
   removeStepSubRecipeAction
 } from '../actions/stepSubRecipeActions'
-
-const blankIngredient = {
-  color: randomColor(), 
-  name: '', 
-  quantity: 0, 
-  unit: '',
-  action: ''
-}
 
 class StepSubRecipeForm extends Component {
   constructor(props) {

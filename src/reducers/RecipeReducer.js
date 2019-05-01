@@ -1,5 +1,6 @@
 import { 
-  setRecipe,
+  getRecipe,
+  createRecipe,
   editRecipe, 
   removeRecipe 
 } from '../helpers/recipeHelpers'
@@ -25,11 +26,13 @@ import {
 } from '../helpers/stepIngredientHelpers'
 
 const recipeReducer = (state = {}, action) => {
-  console.log("RECIPE REDUCER", state, action)
   switch (action.type) {
     // payload: recipe: { id }
-    case 'SET_RECIPE':
-      return setRecipe(state, action)
+    case 'GET_RECIPE':
+      return getRecipe(state, action)
+    // payload: recipe: { id }
+    case 'CREATE_RECIPE':
+      return createRecipe(state, action)
     // payload: recipe: { id, properties }
     case 'EDIT_RECIPE': 
       return editRecipe(state, action)
