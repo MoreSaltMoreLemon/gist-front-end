@@ -3,7 +3,7 @@ import {
   createRecipe,
   editRecipe, 
   removeRecipe 
-} from '../helpers/recipeHelpers'
+} from './reducerHelpers/recipeHelpers'
 
 import {
   addRecipeStep,
@@ -11,19 +11,19 @@ import {
   removeRecipeStep,
   reorderRecipeSteps,
   reorderRecipeStepContents
-} from '../helpers/recipeStepHelpers'
+} from './reducerHelpers/recipeStepHelpers'
 
 import { 
   addStepSubRecipe, 
   editStepSubRecipe, 
   removeStepSubRecipe
-} from '../helpers/stepSubRecipeHelpers'
+} from './reducerHelpers/stepSubRecipeHelpers'
 
 import { 
   addStepIngredient, 
   editStepIngredient, 
   removeStepIngredient  
-} from '../helpers/stepIngredientHelpers'
+} from './reducerHelpers/stepIngredientHelpers'
 
 const recipeReducer = (state = {}, action) => {
   switch (action.type) {

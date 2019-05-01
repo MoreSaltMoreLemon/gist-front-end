@@ -1,19 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { GithubPicker } from 'react-color'
-import { defaultColors } from '../helpers/colors'
+import { defaultColors, randomColor } from '../helpers/colors'
 
 import { 
   addStepSubRecipeAction,
   editStepSubRecipeAction,
   removeStepSubRecipeAction
-} from '../actions/stepSubRecipeActions'
+} from '../reducers/actions/stepSubRecipeActions'
+
+const blankSubRecipe = {
+  color: randomColor(), 
+  sub_recipe: {name: ''}, 
+  quantity: 0, 
+  unit: '',
+  instruction: ''
+}
 
 class StepSubRecipeForm extends Component {
   constructor(props) {
     super(props)
+    
+    let step_sub_recipe = props.step_sub_recipe || blankSubRecipe
+    if (!step_sub_recipe.color) step_sub_recipe.color = randomColor()
 
-    this.state = { ...props.step_sub_recipe, showColorPicker: false }
+    const subRecipeName = step_sub_recipe.sub_recipe.name
+
+    this.state = { ...props.step_sub_recipe, showColorPicker: false, subRecipeName }
   }
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value })
@@ -25,17 +38,20 @@ class StepSubRecipeForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    console.log("SUBMIT SUB RECIPE STATE", this.state)
+    
     if (this.props.isEditForm) {
-      this.props.editStepSubRecipe(this.state)
+      this.props.editStepSubRecipe(this.state, 1, 
+        () => this.props.setShowForm(false))
     } else {
-      this.props.addStepSubRecipe(this.state)
+      // recipe_step_id, step_sub_recipe, user_id
+      this.props.addStepSubRecipe(this.props.recipe_step.id, this.state, 1, 
+        () => this.props.setShowForm(false))
     }
-    this.props.setShowForm(false)
+    
   }
 
   handleDelete = e => {
-    this.props.removeStepSubRecipe()
+    this.props.removeStepSubRecipe(this.state)
   }
 
   render() {
@@ -66,12 +82,12 @@ class StepSubRecipeForm extends Component {
         </div>
         <div className='ingredient-properties'>
           <input 
-            name='name' 
+            name='subRecipeName' 
             type="text" 
             className='ingredient-name'
-            placeholder='Ingredient Name'
+            placeholder='Sub Recipe Name'
             onChange={this.handleChange}
-            value={this.state.name}
+            value={this.state.subRecipeName}
           ></input>
           <input 
             name='quantity' 
@@ -106,6 +122,7 @@ class StepSubRecipeForm extends Component {
             type="button"
             className='ingredient-delete' 
             value="Delete"
+            onClick={this.handleDelete}
           ></input>
         </div>
       </form>
@@ -113,11 +130,19 @@ class StepSubRecipeForm extends Component {
   }
 }
 
+// const mapStateToProps = state => { user }
+
 const mapDispatchToProps = dispatch => {
   return {
-    addStepSubRecipe:    (subRecipe) => dispatch(addStepSubRecipeAction(subRecipe)),
-    editStepSubRecipe:   (subRecipe) => dispatch(editStepSubRecipeAction(subRecipe)),
-    removeStepSubRecipe: (subRecipe) => dispatch(removeStepSubRecipeAction(subRecipe))
+    addStepSubRecipe:    async (recipe_step_uuid, step_sub_recipe, user_id, callbackFn) => {
+      dispatch( await addStepSubRecipeAction(recipe_step_uuid, step_sub_recipe, user_id))
+      callbackFn()
+    },
+    editStepSubRecipe:   async (step_sub_recipe, user_id, callbackFn) => {
+      dispatch( await editStepSubRecipeAction(step_sub_recipe, user_id))
+      callbackFn()
+    },
+    removeStepSubRecipe: async (step_sub_recipe) => dispatch( await removeStepSubRecipeAction(step_sub_recipe))
   }
 }
 

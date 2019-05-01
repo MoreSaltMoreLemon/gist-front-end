@@ -41,7 +41,7 @@ const RecipeStepCard = ({recipe_step}) => {
         <StepIngredientCard 
           key={'stepIngredientCard' + content.id + index} 
           is_sub_recipe={content.is_sub_recipe}
-          step_ingredient={content} 
+          stepComponentContent={content} 
           total={total}
           sequenceEndIndex={sequence.length}  
         />)

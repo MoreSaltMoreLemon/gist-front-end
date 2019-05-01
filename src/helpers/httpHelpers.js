@@ -18,4 +18,9 @@ function httpRequestJWT(url, method='GET', data={}, jwt = '') {
   return fetch( url, init);
 }
 
-export { httpRequestJWT }
+async function fetchJSON(url, method='GET', data={}, jwt='') {
+  const response = await httpRequestJWT(url, method, data, jwt)
+  return response.json()
+}
+
+export { httpRequestJWT, fetchJSON }

@@ -1,7 +1,9 @@
-import { httpRequestJWT } from '../helpers/httpHelpers'
-import { RECIPE_STEPS_URL } from '../routes'
+import uuidv4 from 'uuid/v4';
+import { httpRequestJWT } from '../../helpers/httpHelpers'
+import { RECIPE_STEPS_URL } from '../../routes'
 
 async function addRecipeStepAction(recipe_id, recipe_step, jwt='') {
+  recipe_step.uuid = uuidv4()
   recipe_step.recipe_id = recipe_id
   const response = await httpRequestJWT(`${RECIPE_STEPS_URL}`, 'post', {recipe_step}, jwt)
   const requestedRecipeStep = await response.json()

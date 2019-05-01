@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import StepIngredientForm from './StepIngredientForm'
+import StepSubRecipeForm from './StepSubRecipeForm'
 
 // sub_recipe
 // color: {id: 1, hex: "#a6cee3"}
@@ -19,17 +20,27 @@ import StepIngredientForm from './StepIngredientForm'
 // unit: {id: 1, name: "g", gram_conversion_factor: "1.0"}
 // unit_id: 1
 
-const StepIngredientCard = ({step_ingredient, is_sub_recipe, total, sequenceEndIndex}) => {
+const StepIngredientCard = ({stepComponentContent, is_sub_recipe, total, sequenceEndIndex}) => {
   const [showEditForm, setShowEditForm] = useState(false)
   // debugger
-  if (!step_ingredient || showEditForm) return (
-    <StepIngredientForm 
-      step_ingredient={step_ingredient}
-      setShowForm={setShowEditForm}
-      isEditForm={!!step_ingredient}
-      sequenceEndIndex={sequenceEndIndex}
-    />)
-  else return (
+  if (!stepComponentContent || showEditForm) {
+    if (is_sub_recipe) {
+      return (<StepSubRecipeForm 
+        step_sub_recipe={stepComponentContent}
+        setShowForm={setShowEditForm}
+        isEditForm={true}
+        sequenceEndIndex={sequenceEndIndex}
+      />)
+    } else {
+      return (<StepIngredientForm 
+        step_ingredient={stepComponentContent}
+        setShowForm={setShowEditForm}
+        isEditForm={true}
+        sequenceEndIndex={sequenceEndIndex}
+      />)
+    }
+  } else {
+    return (
       <div 
         className='ingredient-card'
         onClick={() => setShowEditForm(true)}>
@@ -38,24 +49,25 @@ const StepIngredientCard = ({step_ingredient, is_sub_recipe, total, sequenceEndI
             className='ingredient-ratio' 
             style={
               {
-                backgroundColor: step_ingredient.color, 
-                width: `${(step_ingredient.quantity / total) * 100}%`}
+                backgroundColor: stepComponentContent.color, 
+                width: `${(stepComponentContent.quantity / total) * 100}%`}
             }
           ></div>
         </div>
         <div className='ingredient-properties'>
           <span className='ingredient-name'>{
             is_sub_recipe ? 
-            step_ingredient.sub_recipe.name
+            stepComponentContent.sub_recipe.name
             :
-            step_ingredient.ingredient.name
+            stepComponentContent.ingredient.name
             }</span>
-          <span className='ingredient-quantity'>{step_ingredient.quantity}</span>
-          <span className='ingredient-unit'>{step_ingredient.unit_id}</span>
-          <span className='ingredient-action'>{step_ingredient.description}</span>
+          <span className='ingredient-quantity'>{stepComponentContent.quantity}</span>
+          <span className='ingredient-unit'>{stepComponentContent.unit_id}</span>
+          <span className='ingredient-action'>{stepComponentContent.instruction}</span>
         </div>
       </div>      
-  )
+    )
+  }
 }
 
 export default StepIngredientCard;

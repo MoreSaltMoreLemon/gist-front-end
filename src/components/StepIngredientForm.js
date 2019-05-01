@@ -7,7 +7,7 @@ import {
   addStepIngredientAction,
   editStepIngredientAction,
   removeStepIngredientAction
-} from '../actions/stepIngredientActions'
+} from '../reducers/actions/stepIngredientActions'
 
 const blankIngredient = {
   color: randomColor(), 

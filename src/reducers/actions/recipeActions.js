@@ -1,5 +1,6 @@
-import { httpRequestJWT } from '../helpers/httpHelpers'
-import { RECIPES_URL } from '../routes'
+import uuidv4 from 'uuid/v4';
+import { httpRequestJWT } from '../../helpers/httpHelpers'
+import { RECIPES_URL } from '../../routes'
 
 
 async function getRecipeAction(recipe, jwt='') {
@@ -12,6 +13,7 @@ async function getRecipeAction(recipe, jwt='') {
 }
 
 async function createRecipeAction(recipe, jwt='') {
+  recipe.uuid = uuidv4()
   const response = await httpRequestJWT(RECIPES_URL, 'post', recipe, jwt)
   const createdRecipe = await response.json()
   return { 

@@ -3,7 +3,7 @@ function addRecipeStep(state, action) {
   const recipe_step = action.recipe_step
   recipe_step.sequence_order = sequence_order
   const recipe_steps = state.recipe_steps.concat(action.recipe_step)
-  debugger 
+  // debugger 
   return {...state, recipe_steps}
 }
 
