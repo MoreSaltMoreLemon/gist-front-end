@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { editRecipeAction } from '../actions/recipeActions'
+import { editRecipeAction } from '../reducers/actions/recipeActions'
 
 
 class RecipeHeaderForm extends Component {

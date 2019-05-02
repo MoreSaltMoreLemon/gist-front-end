@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import RecipeStepCard from '../components/RecipeStepCard'
 
-import { addRecipeStepAction } from '../actions/recipeStepActions'
+import { addRecipeStepAction } from '../reducers/actions/recipeStepActions'
 
 const newStep = {
   // id: undefined,

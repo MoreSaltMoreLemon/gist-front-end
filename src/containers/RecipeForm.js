@@ -12,7 +12,7 @@ import {
   createRecipeAction,
   editRecipeAction,
   deleteRecipeAction
-} from '../actions/recipeActions'
+} from '../reducers/actions/recipeActions'
 
 const RecipeForm = (props) => {
 

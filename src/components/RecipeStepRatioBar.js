@@ -2,9 +2,9 @@
 import React from 'react';
 import StepRatioElement from './StepRatioElement'
 
-const StepRatioBar = ({step_ingredients, total}) => {
-  const ratioBars = (step_ingredients) => {
-    return step_ingredients.map((step_ingredient, index) => {
+const StepRatioBar = ({step_contents, total}) => {
+  const ratioBars = (step_contents) => {
+    return step_contents.map((step_ingredient, index) => {
      return <StepRatioElement 
         key={"StepRatioElement" + step_ingredient.id + index} 
         color={step_ingredient.color} 
@@ -17,7 +17,7 @@ const StepRatioBar = ({step_ingredients, total}) => {
   return (
     <div 
       className='step-ratio-bar'>
-      {step_ingredients? ratioBars(step_ingredients) : null}
+      {step_contents? ratioBars(step_contents) : null}
     </div>
   );
 };

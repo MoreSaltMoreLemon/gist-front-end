@@ -6,7 +6,7 @@ import { GithubPicker } from 'react-color'
 import { defaultColors, randomColor } from '../helpers/colors'
 import RecipeStepRatioBar from './RecipeStepRatioBar'
 
-import { editRecipeStepAction, removeRecipeStepAction } from '../actions/recipeStepActions'
+import { editRecipeStepAction, removeRecipeStepAction } from '../reducers/actions/recipeStepActions'
 
 const blankStep = {
   color: randomColor(), 
@@ -40,6 +40,10 @@ class RecipeStepForm extends Component {
 
   handleDelete = e => {
     this.props.removeRecipeStep(this.state)
+  }
+
+  receipeStepContents = () => {
+    return [...this.props.recipe_step.step_ingredients, ...this.props.recipe_step.step_sub_recipes]
   }
 
   render() {
@@ -77,7 +81,7 @@ class RecipeStepForm extends Component {
             }
           </div> 
         </div>
-        <RecipeStepRatioBar step_ingredients={this.props.recipe_step.step_ingredients} total={this.props.total}/>
+        <RecipeStepRatioBar step_contents={this.receipeStepContents()} total={this.props.total}/>
         <div className='recipe-ingredients'>
           {this.props.children}
         </div>
