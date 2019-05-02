@@ -1,34 +1,40 @@
 import uuidv4 from 'uuid/v4';
-import { httpRequestJWT } from '../../helpers/httpHelpers'
+import { handleRequestAction } from '../../helpers/httpHelpers'
 import { RECIPE_STEPS_URL } from '../../routes'
 
 async function addRecipeStepAction(recipe_id, recipe_step, jwt='') {
   recipe_step.uuid = uuidv4()
   recipe_step.recipe_id = recipe_id
-  const response = await httpRequestJWT(`${RECIPE_STEPS_URL}`, 'post', {recipe_step}, jwt)
-  const requestedRecipeStep = await response.json()
-  return {
-    type: 'ADD_RECIPE_STEP',
-    recipe_step: requestedRecipeStep
-  }
+  return await handleRequestAction(
+    `${RECIPE_STEPS_URL}`, 
+    'post', 
+    {recipe_step}, 
+    jwt, 
+    'ADD_RECIPE_STEP', 
+    'recipe_step'
+  )
 }
 
 async function editRecipeStepAction(recipe_step, jwt='') {
-  const response = await httpRequestJWT(`${RECIPE_STEPS_URL}/${recipe_step.id}`, 'put', {recipe_step}, jwt)
-  const editedRecipeStep = await response.json()
-  return {
-    type: 'EDIT_RECIPE_STEP',
-    recipe_step: editedRecipeStep
-  }
+  return await handleRequestAction(
+    `${RECIPE_STEPS_URL}/${recipe_step.id}`, 
+    'put', 
+    {recipe_step}, 
+    jwt, 
+    'EDIT_RECIPE_STEP', 
+    'recipe_step'
+  )
 }
 
 async function removeRecipeStepAction(recipe_step, jwt='') {
-  const response = await httpRequestJWT(`${RECIPE_STEPS_URL}/${recipe_step.id}`, 'delete', {recipe_step: {id: recipe_step.id}}, jwt)
-  const updatedRecipeStep = await response.json()
-  return {
-    type: 'REMOVE_RECIPE_STEP',
-    recipe_step: updatedRecipeStep
-  }
+  return await handleRequestAction(
+    `${RECIPE_STEPS_URL}/${recipe_step.id}`, 
+    'delete', 
+    {recipe_step: {id: recipe_step.id}}, 
+    jwt, 
+    'REMOVE_RECIPE_STEP', 
+    'recipe_step'
+  )
 }
 
 export {

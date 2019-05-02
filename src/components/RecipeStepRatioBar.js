@@ -4,9 +4,9 @@ import StepRatioElement from './StepRatioElement'
 
 const StepRatioBar = ({step_contents, total}) => {
   const ratioBars = (step_contents) => {
-    return step_contents.map((step_ingredient, index) => {
+    return step_contents.map(step_ingredient => {
      return <StepRatioElement 
-        key={"StepRatioElement" + step_ingredient.id + index} 
+        key={step_ingredient.uuid} 
         color={step_ingredient.color} 
         ratio={(step_ingredient.quantity / total) * 100} 
         label='placeholder label'       

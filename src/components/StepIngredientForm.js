@@ -38,13 +38,17 @@ class StepIngredientForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    // debugger
-    console.log("SUBMIT INGREDIENT STATE", this.state)
     if (this.props.isEditForm) {
-      this.props.editStepIngredient(this.state, () => this.props.setShowForm(false))
+      this.props.editStepIngredient(
+        this.state, 
+        () => this.props.setShowForm(false)
+      )
     } else {
-      // debugger
-      this.props.addStepIngredient(this.props.recipe_step.id, this.state, () => this.props.setShowForm(false))
+      this.props.addStepIngredient(
+        this.props.recipe_step.id, 
+        this.state, 
+        () => this.props.setShowForm(false)
+      )
     }
   }
 

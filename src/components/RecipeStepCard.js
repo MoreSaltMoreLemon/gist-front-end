@@ -39,7 +39,7 @@ const RecipeStepCard = ({recipe_step}) => {
   contents.forEach((content, index) => {
       sequence[content.sequence_order] = (
         <StepIngredientCard 
-          key={'stepIngredientCard' + content.id + index} 
+          key={content.uuid} 
           is_sub_recipe={content.is_sub_recipe}
           stepComponentContent={content} 
           total={total}

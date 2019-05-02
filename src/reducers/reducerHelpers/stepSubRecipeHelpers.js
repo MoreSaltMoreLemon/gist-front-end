@@ -31,7 +31,6 @@ function editStepSubRecipe(state, action) {
 }
 
 function removeStepSubRecipe(state, action) {
-  
   const recipe_steps = state.recipe_steps.slice()
   const indexOfRecipeStep = recipe_steps.findIndex(rs => {
     return rs.id === action.step_sub_recipe.recipe_step_id

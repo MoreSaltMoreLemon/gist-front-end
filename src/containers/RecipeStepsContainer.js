@@ -19,8 +19,8 @@ const newStep = {
 
 
 const RecipeStepsContainer = ({recipe, addRecipeStep}) => {
-  const renderRecipeSteps = recipe_steps => recipe_steps.map((recipe_step, index) => {
-      return <RecipeStepCard key={'recipeStepCard' + recipe_step.id + index} recipe_step={recipe_step} />
+  const renderRecipeSteps = recipe_steps => recipe_steps.map(recipe_step => {
+      return <RecipeStepCard key={recipe_step.uuid} recipe_step={recipe_step} />
     }
   )
 
