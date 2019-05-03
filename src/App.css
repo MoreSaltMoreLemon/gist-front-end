@@ -168,12 +168,18 @@
   box-shadow: -5px -5px 10px rgba(0, 0, 0, .1), 5px 5px 10px rgba(0, 0, 0, .1)
 }
 
+.button {
+  background-color: #b31422;
+  border-radius: 40px;
+  min-height: 40px;
+  min-width: 40px;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;;
+}
+
 .step-add-button {
-  background-color: #a7a7a7;
-  border-radius: 5pxv;
   position: absolute;
-  height: 40px;
-  width: 50px;
   right: 10px;
   top: 10px;
 }

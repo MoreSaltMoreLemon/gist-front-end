@@ -13,11 +13,13 @@ function StepContentShowForms({recipe_step}) {
       { (showStepIngredientForm || showStepSubRecipeForm) === false ?
         <>
           <button
+            className='button'
             onClick={() => setShowStepIngredientForm(true)}
-          >Add Ingredient</button>
+          >+</button>
           <button
+            className='button'
             onClick={() => setShowStepSubRecipeForm(true)}
-          >Add Recipe as Ingredient</button>
+          >+</button>
         </>
         : null
       }

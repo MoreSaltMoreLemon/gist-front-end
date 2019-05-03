@@ -30,10 +30,10 @@ const RecipeStepsContainer = ({recipe, addRecipeStep}) => {
       <footer>
         <button 
           type='submit' 
-          className='step-add-button' 
+          className='step-add-button button' 
           value='Add Step'
           onClick={() => addRecipeStep(recipe.id, newStep)}
-        >Add Step</button>
+        >+</button>
       </footer>
     </div>
   );

@@ -15,6 +15,7 @@ const RecipeHeader = ({recipe}) => {
           <h1 className='recipe-title'>{recipe.name}</h1>
           <h3 className='recipe-title'>{recipe.description}</h3>
           <button 
+            className='button'
             name='toggle-edit' 
             value='Edit' 
             onClick={() => setShowEditForm(true)}
