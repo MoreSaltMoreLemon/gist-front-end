@@ -51,7 +51,10 @@ class StepSubRecipeForm extends Component {
   }
 
   handleDelete = e => {
-    this.props.removeStepSubRecipe(this.state)
+    this.props.removeStepSubRecipe(
+      this.state,
+      () => this.props.setShowForm(false)
+    )
   }
 
   render() {
@@ -142,7 +145,10 @@ const mapDispatchToProps = dispatch => {
       dispatch( await editStepSubRecipeAction(step_sub_recipe, user_id))
       callbackFn()
     },
-    removeStepSubRecipe: async (step_sub_recipe) => dispatch( await removeStepSubRecipeAction(step_sub_recipe))
+    removeStepSubRecipe: async (step_sub_recipe, callbackFn) => {
+      dispatch( await removeStepSubRecipeAction(step_sub_recipe))
+      callbackFn()
+    }
   }
 }
 

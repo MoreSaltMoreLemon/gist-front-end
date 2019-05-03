@@ -53,7 +53,10 @@ class StepIngredientForm extends Component {
   }
 
   handleDelete = e => {
-    this.props.removeStepIngredient(this.state)
+    this.props.removeStepIngredient(
+      this.state,
+      () => this.props.setShowForm(false)
+    )
   }
 
   render() {
@@ -142,7 +145,10 @@ const mapDispatchToProps = dispatch => {
       dispatch(await editStepIngredientAction(step_ingredient))
       callbackFn()
     },
-    removeStepIngredient: async (step_ingredient) => dispatch(await removeStepIngredientAction(step_ingredient))
+    removeStepIngredient: async (step_ingredient, callbackFn) => {
+      dispatch(await removeStepIngredientAction(step_ingredient))
+      callbackFn()
+    }
   }
 }
 

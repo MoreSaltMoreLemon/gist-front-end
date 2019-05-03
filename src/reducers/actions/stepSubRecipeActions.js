@@ -29,7 +29,7 @@ async function editStepSubRecipeAction(step_sub_recipe, user_id, jwt='') {
 }
 
 async function removeStepSubRecipeAction(step_sub_recipe, jwt='') {
-  return await handleRequestAction(
+  const response = await handleRequestAction(
     `${STEP_SUB_RECIPES_URL}/${step_sub_recipe.id}`,
     'delete',
     {step_sub_recipe: {id: step_sub_recipe.id}},
@@ -37,6 +37,13 @@ async function removeStepSubRecipeAction(step_sub_recipe, jwt='') {
     'REMOVE_STEP_SUB_RECIPE', 
     'step_sub_recipe'
   )
+
+  // if the response returned an error, return the error action object
+  // however if the error was successful, it will not return the information
+  // needed to remove the record from client side rendering, so we pass the 
+  // already deleted record so that it can be found and filtered out
+  if (response.errors) return response
+  else return {type: 'REMOVE_STEP_SUB_RECIPE', step_sub_recipe}
 }
 
 export {

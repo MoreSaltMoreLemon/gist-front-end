@@ -20,7 +20,7 @@ import StepSubRecipeForm from './StepSubRecipeForm'
 // unit: {id: 1, name: "g", gram_conversion_factor: "1.0"}
 // unit_id: 1
 
-const StepIngredientCard = ({stepComponentContent, is_sub_recipe, total, sequenceEndIndex}) => {
+const StepIngredientCard = ({stepComponentContent, is_sub_recipe, total}) => {
   const [showEditForm, setShowEditForm] = useState(false)
   // debugger
   if (!stepComponentContent || showEditForm) {
@@ -29,14 +29,12 @@ const StepIngredientCard = ({stepComponentContent, is_sub_recipe, total, sequenc
         step_sub_recipe={stepComponentContent}
         setShowForm={setShowEditForm}
         isEditForm={true}
-        sequenceEndIndex={sequenceEndIndex}
       />)
     } else {
       return (<StepIngredientForm 
         step_ingredient={stepComponentContent}
         setShowForm={setShowEditForm}
         isEditForm={true}
-        sequenceEndIndex={sequenceEndIndex}
       />)
     }
   } else {

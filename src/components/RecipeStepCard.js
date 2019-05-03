@@ -27,6 +27,7 @@ import RecipeStepForm from './RecipeStepForm'
 // unit_id: 1
 
 const RecipeStepCard = ({recipe_step}) => {
+  console.log("RECIPE STEP CARD REPAINT", recipe_step)
   let contents = []
   let total = 1 // total the quantity of all of the ingredients in grams || each
   if (recipe_step.step_ingredients &&
@@ -34,18 +35,22 @@ const RecipeStepCard = ({recipe_step}) => {
         contents = [...recipe_step.step_ingredients, ...recipe_step.step_sub_recipes]
         total = contents.reduce((acc, el) => acc += Number(el.quantity), 0)
       } 
-  const sequence = []
 
-  contents.forEach((content, index) => {
-      sequence[content.sequence_order] = (
-        <StepIngredientCard 
-          key={content.uuid} 
-          is_sub_recipe={content.is_sub_recipe}
-          stepComponentContent={content} 
-          total={total}
-          sequenceEndIndex={sequence.length}  
-        />)
-  })
+  if (contents.length > 0) {
+    contents.sort((a, b) => a.sequence_order - b.sequence_order)
+  }
+  console.log("STEP CARD SEQUENCE", contents)
+
+  const contentCards = contents.map(content => (
+    <StepIngredientCard 
+      key={content.uuid} 
+      is_sub_recipe={content.is_sub_recipe}
+      stepComponentContent={content} 
+      total={total}
+    />)
+  )
+
+
   
   return (
     <div className='recipe-step-card'>
@@ -53,7 +58,7 @@ const RecipeStepCard = ({recipe_step}) => {
         recipe_step={recipe_step}
         total={total}
       >
-        {sequence}
+        {contentCards}
         <StepContentShowForms recipe_step={recipe_step}/>
       </RecipeStepForm>
     </div>

@@ -31,7 +31,7 @@ async function editStepIngredientAction(step_ingredient, jwt='') {
 }
 
 async function removeStepIngredientAction(step_ingredient, jwt='') {
-  return await handleRequestAction(
+  const response = await handleRequestAction(
     `${STEP_INGREDIENTS_URL}/${step_ingredient.id}`, 
     'delete', 
     {step_ingredient: {id: step_ingredient.id}}, 
@@ -39,6 +39,13 @@ async function removeStepIngredientAction(step_ingredient, jwt='') {
     'REMOVE_STEP_INGREDIENT', 
     'step_ingredient'
   )
+
+  // if the response returned an error, return the error action object
+  // however if the error was successful, it will not return the information
+  // needed to remove the record from client side rendering, so we pass the 
+  // already deleted record so that it can be found and filtered out
+  if (response.errors) return response
+  else return {type: 'REMOVE_STEP_INGREDIENT', step_ingredient}
 }
 
 export {
