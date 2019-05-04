@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import RecipeStepCard from '../components/RecipeStepCard'
-
+import ButtonLabel from '../components/ButtonLabel'
 import { addRecipeStepAction } from '../reducers/actions/recipeStepActions'
 
 const newStep = {
@@ -33,7 +33,9 @@ const RecipeStepsContainer = ({recipe, addRecipeStep}) => {
           className='step-add-button button' 
           value='Add Step'
           onClick={() => addRecipeStep(recipe.id, newStep)}
-        >+</button>
+        >
+          <ButtonLabel label="Create Sub-Recipe" type="add" />
+        </button>
       </footer>
     </div>
   );

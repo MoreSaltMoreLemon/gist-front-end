@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import ButtonLabel from './ButtonLabel'
 
-import { editRecipeAction } from '../reducers/actions/recipeActions'
+import { editRecipeAction, deleteRecipeAction } from '../reducers/actions/recipeActions'
 
 
 class RecipeHeaderForm extends Component {
@@ -36,17 +37,27 @@ class RecipeHeaderForm extends Component {
         <input
           type='textarea'
           name='description'
+          maxLength='280'
           className='recipe-description'
           placeholder='Recipe Description'
           onChange={this.handleChange}
           value={this.state.description}
         ></input>
-        <input
+        <button
           type='submit'
           name='submit'
           className='recipe-submit button'
           value='Submit'
-        ></input>
+        >
+          <ButtonLabel label="Save" type="save" />
+        </button>
+        {/* <button onClick={() => props.updateRecipe({id: props.recipe.id, name: "RenamedTestRecipe", user_id: 1})}><i class="material-icons button-icon">edit</i></button> */}
+        <button 
+          className='recipe-remove button'
+          onClick={() => this.props.removeRecipe({id: this.props.recipe.id})}
+        >
+          <ButtonLabel label="Delete" type="remove" />
+        </button>
       </form>
     )
   }
@@ -57,7 +68,11 @@ const mapDispatchToProps = dispatch => {
     editRecipe: async (recipe, callbackFn) => {
       dispatch(await editRecipeAction(recipe))
       callbackFn()
-    }
+    },
+    // createRecipe: async (recipe, user, jwt = '') => dispatch(await createRecipeAction(recipe, user, jwt)),
+    // updateRecipe: async (recipe, jwt = '') => dispatch(await editRecipeAction(recipe, jwt)),
+    removeRecipe: async (recipe, jwt = '') => dispatch(await deleteRecipeAction(recipe, jwt))
+    
   }
 }
 

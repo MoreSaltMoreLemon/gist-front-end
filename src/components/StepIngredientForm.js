@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { GithubPicker } from 'react-color'
+import ButtonLabel from './ButtonLabel'
 import { defaultColors, randomColor } from '../helpers/colors'
 
 import { 
@@ -63,6 +64,7 @@ class StepIngredientForm extends Component {
     return (
       <form 
         className='ingredient-card ingredient-form'
+        // noValidate
         onSubmit={this.handleSubmit}>
         <div className='ingredient-ratio-container'>
           <div 
@@ -118,17 +120,21 @@ class StepIngredientForm extends Component {
             onChange={this.handleChange}
             value={this.state.instruction}
           ></input>
-          <input 
+          <button 
             type="submit"
             className='ingredient-submit' 
             value="Save"
-          ></input>
-          <input 
+          >
+            <ButtonLabel label="Save Ingredient" type="save" />
+          </button>
+          <button 
             type="button"
             className='ingredient-delete' 
             value="Delete"
             onClick={this.handleDelete}
-          ></input>
+          >
+            <ButtonLabel label="Delete Ingredient" type="remove" />
+          </button>
         </div>
       </form>
     )

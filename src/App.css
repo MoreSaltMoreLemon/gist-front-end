@@ -1,3 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Julius+Sans+One|Lato:700');
+
+:root {
+  /* --bg-color: brown; */
+  /* --bg-color-highlight: brown; */
+  /* --font-color: brown; */
+  /* --font-color-highlight: brown; */
+  /* --main-bg-color: brown; */
+  --bg-color: #DBDFE3;
+  --bg-color-secondary: rgb(229, 234, 235);
+  --text-font: 'Montserrat';
+  --highlight: #FF8800;  /* goldenrod */
+  --button-color: #F2545B;  /* orange-pink */
+  --warning: #A93F55;  /* mauve */
+  --border: rgba(63, 136, 197, .2);  /* light blue */
+  --font-color: #022F40; /* dark blue */
+  /* --button-color: var(--empahsize); */
+}
+
+body {
+  font-family: var(--text-font), Verdana, Geneva, Tahoma, sans-serif;
+  color: var(--font-color);
+  font-size: 14px;
+  /* background-color: var(--bg-color); */
+}
+
+/* Material Design Icon Rules */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.googleapis.com/icon?family=Material+Icons);
+}
+
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+
+
 .app-container {
   width: 100vw;
   height: 100vh;
@@ -9,8 +73,9 @@
     "body"
     "footer"
 }
+
 .app-header {
-  background-color: grey;
+  background-color: var(--bg-color-secondary);
   grid-area: header;
   position: relative;
   display: flex;
@@ -26,7 +91,8 @@
 
 
 .app-body { 
-  height: calc(100vh - 100px);
+  /* height: calc(100vh - 100px); */
+  width: 100vw;
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-rows: 1fr;
@@ -34,12 +100,15 @@
 }
 
 .app-footer {
-  background-color: grey;
+  /* bottom: 0px; */
+  background-color: var(--bg-color-secondary);
   grid-area: footer;
+  /* width: 100vw; */
+  /* height: 50px; */
 }
 
 .drawer-left, .drawer-right {
-  background-color: lightgray;
+  background-color: var(--bg-color-secondary);
 }
 .drawer-left {
   grid-area: drawer-left;
@@ -50,26 +119,37 @@
 }
 
 .content-container {
+  margin: 2px;
   display: grid;
-  grid-template-rows: 1fr 4fr;
+  grid-template-rows: 300px auto;
   grid-template-columns: 1fr;
   grid-template-areas: 
     "header" 
     "body";
+  box-shadow: 2px 2px 20px 20px var(--bg-color-secondary);
+  border-radius: 10px;
 }
 
 .content-header {
   grid-area: header;
-  background-color: lightgray;
+  /* background-color: lightgray; */
   display: grid;
-  grid-template-columns: 2fr 3fr;
-  grid-template-areas: 'doughnut recipe-header'
+  grid-template-columns: 300px auto;
+  grid-template-rows: min-content;
+  grid-auto-rows: min-content;
+  grid-template-areas: 'doughnut recipe-header';
+
+  margin: 2px 5px;
+  border-top: none;
+  border-bottom: 2px solid var(--highlight);
+  box-shadow: 2px 2px 10px 5px var(--bg-color-secondary);
+  border-radius: 10px 10px 0 0;
 }
 
 .content-body {
   grid-area: body;
-  background-color: white;
-  overflow: hidden;
+  /* background-color: white; */
+  overflow: scroll;
 }
 
 .recipe-form {
@@ -85,8 +165,10 @@
 }
 
 .recipe-header {
+  width: 100%;
   grid-area: recipe-header;
   grid-template-rows: 50px 1fr 1fr 50px;
+  grid-template-columns: 1fr;
   grid-template-areas: 
     "buffer"
     "title"
@@ -94,9 +176,36 @@
     "buffer";
 }
 
-.recipe-title {
+.recipe-header-display {}
+
+.recipe-header-edit {
+  position: relative;
+  bottom: 0px;
+  right: 0px;
+}
+
+.recipe-title, 
+.recipe-description {
+  margin: 10px;
+  display: block;
   grid-area: title;
-  font-size: 20px;    
+  /* font-size: 16px;  */
+  width: auto;   
+  overflow: hidden;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
+}
+
+.recipe-title { 
+  border-top: none;
+  border-bottom: 2px solid var(--highlight);
+  box-shadow-bottom: 2px 2px 10px 5px var(--bg-color-secondary);
+  font-family: 'Lato', sans-serif;
+  font-variant: small-caps;
+  font-size: 30px;
+  font-weight: bold;
+  font-style: black;
+  text-align: center; 
 }
 
 .recipe-form footer {
@@ -104,14 +213,23 @@
   height: 50px;
 }
 
-/* .recipe-step-card { */
+.recipe-step-card {
+  border-top: none;
+  border-bottom: 2px solid var(--highlight);
+  box-shadow: 2px 2px 10px 5px var(--bg-color-secondary);
+  border-radius: 10px 10px 0 0;
+
+  margin: 2px 5px;
+  padding: 5px;
+}
+
 .step-name-container {
   width: 100%;
   height: auto;
   min-height: 100px;
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-auto-rows: 30px auto 30px 30px;
+  grid-auto-rows: 40px auto 40px 40px;
   grid-template-areas: 
   "step-name ratio-bar"
   "ingredients ingredients"
@@ -121,20 +239,41 @@
 
 .step-properties {
   display: grid;
-  grid-template-columns: 1fr 29px;
+  grid-template-columns: 1fr 40px;
   grid-template-areas: "step-name color-swatch";
   gap: .5rem;
 }
 
 .step-yield-container {
-  grid-area: yield
+  grid-area: yield;
+  display: grid;
+  gap: .5rem;
+  grid-template-columns: 3fr 1fr 1fr 3fr .5fr .5fr;
+  grid-template-areas: 'label yield unit . . .';
+}
+
+.step-yield-container > * {
+  vertical-align: -10px;
+}
+
+.step-yield-container > label {
+  grid-area: label;
+}
+
+.step-yield-quantity { 
+  grid-area: yield;
+  width: 50px;
+}
+.step-yield-unit { 
+  grid-area: unit;
+  text-align: left; 
 }
 
 .step-edit-buttons {
   grid-area: edit-buttons;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  grid-template-areas: "empty save delete";
+  grid-template-columns: 2fr 1fr 1fr 40px;
+  grid-template-areas: "empty save delete root";
 }
 
 .step-submit { grid-area: save }
@@ -147,13 +286,13 @@
 .step-name {
   grid-area: step-name;
   width: 100%;
-  height: auto;
+  /* height: auto; */
   line-height: 30px;
 }
 
 .step-ratio-bar {
   grid-area: ratio-bar;
-  background-color: #c0c0c0;
+  /* background-color: #c0c0c0; */
   display: flex;
   flex-wrap: nowrap;
   padding: 2px;
@@ -168,15 +307,57 @@
   box-shadow: -5px -5px 10px rgba(0, 0, 0, .1), 5px 5px 10px rgba(0, 0, 0, .1)
 }
 
-.button {
-  background-color: #b31422;
-  border-radius: 40px;
-  min-height: 40px;
-  min-width: 40px;
-  color: white;
-  font-weight: bold;
-  font-size: 25px;;
+button {
+  background-color: rgba(0, 0, 0, 0);
 }
+.button {
+  border: none;
+}
+
+.button-container {
+  position: relative;
+  width: 100%;
+}
+
+.button-block {
+  display: inline-block;
+  text-align: center;
+  background-color: var(--button-color);
+  border-radius: 5px;
+  border: none;
+  height: 35px;
+  width: 35px;
+  color: white;
+}
+
+
+.button span {
+  /* display: inline-block; */
+  font-size: 16px;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+
+.button-icon {
+  position: relative;
+  top: 5px
+}
+
+.button-tip {
+  position: fixed;
+  top: 0px;
+  background-color: var(--bg-color);
+  display: block;
+  text-align: left;
+  z-index: 1000;
+  width: 100px;
+}
+
+.button-tip-hide { display: none; }
+
+
 
 .step-add-button {
   position: absolute;
@@ -188,7 +369,7 @@
 
 .recipe-ingredients {
   grid-area: ingredients;
-  background-color: #c0c0c0;
+  /* background-color: #c0c0c0; */
 }
 
 .ingredient-card {
@@ -196,6 +377,10 @@
   grid-template-columns: 1fr 3fr;
   grid-auto-rows: 1fr;
   grid-template-areas: "ratio ingredient"
+}
+
+.ingredient-form {
+  background-color: var(--bg-color-secondary)
 }
 
 .ingredient-ratio-container {
@@ -215,7 +400,7 @@
 
 .ingredient-properties {
   grid-area: ingredient;
-  background-color: #a7a7a7;
+  /* background-color: #a7a7a7; */
   display: grid;
   grid-template-columns: 3fr 1fr 1fr 3fr .5fr .5fr;
   grid-template-areas: "ingredient quantity unit action submit delete";
@@ -224,8 +409,8 @@
 
 .ingredient-color-swatch, 
 .step-color-swatch  {
-  height: 25px;
-  width: 25px;
+  height: 35px;
+  width: 35px;
   margin: 2px;
   border-radius: 5px;
   position: relative;
@@ -242,6 +427,9 @@
 .ingredient-name, .ingredient-quantity, 
 .ingredient-unit, .ingredient-instruction {
   line-height: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .ingredient-name { 
@@ -266,9 +454,14 @@ input {
   /* border: none; */
   border-top: none;
   border-right: none;
-  border-bottom: solid rgba(0, 0, 0, .1);
+  border-bottom: solid var(--border);
   border-left: none;
   font-size: 16px;
+}
+input:focus, input:hover {
+  outline: none;
+  background-color: rgba(0, 0, 0, 0);
+  border-bottom-color: var(--highlight);
 }
 
 input.ingredient-name , input.ingredient-quantity,
@@ -279,7 +472,7 @@ input.ingredient-unit, input.ingredient-instruction {
 .ingredient-submit,
 .ingredient-delete {
   border: none;
-  background-color: grey;
+  /* background-color: grey; */
   border-radius: 5px;
 }
 .ingredient-submit { grid-area: submit; }

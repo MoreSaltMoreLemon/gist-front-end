@@ -27,7 +27,13 @@ const defaultDoughnutData = [
 
 function mapRecipeStepsToDoughnutData(recipe_steps) {
   return recipe_steps.map((step, index) =>
-    ({id: step.name, color: (step.color || '#3e323c'), label: step.name, value: Number(step.yield), unit: step.yield_unit_id})
+    ({
+      id: step.name, 
+      color: (step.color || '#3e323c'), 
+      label: step.name, 
+      value: Number(step.yield), 
+      unit: step.yield_unit_id
+    })
   )
 }
 
@@ -42,6 +48,7 @@ const Doughnut = ({recipe}) => {
   return (
     <ResponsivePie
         data={data}
+        style={{height: '300px', width: '300px'}}
         margin={{
             "top": 40,
             "right": 80,
@@ -66,13 +73,13 @@ const Doughnut = ({recipe}) => {
         radialLabelsTextXOffset={6}
         radialLabelsTextColor="#333333"
         radialLabelsLinkOffset={0}
-        radialLabelsLinkDiagonalLength={16}
-        radialLabelsLinkHorizontalLength={24}
-        radialLabelsLinkStrokeWidth={1}
+        radialLabelsLinkDiagonalLength={10}
+        radialLabelsLinkHorizontalLength={10}
+        radialLabelsLinkStrokeWidth={3}
         radialLabelsLinkColor={{
             "from": "color"
         }}
-        slicesLabelsSkipAngle={10}
+        slicesLabelsSkipAngle={25}
         slicesLabelsTextColor="#333333"
         animate={true}
         motionStiffness={90}
@@ -97,26 +104,26 @@ const Doughnut = ({recipe}) => {
                 "spacing": 10
             }
         ]}
-        legends={[
-            {
-                "anchor": "bottom",
-                "direction": "row",
-                "translateY": 56,
-                "itemWidth": 100,
-                "itemHeight": 18,
-                "itemTextColor": "#999",
-                "symbolSize": 18,
-                "symbolShape": "circle",
-                "effects": [
-                    {
-                        "on": "hover",
-                        "style": {
-                            "itemTextColor": "#000"
-                        }
-                    }
-                ]
-            }
-        ]}
+        // legends={[
+        //     {
+        //         "anchor": "bottom",
+        //         "direction": "row",
+        //         "translateY": 56,
+        //         "itemWidth": 100,
+        //         "itemHeight": 18,
+        //         "itemTextColor": "#999",
+        //         "symbolSize": 18,
+        //         "symbolShape": "circle",
+        //         "effects": [
+        //             {
+        //                 "on": "hover",
+        //                 "style": {
+        //                     "itemTextColor": "#000"
+        //                 }
+        //             }
+        //         ]
+        //     }
+        // ]}
     />
   )
 }

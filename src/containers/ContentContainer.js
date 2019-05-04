@@ -4,9 +4,9 @@ import RecipeForm from './RecipeForm'
 
 const ContentContainer = (props) => {
   return (
-    <div className='content-container'>
+    // <div className='content-container'>
       <RecipeForm />
-    </div>
+    // </div>
   );
 };
 

@@ -27,7 +27,7 @@ async function editRecipeStepAction(recipe_step, jwt='') {
 }
 
 async function removeRecipeStepAction(recipe_step, jwt='') {
-  return await handleRequestAction(
+  const response = await handleRequestAction(
     `${RECIPE_STEPS_URL}/${recipe_step.id}`, 
     'delete', 
     {recipe_step: {id: recipe_step.id}}, 
@@ -35,6 +35,9 @@ async function removeRecipeStepAction(recipe_step, jwt='') {
     'REMOVE_RECIPE_STEP', 
     'recipe_step'
   )
+
+  if (response.errors) return response
+  else return {type: 'REMOVE_RECIPE_STEP', recipe_step}
 }
 
 export {

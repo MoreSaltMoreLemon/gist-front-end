@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { GithubPicker } from 'react-color'
 import { defaultColors, randomColor } from '../helpers/colors'
 import RecipeStepRatioBar from './RecipeStepRatioBar'
+import ButtonLabel from './ButtonLabel'
 
 import { editRecipeStepAction, removeRecipeStepAction } from '../reducers/actions/recipeStepActions'
 
@@ -86,35 +87,40 @@ class RecipeStepForm extends Component {
           {this.props.children}
         </div>
         <div className='step-yield-container'>
+          <label htmlFor='yield' >Yield: </label>
           <input 
             name='yield' 
             type="text" 
-            className='step-yield'
+            className='step-yield-quantity'
             placeholder='Yield'
             onChange={this.handleChange}
             value={this.state.yield}
-          ></input>
+          />
           <input 
             name='yield_unit_id' 
             type="text" 
-            className='step-yield'
+            className='step-yield-unit'
             placeholder='Yield Unit'
             onChange={this.handleChange}
             value={this.state.yield_unit_id}
           ></input>
         </div> 
         <div className='step-edit-buttons'>
-          <input 
+          <button 
             type="submit"
             className='step-submit button' 
-            value="Save"
-          ></input>
-          <input 
+            // value="Save"
+          >
+            <ButtonLabel label="Edit" type="edit" />
+          </button>
+          <button 
             type="button"
             className='step-delete button' 
-            value="Delete"
+            // value="Delete"
             onClick={this.handleDelete}
-          ></input>
+          >
+            <ButtonLabel label="Delete" type="remove" />
+          </button>
         </div>
       </form>
     )

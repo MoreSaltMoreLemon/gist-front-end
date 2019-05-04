@@ -24,10 +24,29 @@ function returnedError(response) {
 }
 
 async function handleError(response) {
+  const status = response.status
   const json = await response.json()
+  let type;
+
+  switch (status) {
+    case 408:
+      type = 'REQUEST_TIMEOUT'
+      break
+    case 429:
+      type = 'TOO_MANY_REQUESTS'
+      break
+    case 503:
+      type = 'SERVICE_UNAVAILABLE'
+      break
+    case 511:
+      type = 'NETWORK_AUTHENTICATION_REQUIRED'
+      break
+    default:
+      type = 'REQUEST_ERROR'
+  }
 
   return {
-    type: 'FETCH_ERROR',
+    type,
     response: json
   }
 }

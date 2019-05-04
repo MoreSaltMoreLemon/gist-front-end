@@ -38,7 +38,6 @@ function editStepSubRecipe(state, action) {
 }
 
 function removeStepSubRecipe(state, action) {
-  debugger
   const recipeStepId = action.step_sub_recipe.recipe_step_id
   const stepSubRecipeId = action.step_sub_recipe.id
 

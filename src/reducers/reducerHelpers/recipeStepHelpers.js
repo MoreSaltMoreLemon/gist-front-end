@@ -23,17 +23,11 @@ function editRecipeStep(state, action) {
 }
 
 function removeRecipeStep(state, action) {
-  const recipe_steps = state.recipe_steps.slice()
-  
-  const step_index = recipe_steps.findIndex(step => {
-    if (action.recipe_step.hasOwnProperty('id') && action.recipe_step.id > 0) {
-      return action.recipe_step.id === step.id
-    } else {
-      return step.sequence_order === action.recipe_step.sequence_order
-    }
+  const recipe_steps = state.recipe_steps.filter(step => {
+    // debugger
+    return action.recipe_step.id !== step.id
   })
-  // debugger
-  if (step_index >= 0) recipe_steps.splice(step_index, 1)
+  console.log(state.recipe_steps.length, recipe_steps.length)
   
   return {...state, recipe_steps}
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import RecipeHeaderForm from './RecipeHeaderForm'
+import ButtonLabel from './ButtonLabel'
 
 const RecipeHeader = ({recipe}) => {
   const [showEditForm, setShowEditForm] = useState(false)
@@ -11,15 +12,20 @@ const RecipeHeader = ({recipe}) => {
         ? 
         <RecipeHeaderForm recipe={recipe} setShowEditForm={setShowEditForm}/>
         :
-        <div className='recipe-header-display'>
+        <div 
+          className='recipe-header-display'
+          onClick={() => setShowEditForm(true)}
+        >
           <h1 className='recipe-title'>{recipe.name}</h1>
-          <h3 className='recipe-title'>{recipe.description}</h3>
+          <p className='recipe-description'>{recipe.description}</p>
           <button 
-            className='button'
+            className='recipe-header-edit button'
             name='toggle-edit' 
             value='Edit' 
             onClick={() => setShowEditForm(true)}
-          >Edit</button>
+          >
+            <ButtonLabel label="Edit" type="edit" />
+          </button>
         </div>        
       }
     </div>

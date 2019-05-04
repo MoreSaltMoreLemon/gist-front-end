@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { GithubPicker } from 'react-color'
+import ButtonLabel from './ButtonLabel'
 import { defaultColors, randomColor } from '../helpers/colors'
 
 import { 
@@ -61,6 +62,7 @@ class StepSubRecipeForm extends Component {
     return (
       <form 
         className='ingredient-card ingredient-form'
+        // noValidate
         onSubmit={this.handleSubmit}>
         <div className='ingredient-ratio-container'>
           <div 
@@ -87,6 +89,7 @@ class StepSubRecipeForm extends Component {
           <input 
             name='subRecipeName' 
             type="text" 
+            required
             className='ingredient-name'
             placeholder='Sub Recipe Name'
             onChange={this.handleChange}
@@ -95,6 +98,7 @@ class StepSubRecipeForm extends Component {
           <input 
             name='quantity' 
             type="text" 
+            required
             className='ingredient-quantity'
             placeholder='Qty'
             onChange={this.handleChange}
@@ -103,6 +107,7 @@ class StepSubRecipeForm extends Component {
           <input 
             name='unit' 
             type="text" 
+            required
             className='ingredient-unit'
             placeholder='Unit'
             onChange={this.handleChange}
@@ -116,17 +121,21 @@ class StepSubRecipeForm extends Component {
             onChange={this.handleChange}
             value={this.state.instruction}
           ></input>
-          <input 
+          <button 
             type="submit"
             className='ingredient-submit' 
             value="Save"
-          ></input>
-          <input 
+          >
+            <ButtonLabel label="Save Sub-Recipe" type="save" />
+          </button>
+          <button 
             type="button"
             className='ingredient-delete' 
             value="Delete"
             onClick={this.handleDelete}
-          ></input>
+          >
+            <ButtonLabel label="Delete Sub-Recipe" type="remove" />
+          </button>
         </div>
       </form>
     )

@@ -1,10 +1,11 @@
 import * as React from 'react';
+import ButtonLabel from './ButtonLabel'
 
 // Sign Up / Register
 function SignUp (props) {
     return (
       <div className="button">
-        SignUp
+        <ButtonLabel label="Sign Up" type="register" />
       </div>
     );
 }
@@ -13,7 +14,7 @@ function SignUp (props) {
 function SignIn (props) {
     return (
       <div className="button">
-        SignIn
+        <ButtonLabel label="Sign Out" type="register" />
       </div>
     );
 }
@@ -22,7 +23,7 @@ function SignIn (props) {
 function SignOut (props) {
     return (
       <div className="button">
-        SignOut
+        <ButtonLabel label="Sign Out" type="register" />
       </div>
     );
 }
