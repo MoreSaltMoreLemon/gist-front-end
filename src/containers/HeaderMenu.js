@@ -1,12 +1,10 @@
 import React from 'react';
-import { SignUp, SignIn, SignOut } from '../components/AuthButtons'
+import Auth from '../components/Auth'
 
 export function HeaderMenu (props) {
     return (
       <nav>
-        <SignUp />
-        <SignIn />
-        <SignOut />
+        <Auth />
       </nav>
     );
 }

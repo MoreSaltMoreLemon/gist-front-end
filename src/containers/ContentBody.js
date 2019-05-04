@@ -1,5 +1,5 @@
 import React from 'react';
-import RecipeStepsForm from './RecipeStepsForm'
+import RecipeStepsForm from '../components/RecipeStepForm'
 
 
 const ContentBody = (props) => {
