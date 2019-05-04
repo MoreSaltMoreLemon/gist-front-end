@@ -9,21 +9,13 @@ import RecipeStepsContainer from './RecipeStepsContainer'
 
 
 import {
-  getRecipeAction,
-  createRecipeAction,
-  editRecipeAction,
-  deleteRecipeAction
+  getRecipeAction
 } from '../reducers/actions/recipeActions'
 
 const RecipeForm = (props) => {
-
   useEffect(() => {
-    // console.log("RECIPE FORM USE EFFECT", props)
     if (isEmpty(props.recipe)) {
-      // console.log("RECIPE EMPTY")
-      props.getRecipe({id: 1})
-    } else {
-      console.log("NEW PROPS", props)
+      props.getRecipe({id: props.recipeId})
     }
   }) 
 

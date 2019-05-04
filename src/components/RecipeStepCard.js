@@ -27,9 +27,10 @@ import RecipeStepForm from './RecipeStepForm'
 // unit_id: 1
 
 const RecipeStepCard = ({recipe_step}) => {
-  console.log("RECIPE STEP CARD REPAINT", recipe_step)
+
   let contents = []
   let total = 1 // total the quantity of all of the ingredients in grams || each
+
   if (recipe_step.step_ingredients &&
       recipe_step.step_sub_recipes) {
         contents = [...recipe_step.step_ingredients, ...recipe_step.step_sub_recipes]
@@ -39,7 +40,6 @@ const RecipeStepCard = ({recipe_step}) => {
   if (contents.length > 0) {
     contents.sort((a, b) => a.sequence_order - b.sequence_order)
   }
-  console.log("STEP CARD SEQUENCE", contents)
 
   const contentCards = contents.map(content => (
     <StepIngredientCard 

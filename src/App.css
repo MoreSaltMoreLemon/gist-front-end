@@ -60,7 +60,28 @@ body {
   font-feature-settings: 'liga';
 }
 
+.splash-image {
+  /* width: 100vw; */
+  height: calc(100vh - 100px);
+  background-size: cover;
+  background-position: right top;
+  background-repeat: no-repeat;
+  overflow: hidden;
 
+}
+
+.home-page {
+  /* height: 100vh; */
+}
+
+@media screen and (min-width: 1200px) {
+  .splash-image {
+    background-size: contain;
+    height: auto;
+    width: 100vw;
+    object-fit: cover;
+  }
+}
 
 .app-container {
   width: 100vw;
