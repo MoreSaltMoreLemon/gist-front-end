@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { GithubPicker } from 'react-color'
-import ButtonLabel from './ButtonLabel'
+import Button from './Button'
 import { defaultColors, randomColor } from '../helpers/colors'
 
 import { 
@@ -121,21 +121,21 @@ class StepSubRecipeForm extends Component {
             onChange={this.handleChange}
             value={this.state.instruction}
           ></input>
-          <button 
+          <Button 
             type="submit"
             className='ingredient-submit' 
             value="Save"
-          >
-            <ButtonLabel label="Save Sub-Recipe" type="save" />
-          </button>
-          <button 
+            label="Save Sub-Recipe" 
+            icon="save"
+          />
+          <Button 
             type="button"
             className='ingredient-delete' 
             value="Delete"
+            label="Delete Sub-Recipe" 
+            icon="remove"
             onClick={this.handleDelete}
-          >
-            <ButtonLabel label="Delete Sub-Recipe" type="remove" />
-          </button>
+          />
         </div>
       </form>
     )

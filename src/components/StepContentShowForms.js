@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StepIngredientForm from './StepIngredientForm'
 import StepSubRecipeForm from './StepSubRecipeForm'
-import ButtonLabel from './ButtonLabel'
+import Button from './Button'
 
 function StepContentShowForms({recipe_step}) {
   const [showStepIngredientForm, setShowStepIngredientForm] = useState(false)
@@ -13,18 +13,18 @@ function StepContentShowForms({recipe_step}) {
     <div>
       { (showStepIngredientForm || showStepSubRecipeForm) === false ?
         <>
-          <button
+          <Button
             className='button'
             onClick={() => setShowStepIngredientForm(true)}
-          >
-            <ButtonLabel label="Add Ingredient" type="add" />
-          </button>
-          <button
+            label="Add Ingredient" 
+            icon="add"
+          />
+          <Button
             className='button'
             onClick={() => setShowStepSubRecipeForm(true)}
-          >
-            <ButtonLabel label="Add Ingredient As Recipe" type="add" />
-          </button>
+            label="Add Ingredient As Recipe" 
+            icon="add"
+          />
         </>
         : null
       }

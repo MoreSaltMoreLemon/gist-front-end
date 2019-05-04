@@ -1,11 +1,12 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import ReactTooltip from 'react-tooltip'
 
 import { GithubPicker } from 'react-color'
 import { defaultColors, randomColor } from '../helpers/colors'
 import RecipeStepRatioBar from './RecipeStepRatioBar'
-import ButtonLabel from './ButtonLabel'
+import Button from './Button'
 
 import { editRecipeStepAction, removeRecipeStepAction } from '../reducers/actions/recipeStepActions'
 
@@ -53,6 +54,7 @@ class RecipeStepForm extends Component {
       <form 
         className='step-name-container form'
         onSubmit={this.handleSubmit}>
+        <ReactTooltip id='global' place="top" type="light" effect="solid" aria-haspopup='true' role='global tooltip'/>
         <div className='step-properties'>
           <input 
             name='name' 
@@ -106,21 +108,22 @@ class RecipeStepForm extends Component {
           ></input>
         </div> 
         <div className='step-edit-buttons'>
-          <button 
+          <Button 
             type="submit"
             className='step-submit button' 
+            label="Edit" 
+            icon="edit"
             // value="Save"
-          >
-            <ButtonLabel label="Edit" type="edit" />
-          </button>
-          <button 
+          />
+          <Button 
             type="button"
-            className='step-delete button' 
-            // value="Delete"
+            className='step-delete' 
+            label="Delete" 
+            icon="remove"
+            data-tip='global'
+            data-for='Delete'
             onClick={this.handleDelete}
-          >
-            <ButtonLabel label="Delete" type="remove" />
-          </button>
+          />
         </div>
       </form>
     )

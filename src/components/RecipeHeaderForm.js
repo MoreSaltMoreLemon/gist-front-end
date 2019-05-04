@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import ButtonLabel from './ButtonLabel'
+import Button from './Button'
 
 import { editRecipeAction, deleteRecipeAction } from '../reducers/actions/recipeActions'
 
@@ -43,21 +43,21 @@ class RecipeHeaderForm extends Component {
           onChange={this.handleChange}
           value={this.state.description}
         ></input>
-        <button
+        <Button
           type='submit'
           name='submit'
-          className='recipe-submit button'
+          className='recipe-submit'
+          label="Save" 
+          icon="save"
           value='Submit'
-        >
-          <ButtonLabel label="Save" type="save" />
-        </button>
+        />          
         {/* <button onClick={() => props.updateRecipe({id: props.recipe.id, name: "RenamedTestRecipe", user_id: 1})}><i class="material-icons button-icon">edit</i></button> */}
-        <button 
-          className='recipe-remove button'
+        <Button 
+          className='recipe-remove'
+          label="Delete" 
+          icon="remove"
           onClick={() => this.props.removeRecipe({id: this.props.recipe.id})}
-        >
-          <ButtonLabel label="Delete" type="remove" />
-        </button>
+        />
       </form>
     )
   }

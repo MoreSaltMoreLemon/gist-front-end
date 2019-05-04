@@ -1,33 +1,32 @@
 import React, { useState } from 'react'
 import RecipeHeaderForm from './RecipeHeaderForm'
-import ButtonLabel from './ButtonLabel'
+import Button from './Button'
 
 const RecipeHeader = ({recipe}) => {
   const [showEditForm, setShowEditForm] = useState(false)
 
+  const recipeHeaderForm = <RecipeHeaderForm recipe={recipe} setShowEditForm={setShowEditForm}/>
+
+  const recipeHeaderCard = (
+    <div 
+      className='recipe-header-display'
+      onClick={() => setShowEditForm(true)}
+    >
+      <h1 className='recipe-title'>{recipe.name}</h1>
+      <p className='recipe-description'>{recipe.description}</p>
+      <Button 
+        className='recipe-header-edit'
+        name='toggle-edit' 
+        value='Edit'
+        icon='edit'
+        onClick={() => setShowEditForm(true)}
+      />    
+    </div> 
+  )
+
   return (
     <div className='recipe-header'>
-      { 
-        showEditForm 
-        ? 
-        <RecipeHeaderForm recipe={recipe} setShowEditForm={setShowEditForm}/>
-        :
-        <div 
-          className='recipe-header-display'
-          onClick={() => setShowEditForm(true)}
-        >
-          <h1 className='recipe-title'>{recipe.name}</h1>
-          <p className='recipe-description'>{recipe.description}</p>
-          <button 
-            className='recipe-header-edit button'
-            name='toggle-edit' 
-            value='Edit' 
-            onClick={() => setShowEditForm(true)}
-          >
-            <ButtonLabel label="Edit" type="edit" />
-          </button>
-        </div>        
-      }
+      { showEditForm ? recipeHeaderForm : recipeHeaderCard }
     </div>
   )
 }
