@@ -5,7 +5,6 @@ import {
 } from './reducerHelpers/recipesHelpers'
 
 const recipesReducer = (state = [], action) => {
-  console.log("ALL RECIPES", state, action)
   switch (action.type) {
     // payload: recipe: { id }
     case 'GET_ALL_RECIPES':

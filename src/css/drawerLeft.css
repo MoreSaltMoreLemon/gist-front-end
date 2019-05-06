@@ -1,0 +1,15 @@
+.drawer-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-around;
+  align-items: center;
+
+  flex-wrap: nowrap;
+  margin: 20px 0px;
+  width: calc(100% - 10px);
+}
+
+.button-nav {
+  width: 100%;
+}

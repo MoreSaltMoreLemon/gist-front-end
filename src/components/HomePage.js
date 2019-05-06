@@ -6,7 +6,7 @@ const HomePage = (props) => {
 
   return (
      <div className='home-page'>
-       <img className='splash-image' src={bg1} ></img>
+       {/* <img className='splash-image' src={bg1} ></img> */}
      </div>
   )
 }

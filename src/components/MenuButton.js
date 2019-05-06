@@ -1,22 +1,24 @@
 import React from 'react'
+import '../css/button.css'
 
 
 function MenuButton({className, id, onClick, type, label, icon}) {
   return (
     <button 
       id={id || null}
-      className={`button ${className}`} 
+      className={`menu button ${className}`} 
       type={type}
       onClick={onClick}
     >
       
       <div 
-        className='button-container'
+        className='menu button-container'
       >
         <div 
-          className="button-block"
+          className="menu button-block"
         >
-          <i className="material-icons button-icon">{icon}</i>
+          <i className="menu material-icons button-icon">{icon}</i>
+          <span>{label}</span>
         </div>
       </div>
       

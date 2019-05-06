@@ -1,0 +1,67 @@
+button {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.button {
+  border: none;
+}
+
+.button-container {
+  position: relative;
+  width: 100%;
+}
+
+.button-block {
+  display: inline-block;
+  text-align: center;
+  background-color: var(--button-color);
+  border-radius: 5px;
+  border: none;
+  height: 35px;
+  width: 35px;
+  color: white;
+}
+
+.button span {
+  font-size: 16px;
+}
+
+.button:hover {
+  transform: scale(0.95);
+}
+
+.button-icon {
+  position: relative;
+  top: 5px;
+}
+
+.button-tip {
+  position: fixed;
+  top: 0px;
+  background-color: var(--bg-color);
+  display: block;
+  text-align: left;
+  z-index: 1000;
+  width: 100px;
+}
+
+.button-tip-hide {
+  display: none;
+}
+
+.menu.button {
+  width: calc(100% - 10px);
+  max-width: 200px;
+  margin: 5px;
+  align-self: center;
+}
+
+.menu.button-block {
+  width: 100%;
+  padding: 2px 5px;
+  text-align: left;
+}
+
+.menu.button-icon {
+  margin: 0px 5px;
+}

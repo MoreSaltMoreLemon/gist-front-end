@@ -66,7 +66,6 @@ const recipeReducer = (state = {}, action) => {
     case 'REMOVE_STEP_INGREDIENT': 
       return removeStepIngredient(state, action)
     default:
-      console.log('DEFAULT RECIPE REDUCER!')
       return state
   }
 }

@@ -1,10 +1,13 @@
 import React from 'react'
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 import '../css/logo.css'
 
 const Logo = (props) => {
 
   return (
-     <h1 className='app-logo'>Gist</h1>
+    <Link to='/'>
+      <h1 className='app-logo'>Gist</h1>
+    </Link>
   )
 }
 
