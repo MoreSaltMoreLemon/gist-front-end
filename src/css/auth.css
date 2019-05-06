@@ -1,0 +1,46 @@
+section.auth {
+  width: 50%;
+  min-height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+
+  border-top: none;
+  border-bottom: 2px solid var(--highlight);
+  box-shadow: 2px 2px 10px 5px var(--bg-color-secondary);
+  border-radius: 10px 10px 0 0;
+}
+
+header.auth {
+  background-color: rgba(49, 95, 133, 0.2);
+  border-radius: 10px 10px 0 0;
+  height: 40px;
+}
+
+header.auth h1 {
+  color: white;
+  width: 100%;
+  text-align: center;
+  text-shadow: -0.5px -0.5px 0px white, 0.4px 0.4px 3px rgba(0, 0, 0, 0.3);
+  height: 30px;
+  line-height: 40px;
+}
+
+form.auth {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+form.auth input {
+  max-width: 300px;
+  padding: 10px 0 10px 0;
+}
+
+form.auth .submit {
+  align-self: end;
+  max-width: 110px;
+}

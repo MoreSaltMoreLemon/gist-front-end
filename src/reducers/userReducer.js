@@ -1,12 +1,20 @@
 const userReducer = (state = {}, action) => {
   switch (action.type) {
-    case 'SET_USER':
-      return {...action.user}
-    case 'CLEAR_USER':
-      return {}
+    case "CREATE_USER":
+      if (action.user.jwt) {
+        localStorage.setItem("jwt", action.user.jwt);
+      }
+      return { ...action.user };
+    case "SET_USER":
+      if (action.user.jwt) {
+        localStorage.setItem("jwt", action.user.jwt);
+      }
+      return { ...action.user };
+    case "CLEAR_USER":
+      return {};
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default userReducer
+export default userReducer;
