@@ -1,0 +1,10 @@
+.unit-select {
+  width: 100%;
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 0px;
+  border-top: none;
+  border-right: none;
+  border-bottom: 2px solid var(--border);
+  border-left: none;
+}

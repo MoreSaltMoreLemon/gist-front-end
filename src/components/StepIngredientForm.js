@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { GithubPicker } from 'react-color'
 import Button from './Button'
 import { defaultColors, randomColor } from '../helpers/colors'
+import UnitSelector from './UnitSelector'
 
 import { 
   addStepIngredientAction,
@@ -30,7 +31,10 @@ class StepIngredientForm extends Component {
     this.state = { ...step_ingredient, showColorPicker: false, ingredientName }
   }
 
-  handleChange = e => this.setState({ [e.target.name]: e.target.value })
+  handleChange = e => {
+    console.log('select change', e.target.name, e.target.value)
+    this.setState({ [e.target.name]: e.target.value })
+  }
   
   handleColorChange = e => this.setState({ color: e.hex, showColorPicker: false })
   
@@ -39,6 +43,7 @@ class StepIngredientForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    e.stopPropagation();
     if (this.props.isEditForm) {
       this.props.editStepIngredient(
         this.state, 
@@ -104,14 +109,12 @@ class StepIngredientForm extends Component {
             onChange={this.handleChange}
             value={this.state.quantity}
           ></input>
-          <input 
-            name='unit' 
-            type="text" 
+          <UnitSelector
+            name='unit_id' 
             className='ingredient-unit'
-            placeholder='Unit'
             onChange={this.handleChange}
             value={this.state.unit_id}
-          ></input>
+           />
           <input 
             name='instruction' 
             type="text" 
@@ -132,7 +135,7 @@ class StepIngredientForm extends Component {
             className='ingredient-delete' 
             value="Delete"
             label="Delete Ingredient" 
-            icon="remove"
+            icon="delete"
             onClick={this.handleDelete}
           />           
         </div>

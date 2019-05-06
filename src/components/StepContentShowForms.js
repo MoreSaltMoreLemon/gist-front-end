@@ -4,7 +4,7 @@ import StepSubRecipeForm from './StepSubRecipeForm'
 import Button from './Button'
 
 function StepContentShowForms({recipe_step}) {
-  const [showStepIngredientForm, setShowStepIngredientForm] = useState(false)
+  const [showStepIngredientForm, setShowStepIngredientForm] = useState(true)
   const [showStepSubRecipeForm, setShowStepSubRecipeForm] = useState(false)
   
   // show Add Ingredient/Recipe as Ingredient buttons only if neither form

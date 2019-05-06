@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-function Button({className, id, onClick, type, label, icon}) {
+function MenuButton({className, id, onClick, type, label, icon}) {
   return (
     <button 
       id={id || null}
@@ -24,4 +24,4 @@ function Button({className, id, onClick, type, label, icon}) {
   )
 }
 
-export default Button
+export default MenuButton

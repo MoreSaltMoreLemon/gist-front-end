@@ -1,6 +1,8 @@
 import React from 'react';
 import { HamburgerMenu } from './HamburgerMenu';
 import { HeaderMenu } from './HeaderMenu';
+import Logo from '../components/Logo'
+import '../css/appHeader.css'
 
 
 const AppHeader = (props) => {
@@ -8,6 +10,7 @@ const AppHeader = (props) => {
   
   return (
     <header className='app-header'>
+      <Logo />
       { isHamburger ?
         <HamburgerMenu /> :
         <HeaderMenu />

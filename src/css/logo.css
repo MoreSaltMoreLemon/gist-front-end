@@ -1,0 +1,12 @@
+.app-logo {
+  position: absolute;
+  top: -40px;
+  left: 10px;
+  /* grid-area: logo; */
+  align-self: start;
+  /* margin: 10px; */
+  font-size: 50px;
+  color: var(--highlight);
+  font-weight: bold;
+  text-shadow: 3px 2px 3px white, 0px 0px 20px rgba(0,0,0,0.2);
+}

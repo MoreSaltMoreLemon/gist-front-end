@@ -16,8 +16,16 @@ const RecipeForm = (props) => {
   useEffect(() => {
     if (isEmpty(props.recipe)) {
       props.getRecipe({id: props.recipeId})
+    } else if (props.recipe.id !== Number(props.recipeId)) {
+      // debugger
+      console.log("no match!", props.recipe.id, props.recipeId)
+      props.getRecipe({id: props.recipeId})
     }
-  }) 
+  })
+
+  if (isEmpty(props.recipe) || props.recipe.id !== Number(props.recipeId)) {
+    return null
+  }
 
   return (
     <div className='content-container'>
@@ -34,7 +42,11 @@ const RecipeForm = (props) => {
   )
 }
 
-const mapStateToProps = state => ({ ...state })
+const mapStateToProps = state => {
+  console.log('RECIPE FORM UPDATE', state.recipe)
+  // debugger
+  return { ...state }
+}
 
 const mapDispatchToProps = dispatch => {
   return {

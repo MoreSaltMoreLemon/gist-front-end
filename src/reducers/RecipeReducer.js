@@ -1,8 +1,8 @@
 import { 
   getRecipe,
   createRecipe,
-  editRecipe, 
-  removeRecipe 
+  editRecipe 
+  // removeRecipe 
 } from './reducerHelpers/recipeHelpers'
 
 import {
@@ -36,9 +36,6 @@ const recipeReducer = (state = {}, action) => {
     // payload: recipe: { id, properties }
     case 'EDIT_RECIPE': 
       return editRecipe(state, action)
-    // payload: recipe: { id }
-    case 'CLEAR_RECIPE': 
-      return removeRecipe(state, action)
     // payload: recipe: { id }, sub_recipe: { properties }
     case 'ADD_RECIPE_STEP':
       return addRecipeStep(state, action)
@@ -62,11 +59,14 @@ const recipeReducer = (state = {}, action) => {
       return addStepIngredient(state, action)
     // payload: recipe: { id }, sub_recipe: { id }, ingredient: { id, properties }
     case 'EDIT_STEP_INGREDIENT': 
-      return editStepIngredient(state, action)
+      const newState = editStepIngredient(state, action)
+      // debugger
+      return newState
     // payload: recipe: { id }, sub_recipe: { id }, ingredient: { id }
     case 'REMOVE_STEP_INGREDIENT': 
       return removeStepIngredient(state, action)
     default:
+      console.log('DEFAULT RECIPE REDUCER!')
       return state
   }
 }

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import StepIngredientCard from './StepIngredientCard'
+import StepIngredientDisplayToggle from './StepIngredientDisplayToggle'
 import StepContentShowForms from './StepContentShowForms'
 import RecipeStepForm from './RecipeStepForm'
 
@@ -42,7 +42,7 @@ const RecipeStepCard = ({recipe_step}) => {
   }
 
   const contentCards = contents.map(content => (
-    <StepIngredientCard 
+    <StepIngredientDisplayToggle 
       key={content.uuid} 
       is_sub_recipe={content.is_sub_recipe}
       stepComponentContent={content} 

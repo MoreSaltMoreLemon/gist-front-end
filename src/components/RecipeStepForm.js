@@ -7,6 +7,7 @@ import { GithubPicker } from 'react-color'
 import { defaultColors, randomColor } from '../helpers/colors'
 import RecipeStepRatioBar from './RecipeStepRatioBar'
 import Button from './Button'
+import UnitSelector from './UnitSelector'
 
 import { editRecipeStepAction, removeRecipeStepAction } from '../reducers/actions/recipeStepActions'
 
@@ -36,6 +37,7 @@ class RecipeStepForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    e.stopPropagation();
     console.log("SUBMIT INGREDIENT STATE", this.state)
     this.props.editRecipeStep(this.state)
   }
@@ -98,16 +100,12 @@ class RecipeStepForm extends Component {
             onChange={this.handleChange}
             value={this.state.yield}
           />
-          <input 
-            name='yield_unit_id' 
-            type="text" 
+          <UnitSelector 
+            name='yield_unit_id'        
             className='step-yield-unit'
-            placeholder='Yield Unit'
             onChange={this.handleChange}
             value={this.state.yield_unit_id}
-          ></input>
-        </div> 
-        <div className='step-edit-buttons'>
+          />
           <Button 
             type="submit"
             className='step-submit button' 
@@ -119,12 +117,12 @@ class RecipeStepForm extends Component {
             type="button"
             className='step-delete' 
             label="Delete" 
-            icon="remove"
+            icon="delete"
             data-tip='global'
             data-for='Delete'
             onClick={this.handleDelete}
           />
-        </div>
+        </div> 
       </form>
     )
   }

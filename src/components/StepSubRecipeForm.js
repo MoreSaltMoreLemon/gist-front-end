@@ -39,6 +39,7 @@ class StepSubRecipeForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    e.stopPropagation();
     
     if (this.props.isEditForm) {
       this.props.editStepSubRecipe(this.state, 1, 

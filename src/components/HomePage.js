@@ -1,5 +1,6 @@
 import React from 'react'
 import bg1 from '../images/bg1_compressed.jpg'
+import '../css/homePage.css'
 
 const HomePage = (props) => {
 

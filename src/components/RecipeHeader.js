@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import RecipeHeaderForm from './RecipeHeaderForm'
 import Button from './Button'
+import '../css/recipeHeader.css'
 
 const RecipeHeader = ({recipe}) => {
   const [showEditForm, setShowEditForm] = useState(false)
@@ -11,15 +12,18 @@ const RecipeHeader = ({recipe}) => {
     <div 
       className='recipe-header-display'
       onClick={() => setShowEditForm(true)}
+      style={{backgroundImage: `url(${recipe.image_url})`}}
     >
-      <h1 className='recipe-title'>{recipe.name}</h1>
-      <p className='recipe-description'>{recipe.description}</p>
+      <div className='recipe-title-container' >
+        <h1 className='recipe-title opaque'>{recipe.name}</h1>
+      </div>
+      <p className='recipe-description opaque'>{recipe.description}</p>
       <Button 
         className='recipe-header-edit'
         name='toggle-edit' 
         value='Edit'
         icon='edit'
-        onClick={() => setShowEditForm(true)}
+        // onClick={() => setShowEditForm(true)}
       />    
     </div> 
   )
