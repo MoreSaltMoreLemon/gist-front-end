@@ -11,8 +11,7 @@ const RecipeGallery = (props) => {
 
   useEffect(() => {
     if (isEmpty(props.recipes)) {
-      console.log('get recipes!!!')
-      console.log('async!', props.getRecipes())
+      props.getRecipes()
     }
   })
 
@@ -21,7 +20,7 @@ const RecipeGallery = (props) => {
   if (!isEmpty(props.recipes)) {
     // debugger
     recipeCards = props.recipes.map(recipe => {
-      return <RecipeCard recipe={recipe} />
+      return <RecipeCard key={recipe.uuid} recipe={recipe} />
     })
   } 
 

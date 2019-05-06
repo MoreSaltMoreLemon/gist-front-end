@@ -23,9 +23,7 @@ import StepIngredientCard from './StepIngredientCard'
 
 const StepIngredientDisplayToggle = ({stepComponentContent, is_sub_recipe, total}) => {
   const [showEditForm, setShowEditForm] = useState(false)
-  
-  console.log('ingredient rerender!')
-  
+
   if (!stepComponentContent || showEditForm) {
     if (is_sub_recipe) {
       return (<StepSubRecipeForm 

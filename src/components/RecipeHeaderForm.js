@@ -35,15 +35,18 @@ class RecipeHeaderForm extends Component {
           onChange={this.handleChange}
           value={this.state.name}
         ></input>
-        <input
-          type='textarea'
+        <textarea
+          // type='textarea'
           name='description'
           maxLength='280'
+          wrap='soft'
+          // rows='6'
+          placeholder='A lovely description of your recipe.'
           className='recipe-description'
           placeholder='Recipe Description'
           onChange={this.handleChange}
           value={this.state.description}
-        ></input>
+        ></textarea>
         <input
           type='text'
           name='image_url'

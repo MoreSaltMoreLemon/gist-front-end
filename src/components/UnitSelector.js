@@ -6,7 +6,7 @@ const UnitSelector = ({name, className, onChange, value}) => {
 
   const options = ((units) => {
     return units.map(unit => {
-      return <option className='select-option' value={unit.value} >{unit.label}</option>
+      return <option key={unit.label} className='select-option' value={unit.value} >{unit.label}</option>
     })
   })(units)
 
