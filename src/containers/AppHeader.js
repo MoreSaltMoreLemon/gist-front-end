@@ -1,20 +1,16 @@
-import React from 'react';
-import { HamburgerMenu } from './HamburgerMenu';
-import { HeaderMenu } from './HeaderMenu';
-import Logo from '../components/Logo'
-import '../css/appHeader.css'
+import React from "react";
+import { HamburgerMenu } from "./HamburgerMenu";
+import { HeaderMenu } from "./HeaderMenu";
+import Logo from "../components/Logo";
+import "../css/appHeader.css";
 
-
-const AppHeader = (props) => {
+const AppHeader = () => {
   const isHamburger = false;
-  
+
   return (
-    <header className='app-header'>
+    <header className="app-header">
       <Logo />
-      { isHamburger ?
-        <HamburgerMenu /> :
-        <HeaderMenu />
-      }
+      {isHamburger ? <HamburgerMenu /> : <HeaderMenu />}
     </header>
   );
 };

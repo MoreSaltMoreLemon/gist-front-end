@@ -60,7 +60,6 @@ const recipeReducer = (state = {}, action) => {
     // payload: recipe: { id }, sub_recipe: { id }, ingredient: { id, properties }
     case "EDIT_STEP_INGREDIENT":
       const newState = editStepIngredient(state, action);
-      // debugger
       return newState;
     // payload: recipe: { id }, sub_recipe: { id }, ingredient: { id }
     case "REMOVE_STEP_INGREDIENT":

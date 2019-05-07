@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
+import { SignIn } from './AuthButtons'
+
 import MenuButton from "./MenuButton";
 import { createUserAction } from "../reducers/actions/userActions";
 import "../css/auth.css";
 
-const SignUp = props => {
+const SignUp = ({ signUp, jwt }) => {
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -17,13 +20,11 @@ const SignUp = props => {
   const handleChange = e =>
     setUser({ ...user, [e.target.name]: e.target.value });
 
-  // const handlePasswordConfirmation = e => {
-  //   handleChange
-  // }
+  if (jwt) return <Redirect to="/recipes" />;
 
   const handleSubmit = async e => {
     e.preventDefault();
-    props.signUp(user);
+    signUp(user);
   };
 
   return (
@@ -68,19 +69,27 @@ const SignUp = props => {
           name="passwordConfirmation"
           onChange={handleChange}
         />
-        <MenuButton
-          type="submit"
-          className="auth submit"
-          label="Sign Up"
-          icon="verified_user"
-        />
+        <div className="auth buttons">
+          <MenuButton
+            type="submit"
+            className="auth submit"
+            label="Sign Up"
+            icon="verified_user"
+          />
+          <SignIn className="auth submit" />
+        </div>
       </form>
     </section>
   );
 };
 
+const mapStateToProps = state => ({ ...state.user });
+
 const mapDispatchToProps = dispatch => ({
   signUp: async user => dispatch(await createUserAction(user))
 });
 
-export default connect(null, mapDispatchToProps)(SignUp);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignUp);

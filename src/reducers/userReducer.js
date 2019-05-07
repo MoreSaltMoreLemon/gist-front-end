@@ -11,9 +11,7 @@ const userReducer = (state = {}, action) => {
       }
       return { ...action.user };
     case "CLEAR_USER":
-      if (action.user.jwt) {
-        localStorage.removeItem("jwt");
-      }
+      localStorage.removeItem("jwt");
       return {};
     default:
       return state;

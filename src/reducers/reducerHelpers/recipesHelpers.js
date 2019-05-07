@@ -1,21 +1,18 @@
 function getAllRecipes(state, action) {
-  // debugger
-  return [...action.recipes]
+  return [...action.recipes];
 }
 
 function createRecipe(state, action) {
-  const newRecipes = state.slice()
-  newRecipes.push(action.recipe)
-  // debugger
-  return [...newRecipes]
+  const newRecipes = state.slice();
+  newRecipes.push(action.recipe);
+  return [...newRecipes];
 }
 
 function removeRecipe(state, action) {
-  // debugger
   const newRecipes = state.filter(recipe => {
-    return action.recipe.id !== recipe.id
-  })
-  return [...newRecipes]
+    return action.recipe.id !== recipe.id;
+  });
+  return [...newRecipes];
 }
 
-export { getAllRecipes, createRecipe, removeRecipe }
+export { getAllRecipes, createRecipe, removeRecipe };

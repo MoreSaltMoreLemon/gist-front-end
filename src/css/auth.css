@@ -13,7 +13,7 @@ section.auth {
 }
 
 section.auth:hover {
-  transform: scale(1.01)
+  transform: scale(1.01);
 }
 
 header.auth {
@@ -53,4 +53,8 @@ form.auth .submit {
   padding-top: 10px;
   padding-bottom: 10px;
   max-width: 110px;
+}
+
+.auth.buttons {
+  font-family: var(--text-font);
 }

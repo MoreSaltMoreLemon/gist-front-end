@@ -1,57 +1,24 @@
-import uuidv4 from 'uuid/v4'
-import { handleRequestAction } from '../../helpers/httpHelpers'
-import { RECIPES_URL } from '../../routes'
+import { handleRequestAction } from "../../helpers/httpHelpers";
+import { RECIPES_URL } from "../../routes";
 
-async function getRecipeAction(recipe, jwt='') {
+async function getRecipeAction(recipe) {
   return await handleRequestAction(
-    `${RECIPES_URL}/${recipe.id}`, 
-    'get', {}, 
-    jwt, 
-    'GET_RECIPE', 
-    'recipe'
-  )
+    `${RECIPES_URL}/${recipe.id}`,
+    "get",
+    {},
+    "GET_RECIPE",
+    "recipe"
+  );
 }
 
-// async function createRecipeAction(recipe, jwt='') {
-//   recipe.uuid = uuidv4()
-//   return await handleRequestAction(
-//     RECIPES_URL, 
-//     'post', 
-//     {recipe}, 
-//     jwt, 
-//     'CREATE_RECIPE', 
-//     'recipe'
-//   )
-// }
-
-async function editRecipeAction(recipe, jwt='') {
+async function editRecipeAction(recipe) {
   return await handleRequestAction(
-    `${RECIPES_URL}/${recipe.id}`, 
-    'put', 
-    {recipe}, 
-    jwt, 
-    'EDIT_RECIPE', 
-    'recipe'
-  )
+    `${RECIPES_URL}/${recipe.id}`,
+    "put",
+    { recipe },
+    "EDIT_RECIPE",
+    "recipe"
+  );
 }
 
-// async function deleteRecipeAction(recipe, jwt='') {
-//   const response = await handleRequestAction(
-//     `${RECIPES_URL}/${recipe.id}`, 
-//     'delete', 
-//     {recipe: {id: recipe.id}}, 
-//     jwt, 
-//     'REMOVE_RECIPE', 
-//     'recipe'
-//   )
-
-//   if (response.errors) return response
-//   else return {type: 'REMOVE_RECIPE', recipe}
-// }
-
-export {
-  getRecipeAction,
-  // createRecipeAction,
-  editRecipeAction
-  // deleteRecipeAction
-}
+export { getRecipeAction, editRecipeAction };

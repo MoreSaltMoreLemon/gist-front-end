@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import StepIngredientForm from './StepIngredientForm'
-import StepSubRecipeForm from './StepSubRecipeForm'
-import StepIngredientCard from './StepIngredientCard'
+import React, { useState } from "react";
+import StepIngredientForm from "./StepIngredientForm";
+import StepSubRecipeForm from "./StepSubRecipeForm";
+import StepIngredientCard from "./StepIngredientCard";
 
 // sub_recipe
 // color: {id: 1, hex: "#a6cee3"}
@@ -21,34 +21,41 @@ import StepIngredientCard from './StepIngredientCard'
 // unit: {id: 1, name: "g", gram_conversion_factor: "1.0"}
 // unit_id: 1
 
-const StepIngredientDisplayToggle = ({stepComponentContent, is_sub_recipe, total}) => {
-  const [showEditForm, setShowEditForm] = useState(false)
+const StepIngredientDisplayToggle = ({
+  stepComponentContent,
+  is_sub_recipe,
+  total
+}) => {
+  const [showEditForm, setShowEditForm] = useState(false);
 
   if (!stepComponentContent || showEditForm) {
     if (is_sub_recipe) {
-      return (<StepSubRecipeForm 
-        step_sub_recipe={stepComponentContent}
-        setShowForm={setShowEditForm}
-        isEditForm={true}
-      />)
+      return (
+        <StepSubRecipeForm
+          step_sub_recipe={stepComponentContent}
+          setShowForm={setShowEditForm}
+          isEditForm={true}
+        />
+      );
     } else {
-      return (<StepIngredientForm 
-        step_ingredient={stepComponentContent}
-        setShowForm={setShowEditForm}
-        isEditForm={true}
-      />)
+      return (
+        <StepIngredientForm
+          step_ingredient={stepComponentContent}
+          setShowForm={setShowEditForm}
+          isEditForm={true}
+        />
+      );
     }
   } else {
-    // debugger
     return (
       <StepIngredientCard
         setShowForm={setShowEditForm}
         stepComponentContent={stepComponentContent}
-        total={total} 
+        total={total}
         is_sub_recipe={is_sub_recipe}
-      />      
-    )
+      />
+    );
   }
-}
+};
 
 export default StepIngredientDisplayToggle;

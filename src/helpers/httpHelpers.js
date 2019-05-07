@@ -56,12 +56,11 @@ async function handleRequestAction(
   url,
   method,
   body,
-  jwt,
   actionType,
   propertyName
 ) {
   try {
-    const response = await httpRequestJWT(url, method, body, jwt);
+    const response = await httpRequestJWT(url, method, body);
     if (returnedError(response)) return handleError(response);
 
     const payload = await response.json();

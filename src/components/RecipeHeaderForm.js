@@ -1,69 +1,66 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import Button from './Button'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Button from "./Button";
 
-import { editRecipeAction /* , deleteRecipeAction */ } from '../reducers/actions/recipeActions'
-
+import { editRecipeAction } from "../reducers/actions/recipeActions";
 
 class RecipeHeaderForm extends Component {
   constructor(props) {
-    super(props)
-    // debugger
-    this.state = { ...this.props.recipe }
+    super(props);
+    this.state = { ...this.props.recipe };
   }
 
-  handleChange = e => this.setState({ [e.target.name]: e.target.value })
-  
+  handleChange = e => this.setState({ [e.target.name]: e.target.value });
+
   handleSubmit = e => {
-    e.preventDefault()
+    e.preventDefault();
     e.stopPropagation();
-    this.props.editRecipe({...this.state}, 
-      () => this.props.setShowEditForm(false))
-  }
+    this.props.editRecipe({ ...this.state }, () =>
+      this.props.setShowEditForm(false)
+    );
+  };
 
   render() {
     return (
-      <form 
-        className='recipe-header-form'
-        onSubmit={this.handleSubmit}>
-        <input 
+      <form className="recipe-header-form" onSubmit={this.handleSubmit}>
+        <input
           type="text"
           name="name"
-          className='recipe-title'
-          placeholder='Recipe Name'
+          className="recipe-title"
+          placeholder="Recipe Name"
           required
           onChange={this.handleChange}
           value={this.state.name}
-        ></input>
+        />
         <textarea
           // type='textarea'
-          name='description'
-          maxLength='280'
-          wrap='soft'
+          name="description"
+          maxLength="280"
+          wrap="soft"
           // rows='6'
-          placeholder='A lovely description of your recipe.'
-          className='recipe-description'
-          placeholder='Recipe Description'
+          placeholder="A lovely description of your recipe."
+          className="recipe-description"
+          placeholder="Recipe Description"
           onChange={this.handleChange}
           value={this.state.description}
-        ></textarea>
+        />
         <input
-          type='text'
-          name='image_url'
-          maxLength='280'
-          className='recipe-image-url'
-          placeholder='Recipe Image URL'
+          type="text"
+          name="image_url"
+          maxLength="280"
+          className="recipe-image-url"
+          placeholder="Recipe Image URL"
           onChange={this.handleChange}
           value={this.state.image_url}
-        ></input>
+        />
         <Button
-          type='submit'
-          name='submit'
-          className='recipe-submit'
-          label="Save" 
+          type="submit"
+          name="submit"
+          className="recipe-submit"
+          label="Save"
           icon="save"
-          value='Submit'
-        />          
+          value="Submit"
+        />
         {/* <button onClick={() => props.updateRecipe({id: props.recipe.id, name: "RenamedTestRecipe", user_id: 1})}><i class="material-icons button-icon">edit</i></button> */}
         {/* <Button 
           className='recipe-remove'
@@ -72,22 +69,23 @@ class RecipeHeaderForm extends Component {
           onClick={() => this.props.removeRecipe({id: this.props.recipe.id})}
         /> */}
       </form>
-    )
+    );
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     editRecipe: async (recipe, callbackFn) => {
-      dispatch(await editRecipeAction(recipe))
-      callbackFn()
+      dispatch(await editRecipeAction(recipe));
+      callbackFn();
     }
     // createRecipe: async (recipe, user, jwt = '') => dispatch(await createRecipeAction(recipe, user, jwt)),
     // updateRecipe: async (recipe, jwt = '') => dispatch(await editRecipeAction(recipe, jwt)),
     // removeRecipe: async (recipe, jwt = '') => dispatch(await deleteRecipeAction(recipe, jwt))
-    
-  }
-}
+  };
+};
 
-
-export default connect(null, mapDispatchToProps)(RecipeHeaderForm)
+export default connect(
+  null,
+  mapDispatchToProps
+)(RecipeHeaderForm);
