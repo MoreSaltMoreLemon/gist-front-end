@@ -26,7 +26,7 @@ function SignIn(props) {
 function SignOut({ signOut }) {
   return (
     <Link to="/sign-out">
-      <MenuButton label="Sign Out" icon="remove" />
+      <MenuButton label="Sign Out" icon="exit_to_app" />
     </Link>
   );
 }

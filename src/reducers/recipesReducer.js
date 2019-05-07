@@ -1,5 +1,6 @@
 import {
   getAllRecipes,
+  getUserRecipes,
   createRecipe,
   removeRecipe
 } from "./reducerHelpers/recipesHelpers";
@@ -8,7 +9,10 @@ const recipesReducer = (state = [], action) => {
   switch (action.type) {
     // payload: recipe: { id }
     case "GET_ALL_RECIPES":
-      return getAllRecipes(state, action);
+    return getAllRecipes(state, action);
+    // payload: recipe: { id }
+    case "GET_USER_RECIPES":
+      return getUserRecipes(state, action);
     // payload: recipe: { id }
     case "CREATE_RECIPE":
       return createRecipe(state, action);

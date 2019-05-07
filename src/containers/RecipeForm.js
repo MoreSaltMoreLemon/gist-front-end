@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
 
 import { isEmpty } from "../helpers/miscHelpers";
 
@@ -11,30 +12,34 @@ import { getRecipeAction } from "../reducers/actions/recipeActions";
 
 const RecipeForm = props => {
   useEffect(() => {
-    if (isEmpty(props.recipe)) {
-      props.getRecipe({ id: props.recipeId });
-    } else if (props.recipe.id !== Number(props.recipeId)) {
-      props.getRecipe({ id: props.recipeId });
+    if (props.user.jwt) {
+      if (isEmpty(props.recipe)) {
+        props.getRecipe({ id: props.recipeId });
+      } else if (props.recipe.id !== Number(props.recipeId)) {
+        props.getRecipe({ id: props.recipeId });
+      }
     }
   });
 
-  if (isEmpty(props.recipe) || props.recipe.id !== Number(props.recipeId)) {
+  if (!props.user.jwt) {
+    return <Redirect to="/sign-in" />;
+  } else if (isEmpty(props.recipe) || props.recipe.id !== Number(props.recipeId)) {
     return null;
-  }
-
-  return (
-    <div className="content-container">
-      <div className="content-header">
-        <div className="recipe-graph-doughnut-container">
-          <Doughnut className="recipe-graph-doughnut" recipe={props.recipe} />
+  } else {
+    return (
+      <div className="content-container">
+        <div className="content-header">
+          <div className="recipe-graph-doughnut-container">
+            <Doughnut className="recipe-graph-doughnut" recipe={props.recipe} />
+          </div>
+          <RecipeHeader recipe={props.recipe} />
         </div>
-        <RecipeHeader recipe={props.recipe} />
+        <div className="content-body">
+          <RecipeStepsContainer recipe={props.recipe} />
+        </div>
       </div>
-      <div className="content-body">
-        <RecipeStepsContainer recipe={props.recipe} />
-      </div>
-    </div>
-  );
+    );
+  }
 };
 
 const mapStateToProps = state => {

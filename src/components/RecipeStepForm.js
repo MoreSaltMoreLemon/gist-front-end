@@ -7,6 +7,7 @@ import { defaultColors, randomColor } from "../helpers/colors";
 import RecipeStepRatioBar from "./RecipeStepRatioBar";
 import Button from "./Button";
 import UnitSelector from "./UnitSelector";
+import { convertToGrams } from "../helpers/units";
 
 import {
   editRecipeStepAction,
@@ -25,7 +26,21 @@ class RecipeStepForm extends Component {
     let recipe_step = props.recipe_step || blankStep;
     if (!recipe_step.color) recipe_step.color = randomColor();
 
-    this.state = { ...props.recipe_step, showColorPicker: false };
+    let yieldTotal;
+    if (recipe_step.yield) {
+      yieldTotal = recipe_step.yield;
+    } else {
+      const contents = [
+        ...recipe_step.step_ingredients,
+        ...recipe_step.step_sub_recipes
+      ];
+
+      yieldTotal = contents.reduce((acc, content) => {
+        acc += convertToGrams(content.unit_id, content.quantity);
+      }, 0);
+    }
+
+    this.state = { ...props.recipe_step, showColorPicker: false, yieldTotal };
   }
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -105,7 +120,7 @@ class RecipeStepForm extends Component {
             className="step-yield-quantity"
             placeholder="Yield"
             onChange={this.handleChange}
-            value={this.state.yield}
+            value={this.state.yield ? this.state.yield : this.state.yieldTotal}
           />
           <UnitSelector
             name="yield_unit_id"

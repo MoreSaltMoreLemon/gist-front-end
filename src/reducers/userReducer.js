@@ -1,18 +1,18 @@
-const userReducer = (state = {}, action) => {
+const userReducer = (state = {loggedIn: false}, action) => {
   switch (action.type) {
     case "CREATE_USER":
       if (action.user.jwt) {
         localStorage.setItem("jwt", action.user.jwt);
       }
-      return { ...action.user };
+      return {...state, loggedIn: true, ...action.user };
     case "SET_USER":
       if (action.user.jwt) {
         localStorage.setItem("jwt", action.user.jwt);
       }
-      return { ...action.user };
+      return {...state, loggedIn: true, ...action.user };
     case "CLEAR_USER":
       localStorage.removeItem("jwt");
-      return {};
+      return {loggedIn: false};
     default:
       return state;
   }

@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import SignUp from "../components/SignUp";
@@ -9,19 +10,34 @@ import RecipeGallery from "./RecipeGallery";
 import RecipeForm from "./RecipeForm";
 import InvalidPath from "../components/InvalidPath";
 
-const ContentContainer = props => {
+const ContentContainer = ({ user, match }) => {
   return (
     <div>
       <Switch>
         <Route path="/sign-up" component={SignUp} />
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-out" component={SignOut} />
-        <Route path="/recipes/" exact component={RecipeGallery} />
+        <Route
+          path="/recipes"
+          exact
+          render={props => {
+            // debugger
+            return <RecipeGallery userId={null} />;
+          }}
+        />
+        <Route
+          path="/my-recipes"
+          exact
+          render={props => {
+            // debugger
+            return <RecipeGallery userId={user.id} />;
+          }}
+        />
         <Route path="/recipes/new" exact component={NewRecipe} />
         <Route
           path="/recipes/:recipeId"
           render={props => {
-            return <RecipeForm recipeId={props.match.params.recipeId} />;
+            return <RecipeForm recipeId={match.params.recipeId} />;
           }}
         />
         <Route component={InvalidPath} />
@@ -30,4 +46,6 @@ const ContentContainer = props => {
   );
 };
 
-export default ContentContainer;
+const mapStateToProps = state => ({ user: state.user });
+
+export default connect(mapStateToProps)(ContentContainer);

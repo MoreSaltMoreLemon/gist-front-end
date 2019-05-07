@@ -19,6 +19,7 @@ const NewRecipe = ({ createRecipe, recipe }) => {
     createRecipe(newRecipe, setRecipeCreated);
   };
 
+
   if (recipeCreated) {
     return <Redirect to={`/recipes/${recipe.id}`} />;
   } else {

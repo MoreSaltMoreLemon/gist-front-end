@@ -1,6 +1,6 @@
 import React from "react";
 import { HamburgerMenu } from "./HamburgerMenu";
-import { HeaderMenu } from "./HeaderMenu";
+import HeaderMenu from "./HeaderMenu";
 import Logo from "../components/Logo";
 import "../css/appHeader.css";
 

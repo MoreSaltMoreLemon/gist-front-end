@@ -1,6 +1,6 @@
 import uuidv4 from "uuid/v4";
 import { handleRequestAction } from "../../helpers/httpHelpers";
-import { RECIPES_URL } from "../../routes";
+import { RECIPES_URL, USERS_URL } from "../../routes";
 
 async function getRecipesAction() {
   return await handleRequestAction(
@@ -8,6 +8,16 @@ async function getRecipesAction() {
     "get",
     {},
     "GET_ALL_RECIPES",
+    "recipes"
+  );
+}
+
+async function getUserRecipesAction(userId) {
+  return await handleRequestAction(
+    `${USERS_URL}/${userId}`,
+    "get",
+    {},
+    "GET_USER_RECIPES",
     "recipes"
   );
 }
@@ -36,4 +46,9 @@ async function deleteRecipeAction(recipe) {
   else return { type: "REMOVE_RECIPE", recipe };
 }
 
-export { getRecipesAction, createRecipeAction, deleteRecipeAction };
+export {
+  getRecipesAction,
+  getUserRecipesAction,
+  createRecipeAction,
+  deleteRecipeAction
+};

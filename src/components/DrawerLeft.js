@@ -1,10 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import MenuButton from "./MenuButton";
 import "../css/drawerLeft.css";
 
-const DrawerLeft = ({ createRecipe }) => {
+const DrawerLeft = ({ user }) => {
+  // debugger
   return (
     <div className="drawer-left">
       <nav className="drawer-nav">
@@ -18,9 +20,18 @@ const DrawerLeft = ({ createRecipe }) => {
             icon="view_module"
           />
         </Link>
+        {user.loggedIn ? (
+          <Link className="button-nav" to="/my-recipes">
+            <MenuButton
+              label="My Recipes"
+              className="recipe-gallery"
+              icon="view_module"
+            />
+          </Link>
+        ) : null}
         <Route
           exact
-          path="/recipes"
+          path="/(recipes|my-recipes)/"
           render={() => (
             <Link className="button-nav" to="/recipes/new">
               <MenuButton
@@ -36,4 +47,6 @@ const DrawerLeft = ({ createRecipe }) => {
   );
 };
 
-export default DrawerLeft;
+const mapStateToProps = state => ({ user: state.user });
+
+export default connect(mapStateToProps)(DrawerLeft);

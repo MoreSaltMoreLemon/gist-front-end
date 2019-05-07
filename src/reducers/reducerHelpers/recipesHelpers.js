@@ -2,6 +2,11 @@ function getAllRecipes(state, action) {
   return [...action.recipes];
 }
 
+function getUserRecipes(state, action) {
+  debugger
+  return [...action.recipes];
+}
+
 function createRecipe(state, action) {
   const newRecipes = state.slice();
   newRecipes.push(action.recipe);
@@ -15,4 +20,4 @@ function removeRecipe(state, action) {
   return [...newRecipes];
 }
 
-export { getAllRecipes, createRecipe, removeRecipe };
+export { getAllRecipes, getUserRecipes, createRecipe, removeRecipe };

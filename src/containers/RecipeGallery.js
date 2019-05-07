@@ -1,23 +1,38 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 import { isEmpty } from "../helpers/miscHelpers";
-import { getRecipesAction } from "../reducers/actions/recipesActions";
+import {
+  getRecipesAction,
+  getUserRecipesAction
+} from "../reducers/actions/recipesActions";
 
 import RecipeCard from "../components/RecipeCard";
 import "../css/recipeGallery.css";
 
-const RecipeGallery = props => {
+const RecipeGallery = ({
+  recipes,
+  getRecipes,
+  userId,
+  user,
+  getUserRecipes
+}) => {
+
+  // debugger
   useEffect(() => {
-    if (isEmpty(props.recipes)) {
-      props.getRecipes();
+    if (user.loggedIn && userId) {
+      debugger
+      getUserRecipes(userId);
+    } else if (isEmpty(recipes)) {
+      debugger
+      getRecipes();
     }
   });
 
   let recipeCards = null;
 
-  if (!isEmpty(props.recipes)) {
-    recipeCards = props.recipes.map(recipe => {
+  if (!isEmpty(recipes)) {
+    recipeCards = recipes.map(recipe => {
       return <RecipeCard key={recipe.uuid} recipe={recipe} />;
     });
   }
@@ -25,11 +40,12 @@ const RecipeGallery = props => {
   return <div className="recipe-gallery">{recipeCards}</div>;
 };
 
-const mapStateToProps = state => ({ ...state });
+const mapStateToProps = state => ({ recipes: state.recipes, user: state.user });
 
 const mapDispatchToProps = dispatch => {
   return {
-    getRecipes: async () => dispatch(await getRecipesAction())
+    getRecipes: async () => dispatch(await getRecipesAction()),
+    getUserRecipes: async userId => dispatch(await getUserRecipesAction(userId))
   };
 };
 export default connect(

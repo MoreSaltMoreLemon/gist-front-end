@@ -1,39 +1,30 @@
-import React from 'react';
-import { connect } from 'react-redux'
-import RecipeStepCard from '../components/RecipeStepCard'
-import Button from '../components/Button'
-import { addRecipeStepAction } from '../reducers/actions/recipeStepActions'
+import React from "react";
+import { connect } from "react-redux";
+import RecipeStepCard from "../components/RecipeStepCard";
+import Button from "../components/Button";
+import { addRecipeStepAction } from "../reducers/actions/recipeStepActions";
 
-const newStep = {
-  // id: undefined,
-  // instruction: "mix",
-  // name: "steve",
-  // recipe_id: 1,
-  // sequence_order: 0,
-  // step_ingredients: undefined,
-  // step_sub_recipes: undefined,
-  // yeild_in_grams: undefined,
-  // yield: undefined,
-  // yield_unit_id: 1, 
-}
-
-
-const RecipeStepsContainer = ({recipe, addRecipeStep}) => {
-  const renderRecipeSteps = recipe_steps => recipe_steps.map(recipe_step => {
-      return <RecipeStepCard key={recipe_step.uuid} recipe_step={recipe_step} />
-    }
-  )
+const RecipeStepsContainer = ({ recipe, addRecipeStep }) => {
+  const renderRecipeSteps = recipe_steps => {
+    return recipe_steps
+      .sort((a, b) => a.sequence_order - b.sequence_order)
+      .map(recipe_step => {
+        return (
+          <RecipeStepCard key={recipe_step.uuid} recipe_step={recipe_step} />
+        );
+      });
+  };
 
   return (
-    <div className='recipe-form'>
-      { recipe.recipe_steps ? renderRecipeSteps(recipe.recipe_steps) : null }
+    <div className="recipe-form">
+      {recipe.recipe_steps ? renderRecipeSteps(recipe.recipe_steps) : null}
       <footer>
-        <Button 
-          type='submit' 
-          className='step-add-button' 
-          value='Add Step'
-          onClick={() => addRecipeStep(recipe.id, newStep)}
-          label="Create Sub-Recipe" 
+        <Button
+          type="submit"
+          className="step-add-button"
+          value="Add Step"
+          onClick={() => addRecipeStep(recipe.id, {})}
+          label="Create Sub-Recipe"
           icon="add"
         />
       </footer>
@@ -41,12 +32,14 @@ const RecipeStepsContainer = ({recipe, addRecipeStep}) => {
   );
 };
 
-
 const mapDispatchToProps = dispatch => {
   return {
-    addRecipeStep:  async (recipe_id, recipe_step) => dispatch(await addRecipeStepAction(recipe_id, recipe_step))
-  }
-}
+    addRecipeStep: async (recipe_id, recipe_step) =>
+      dispatch(await addRecipeStepAction(recipe_id, recipe_step))
+  };
+};
 
-
-export default connect(null, mapDispatchToProps)(RecipeStepsContainer)
+export default connect(
+  null,
+  mapDispatchToProps
+)(RecipeStepsContainer);
