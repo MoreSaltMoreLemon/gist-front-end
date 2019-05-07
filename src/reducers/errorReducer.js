@@ -1,27 +1,30 @@
 const errorReducer = (state = {}, action) => {
-  if (action.error) alert("ERROR REDUCER", state, action);
+  if (action.error) console.log("ERROR REDUCER", state, action);
   // alert(action.error)
   switch (action.type) {
     case "REQUEST_ERROR":
-      debugger;
+      // debugger;
       return { ...state, error: action.error };
     case "NETWORK_ERROR":
-      debugger;
+      // debugger;
       return { ...state, error: action.error };
     case "REQUEST_TIMEOUT":
-      debugger;
+      // debugger;
       return { ...state, error: action.error };
     case "TOO_MANY_REQUESTS":
-      debugger;
+      // debugger;
       return { ...state, error: action.error };
     case "SERVICE_UNAVAILABLE":
-      debugger;
+      // debugger;
       return { ...state, error: action.error };
     case "NETWORK_AUTHENTICATION_REQUIRED":
-      debugger;
+      // debugger;
       return { ...state, error: action.error };
+    case "CLEAR_ERROR":
+      return { };
     default:
-      return state;
+      if (action.error) return {...state, error: action.error};
+      else return {...state};
   }
 };
 

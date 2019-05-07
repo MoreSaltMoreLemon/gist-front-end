@@ -50,7 +50,7 @@ const DrawerLeft = (props) => {
               <Link className='button-nav' to='/recipes'>
                 <MenuButton label='Recipes' className='recipe-gallery' icon='view_module' />
               </Link>
-              <Link className='button-nav'>              
+              <Link className='button-nav' to={null}>              
                 <MenuButton label='Create Recipe' className='recipe-create' icon='create' onClick={() => props.createRecipe({user_id: 1})} />
               </Link>
             </nav>
@@ -71,7 +71,7 @@ const DrawerLeft = (props) => {
               <Link className='button-nav' to='/recipes'>
                 <MenuButton label='Recipes' className='recipe-gallery' icon='view_module' />
               </Link>
-              <Link className='button-nav'>              
+              <Link className='button-nav' to={null}>              
                 <MenuButton label='Create Recipe' className='recipe-create' icon='create' onClick={() => props.createRecipe({user_id: 1})} />
               </Link>
             </nav>

@@ -24,4 +24,8 @@ async function signInUserAction(user, jwt = "") {
   );
 }
 
-export { createUserAction, signInUserAction };
+async function signOutUserAction(user, jwt = "") {
+  return { type: 'CLEAR_USER' }
+}
+
+export { createUserAction, signInUserAction, signOutUserAction };
