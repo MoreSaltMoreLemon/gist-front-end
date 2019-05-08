@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/gist-front-end/static/css/main.9c262390.chunk.css",
+    "main.js": "/gist-front-end/static/js/main.ad03772f.chunk.js",
+    "main.js.map": "/gist-front-end/static/js/main.ad03772f.chunk.js.map",
+    "runtime~main.js": "/gist-front-end/static/js/runtime~main.40fc245e.js",
+    "runtime~main.js.map": "/gist-front-end/static/js/runtime~main.40fc245e.js.map",
+    "static/css/2.764ccc25.chunk.css": "/gist-front-end/static/css/2.764ccc25.chunk.css",
+    "static/js/2.6dac7850.chunk.js": "/gist-front-end/static/js/2.6dac7850.chunk.js",
+    "static/js/2.6dac7850.chunk.js.map": "/gist-front-end/static/js/2.6dac7850.chunk.js.map",
+    "index.html": "/gist-front-end/index.html",
+    "precache-manifest.da5f9851c8e8fd59098b44a4ce7c5432.js": "/gist-front-end/precache-manifest.da5f9851c8e8fd59098b44a4ce7c5432.js",
+    "service-worker.js": "/gist-front-end/service-worker.js",
+    "static/css/2.764ccc25.chunk.css.map": "/gist-front-end/static/css/2.764ccc25.chunk.css.map",
+    "static/css/main.9c262390.chunk.css.map": "/gist-front-end/static/css/main.9c262390.chunk.css.map",
+    "static/media/bg1_compressed.jpg": "/gist-front-end/static/media/bg1_compressed.c17141ae.jpg"
+  }
+}
