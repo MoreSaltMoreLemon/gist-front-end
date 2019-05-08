@@ -2,7 +2,6 @@ import React, { useState, Fragment } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Button from "../components/Button";
 import MenuButton from "../components/MenuButton";
 import Hamburger from "../components/Hamburger"
 

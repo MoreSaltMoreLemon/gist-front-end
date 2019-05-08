@@ -35,7 +35,7 @@ class RecipeStepForm extends Component {
       ];
 
       yieldTotal = contents.reduce((acc, content) => {
-        acc += convertToGrams(content.unit_id, content.quantity);
+        return acc += convertToGrams(content.unit_id, content.quantity);
       }, 0);
     }
 
