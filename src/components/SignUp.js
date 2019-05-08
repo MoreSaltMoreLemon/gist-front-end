@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Redirect } from "react-router-dom";
-import { SignIn } from './AuthButtons'
+import { SignIn } from "./AuthButtons";
 
 import MenuButton from "./MenuButton";
 import { createUserAction } from "../reducers/actions/userActions";
@@ -28,11 +28,13 @@ const SignUp = ({ signUp, jwt }) => {
   };
 
   return (
-    <section className="auth sign-in-container">
+    <section className="auth sign-up auth-container">
       <header className="auth header">
         <h1>Sign Up</h1>
       </header>
       <form className="auth sign-up" onSubmit={handleSubmit}>
+      <div className="label-input-container">
+        <label>Username: </label>
         <input
           required
           className="auth username"
@@ -42,6 +44,9 @@ const SignUp = ({ signUp, jwt }) => {
           name="username"
           onChange={handleChange}
         />
+        </div>
+        <div className="label-input-container">
+        <label>Email: </label>
         <input
           required
           className="auth email"
@@ -51,6 +56,9 @@ const SignUp = ({ signUp, jwt }) => {
           name="email"
           onChange={handleChange}
         />
+        </div>
+        <div className="label-input-container">
+        <label>Password: </label>
         <input
           required
           className="auth password"
@@ -60,6 +68,9 @@ const SignUp = ({ signUp, jwt }) => {
           name="password"
           onChange={handleChange}
         />
+        </div>
+        <div className="label-input-container">
+        <label>Confirm Password: </label>
         <input
           required
           className="auth password"
@@ -69,6 +80,7 @@ const SignUp = ({ signUp, jwt }) => {
           name="passwordConfirmation"
           onChange={handleChange}
         />
+        </div>
         <div className="auth buttons">
           <MenuButton
             type="submit"
@@ -76,7 +88,7 @@ const SignUp = ({ signUp, jwt }) => {
             label="Sign Up"
             icon="verified_user"
           />
-          <SignIn className="auth submit" />
+          <SignIn className="auth alternate" />
         </div>
       </form>
     </section>

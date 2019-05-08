@@ -5,11 +5,21 @@ section.auth {
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
-
   border-top: none;
   border-bottom: 2px solid var(--highlight);
   box-shadow: 2px 2px 10px 5px var(--bg-color-secondary);
   border-radius: 10px 10px 0 0;
+  display: grid;
+  grid-template-rows: 50px auto;
+  grid-template-areas: "header" "form";
+}
+
+section.auth.sign-in {
+  height: 200px;
+}
+
+section.auth.sign-up {
+  height: 300px;
 }
 
 section.auth:hover {
@@ -17,9 +27,10 @@ section.auth:hover {
 }
 
 header.auth {
+  grid-area: header;
   background-color: rgba(49, 95, 133, 0.2);
   border-radius: 10px 10px 0 0;
-  height: 40px;
+  height: 50px;
 }
 
 header.auth h1 {
@@ -30,31 +41,79 @@ header.auth h1 {
   color: var(--highlight);
   font-weight: bold;
   height: 30px;
-  line-height: 40px;
+  vertical-align: middle;
+  margin-bottom: 15px;
+  line-height: 10px;
 }
 
 form.auth {
   margin-left: auto;
   margin-right: auto;
-  width: 80%;
+  width: 90%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
-form.auth input {
-  max-width: 300px;
+.label-input-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: "label input";
+  gap: 5px;
+}
+
+.label-input-container label {
+  grid-area: label;
+  text-align: right;
+  padding: 10px 0 10px 0;
+  font-weight: bold;
+  color: gray;
+}
+
+.label-input-container input {
+  grid-area: input;
+  width: 100%;
+  margin: none;
   padding: 10px 0 10px 0;
 }
 
-form.auth .submit {
-  align-self: end;
+form.auth .submit,
+form.auth .alternate {
   padding-top: 10px;
   padding-bottom: 10px;
-  max-width: 110px;
+  max-width: 150px;
 }
 
 .auth.buttons {
+  grid-area: buttons;
   font-family: var(--text-font);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "submit alternate";
+}
+
+.auth.submit {
+  grid-area: submit;
+}
+.auth.alternate {
+  grid-area: alternate;
+}
+
+@media screen and (max-width: 900px) {
+  section.auth {
+    width: 90%;
+    height: 300px;
+  }
+
+  form.auth .submit,
+  form.auth .alternate {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 110px;
+  }
+
+  header.auth h1 {
+    line-height: 20px;
+  }
 }

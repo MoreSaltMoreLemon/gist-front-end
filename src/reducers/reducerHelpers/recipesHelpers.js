@@ -3,7 +3,6 @@ function getAllRecipes(state, action) {
 }
 
 function getUserRecipes(state, action) {
-  debugger
   return [...action.recipes];
 }
 

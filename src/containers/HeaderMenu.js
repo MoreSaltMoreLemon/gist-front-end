@@ -7,7 +7,7 @@ import "../css/authButtons.css";
 function HeaderMenu({loggedIn}) {
   // const loggedIn = localStorage.getItem("jwt") === null ? false : true;
   return (
-    <nav>
+    <nav className="header-menu">
       {loggedIn ? (
         <SignOut />
       ) : (

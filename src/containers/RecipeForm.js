@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Redirect } from "react-router-dom";
 
@@ -27,7 +27,7 @@ const RecipeForm = props => {
     return null;
   } else {
     return (
-      <div className="content-container">
+      <Fragment>
         <div className="content-header">
           <div className="recipe-graph-doughnut-container">
             <Doughnut className="recipe-graph-doughnut" recipe={props.recipe} />
@@ -37,7 +37,7 @@ const RecipeForm = props => {
         <div className="content-body">
           <RecipeStepsContainer recipe={props.recipe} />
         </div>
-      </div>
+      </Fragment>
     );
   }
 };

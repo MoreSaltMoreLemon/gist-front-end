@@ -1,4 +1,5 @@
 import React from "react";
+import Reorder, { reorder, reorderImmutable, reorderFromTo, reorderFromToImmutable } from "react-reorder";
 import StepIngredientDisplayToggle from "./StepIngredientDisplayToggle";
 import StepContentShowForms from "./StepContentShowForms";
 import RecipeStepForm from "./RecipeStepForm";
@@ -32,7 +33,12 @@ const RecipeStepCard = ({ recipe_step }) => {
   return (
     <div className="recipe-step-card">
       <RecipeStepForm recipe_step={recipe_step} total={total}>
-        {contentCards}
+          <Reorder 
+            reorderId={`${recipe_step.id}`}
+            reorderGroup="step-ingredients"
+          >
+            {contentCards}
+          </Reorder>
         <StepContentShowForms recipe_step={recipe_step} />
       </RecipeStepForm>
     </div>

@@ -6,7 +6,6 @@ import MenuButton from "./MenuButton";
 import "../css/drawerLeft.css";
 
 const DrawerLeft = ({ user }) => {
-  // debugger
   return (
     <div className="drawer-left">
       <nav className="drawer-nav">

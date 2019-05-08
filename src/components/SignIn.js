@@ -21,29 +21,35 @@ const SignIn = ({ signIn, jwt }) => {
   if (jwt) return <Redirect to="/recipes" />;
 
   return (
-    <section className="auth sign-in-container" onSubmit={handleSubmit}>
+    <section className="auth sign-in auth-container" onSubmit={handleSubmit}>
       <header className="auth header">
         <h1>Sign In</h1>
       </header>
       <form className="auth sign-in">
-        <input
-          required
-          className="auth username"
-          type="text"
-          placeholder="Username"
-          value={user.username}
-          name="username"
-          onChange={handleChange}
-        />
-        <input
-          required
-          className="auth password"
-          type="password"
-          placehold="Password"
-          value={user.password}
-          name="password"
-          onChange={handleChange}
-        />
+        <div className="label-input-container">
+        <label>Username: </label>
+          <input
+            required
+            className="auth username"
+            type="text"
+            placeholder="Username"
+            value={user.username}
+            name="username"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="label-input-container">
+        <label>Password: </label>
+          <input
+            required
+            className="auth password"
+            type="password"
+            placehold="Password"
+            value={user.password}
+            name="password"
+            onChange={handleChange}
+          />
+        </div>
         <div className="auth buttons">
           <MenuButton
             type="submit"
@@ -51,7 +57,7 @@ const SignIn = ({ signIn, jwt }) => {
             label="Sign In"
             icon="verified_user"
           />
-          <SignUp className="auth submit" />
+          <SignUp className="auth alternate" />
         </div>
       </form>
     </section>

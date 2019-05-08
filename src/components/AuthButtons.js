@@ -5,27 +5,27 @@ import '../css/button.css'
 
 
 // Sign Up / Register
-function SignUp(props) {
+function SignUp({className}) {
   return (
-    <Link to="/sign-up">
+    <Link className={className} to="/sign-up">
       <MenuButton label="Sign Up" icon="account_circle" />
     </Link>
   );
 }
 
 // Sign In / Login
-function SignIn(props) {
+function SignIn({className}) {
   return (
-    <Link to="/sign-in">
+    <Link className={className} to="/sign-in">
       <MenuButton label="Sign In" icon="face" />
     </Link>
   );
 }
 
 // Sign Out / Logout
-function SignOut({ signOut }) {
+function SignOut({ className, signOut }) {
   return (
-    <Link to="/sign-out">
+    <Link className={className} to="/sign-out">
       <MenuButton label="Sign Out" icon="exit_to_app" />
     </Link>
   );

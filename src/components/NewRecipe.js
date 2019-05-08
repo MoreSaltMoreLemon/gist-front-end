@@ -24,11 +24,13 @@ const NewRecipe = ({ createRecipe, recipe }) => {
     return <Redirect to={`/recipes/${recipe.id}`} />;
   } else {
     return (
-      <section className="auth sign-in-container" onSubmit={handleSubmit}>
+      <section className="auth sign-in auth-container" onSubmit={handleSubmit}>
         <header className="auth header">
           <h1>Create Your Recipe!</h1>
         </header>
         <form className="auth sign-in">
+        <div className="label-input-container">
+        <label>Recipe Name: </label>
           <input
             required
             className="auth recipe-name"
@@ -38,6 +40,9 @@ const NewRecipe = ({ createRecipe, recipe }) => {
             name="name"
             onChange={handleChange}
           />
+          </div>
+        <div className="label-input-container">
+        <label>Description: </label>
           <input
             required
             className="auth recipe-description"
@@ -47,6 +52,7 @@ const NewRecipe = ({ createRecipe, recipe }) => {
             name="description"
             onChange={handleChange}
           />
+        </div>
           <MenuButton
             type="submit"
             className="auth submit"
@@ -60,7 +66,6 @@ const NewRecipe = ({ createRecipe, recipe }) => {
 };
 
 const mapStateToProps = state => {
-  // debugger;
   return { recipe: state.recipe };
 };
 

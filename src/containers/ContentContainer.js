@@ -12,7 +12,7 @@ import InvalidPath from "../components/InvalidPath";
 
 const ContentContainer = ({ user, match }) => {
   return (
-    <div>
+    <div className="content-container">
       <Switch>
         <Route path="/sign-up" component={SignUp} />
         <Route path="/sign-in" component={SignIn} />
@@ -21,7 +21,6 @@ const ContentContainer = ({ user, match }) => {
           path="/recipes"
           exact
           render={props => {
-            // debugger
             return <RecipeGallery userId={null} />;
           }}
         />
@@ -29,7 +28,6 @@ const ContentContainer = ({ user, match }) => {
           path="/my-recipes"
           exact
           render={props => {
-            // debugger
             return <RecipeGallery userId={user.id} />;
           }}
         />
@@ -37,7 +35,7 @@ const ContentContainer = ({ user, match }) => {
         <Route
           path="/recipes/:recipeId"
           render={props => {
-            return <RecipeForm recipeId={match.params.recipeId} />;
+            return <RecipeForm recipeId={props.match.params.recipeId} />;
           }}
         />
         <Route component={InvalidPath} />

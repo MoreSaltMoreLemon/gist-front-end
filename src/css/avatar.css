@@ -1,0 +1,23 @@
+.avatar {
+  position: relative;
+  height: 70px;
+  width: 70px;
+}
+
+.avatar-name {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  text-color: black;
+  z-index: 4;
+}
+
+.avatar-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: grey;
+  border-radius: 100px;
+  height: 60px;
+  width: 60px;
+}

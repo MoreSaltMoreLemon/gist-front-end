@@ -1,16 +1,21 @@
 import React from "react";
-import { HamburgerMenu } from "./HamburgerMenu";
+import Media from "react-media";
+import HamburgerMenu from "./HamburgerMenu";
 import HeaderMenu from "./HeaderMenu";
 import Logo from "../components/Logo";
 import "../css/appHeader.css";
 
 const AppHeader = () => {
-  const isHamburger = false;
 
   return (
     <header className="app-header">
       <Logo />
-      {isHamburger ? <HamburgerMenu /> : <HeaderMenu />}
+      <Media query="(max-width: 900px)">
+        <HamburgerMenu />
+      </Media>
+      <Media query="(min-width: 901px)">
+        <HeaderMenu />
+      </Media>
     </header>
   );
 };

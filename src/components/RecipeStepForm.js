@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ReactTooltip from "react-tooltip";
 
 import { GithubPicker } from "react-color";
 import { defaultColors, randomColor } from "../helpers/colors";
@@ -72,14 +71,6 @@ class RecipeStepForm extends Component {
   render() {
     return (
       <form className="step-name-container form" onSubmit={this.handleSubmit}>
-        <ReactTooltip
-          id="global"
-          place="top"
-          type="light"
-          effect="solid"
-          aria-haspopup="true"
-          role="global tooltip"
-        />
         <div className="step-properties">
           <input
             name="name"

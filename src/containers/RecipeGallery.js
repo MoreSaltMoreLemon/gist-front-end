@@ -18,13 +18,10 @@ const RecipeGallery = ({
   getUserRecipes
 }) => {
 
-  // debugger
   useEffect(() => {
     if (user.loggedIn && userId) {
-      debugger
       getUserRecipes(userId);
     } else if (isEmpty(recipes)) {
-      debugger
       getRecipes();
     }
   });
