@@ -19,7 +19,6 @@ const NewRecipe = ({ createRecipe, recipe }) => {
     createRecipe(newRecipe, setRecipeCreated);
   };
 
-
   if (recipeCreated) {
     return <Redirect to={`/recipes/${recipe.id}`} />;
   } else {
@@ -29,36 +28,38 @@ const NewRecipe = ({ createRecipe, recipe }) => {
           <h1>Create Your Recipe!</h1>
         </header>
         <form className="auth sign-in">
-        <div className="label-input-container">
-        <label>Recipe Name: </label>
-          <input
-            required
-            className="auth recipe-name"
-            type="text"
-            placeholder="Recipe Name"
-            value={newRecipe.name}
-            name="name"
-            onChange={handleChange}
-          />
+          <div className="label-input-container">
+            <label>Recipe Name: </label>
+            <input
+              required
+              className="auth username"
+              type="text"
+              placeholder="Recipe Name"
+              value={newRecipe.name}
+              name="name"
+              onChange={handleChange}
+            />
           </div>
-        <div className="label-input-container">
-        <label>Description: </label>
-          <input
-            required
-            className="auth recipe-description"
-            type="text"
-            placehold="Description"
-            value={newRecipe.description}
-            name="description"
-            onChange={handleChange}
-          />
-        </div>
-          <MenuButton
-            type="submit"
-            className="auth submit"
-            label="Create"
-            icon="create"
-          />
+          <div className="label-input-container">
+            <label>Description: </label>
+            <input
+              required
+              className="auth password"
+              type="text"
+              placehold="Description"
+              value={newRecipe.description}
+              name="description"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="auth buttons">
+            <MenuButton
+              type="submit"
+              className="auth submit"
+              label="Create"
+              icon="create"
+            />
+          </div>
         </form>
       </section>
     );
