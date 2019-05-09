@@ -12,7 +12,8 @@ const units = [
 ];
 
 const convertToGrams = (unitValueId, quantity) => {
-  return units[unitValueId].gram_conversion_factor * quantity;
+  const unit = units.find(unit => unit.value === unitValueId)
+  return unit.gram_conversion_factor * quantity;
 };
 
 export default units;

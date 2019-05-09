@@ -209,6 +209,12 @@ input {
   grid-area: yield;
   width: 50px;
 }
+
+.step-yield-quantity-label {
+  padding: 10px;
+  text-align: right;
+}
+
 .step-yield-unit {
   grid-area: unit;
   text-align: left;

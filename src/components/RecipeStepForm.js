@@ -25,21 +25,35 @@ class RecipeStepForm extends Component {
     let recipe_step = props.recipe_step || blankStep;
     if (!recipe_step.color) recipe_step.color = randomColor();
 
-    let yieldTotal;
-    if (recipe_step.yield) {
-      yieldTotal = recipe_step.yield;
-    } else {
-      const contents = [
-        ...recipe_step.step_ingredients,
-        ...recipe_step.step_sub_recipes
-      ];
+    // let yieldTotal;
+    // // debugger
+    // if (Number(recipe_step.yield) !== 0) {
+    //   yieldTotal = recipe_step.yield;
+    // } else {
+    //   const contents = [
+    //     ...recipe_step.step_ingredients,
+    //     ...recipe_step.step_sub_recipes
+    //   ];
 
-      yieldTotal = contents.reduce((acc, content) => {
-        return acc += convertToGrams(content.unit_id, content.quantity);
-      }, 0);
-    }
+    //   yieldTotal = contents.reduce((acc, content) => {
+    //     return acc += convertToGrams(content.unit_id, Number(content.quantity));
+    //   }, 0);
 
-    this.state = { ...props.recipe_step, showColorPicker: false, yieldTotal };
+    // }
+
+    this.state = { ...props.recipe_step, showColorPicker: false };
+    // debugger
+  }
+
+  calcYieldTotal = () => {
+    const contents = [
+      ...this.props.recipe_step.step_ingredients,
+      ...this.props.recipe_step.step_sub_recipes
+    ];
+
+    return contents.reduce((acc, content) => {
+      return acc += convertToGrams(content.unit_id, Number(content.quantity));
+    }, 0);
   }
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -104,26 +118,28 @@ class RecipeStepForm extends Component {
         />
         <div className="recipe-ingredients">{this.props.children}</div>
         <div className="step-yield-container">
-          <label htmlFor="yield">Yield: </label>
+          <label htmlFor="yield" className="step-yield-quantity-label">Yield: </label>
           <input
-            name="yield"
+            name={Number(this.state.yield) !== 0 ? "yield" : "yieldTotal" }
             type="text"
             className="step-yield-quantity"
             placeholder="Yield"
-            onChange={this.handleChange}
-            value={this.state.yield ? this.state.yield : this.state.yieldTotal}
+            // onChange={this.handleChange}
+            readOnly
+            value={this.calcYieldTotal()}
           />
           <UnitSelector
             name="yield_unit_id"
             className="step-yield-unit"
             onChange={this.handleChange}
+            readOnly
             value={this.state.yield_unit_id}
           />
           <Button
             type="submit"
             className="step-submit button"
-            label="Edit"
-            icon="edit"
+            label="Save"
+            icon="save"
             // value="Save"
           />
           <Button

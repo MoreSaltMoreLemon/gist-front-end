@@ -32,6 +32,29 @@ async function createRecipeAction(recipe) {
     "recipe"
   );
 }
+async function toggleShareRecipeAction(recipe) {
+  const sharedRecipe = {...recipe}
+  sharedRecipe.public = !recipe.public
+  return await handleRequestAction(
+    `${RECIPES_URL}/${recipe.id}`,
+    "put",
+    { recipe: sharedRecipe },
+    "TOGGLE_SHARE_RECIPE",
+    "recipe"
+  );
+}
+
+async function favoriteRecipeAction(recipe) {
+  const favoritedRecipe = {...recipe}
+  favoritedRecipe.public = true
+  return await handleRequestAction(
+    `${RECIPES_URL}/${recipe.id}`,
+    "put",
+    { recipe: favoritedRecipe },
+    "FAVORITE_RECIPE",
+    "recipe"
+  );
+}
 
 async function deleteRecipeAction(recipe) {
   const response = await handleRequestAction(
@@ -50,5 +73,7 @@ export {
   getRecipesAction,
   getUserRecipesAction,
   createRecipeAction,
+  toggleShareRecipeAction,
+  favoriteRecipeAction,
   deleteRecipeAction
 };

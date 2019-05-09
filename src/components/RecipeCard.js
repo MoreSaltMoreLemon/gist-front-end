@@ -2,24 +2,52 @@ import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { deleteRecipeAction } from "../reducers/actions/recipesActions";
+import {
+  toggleShareRecipeAction,
+  favoriteRecipeAction,
+  deleteRecipeAction
+} from "../reducers/actions/recipesActions";
 import Button from "./Button";
 import placeholderImage from "../images/placeholder.png";
 
-const RecipeCard = ({ recipe, deleteRecipe, isPrivate }) => {
+import "../css/recipeGallery.css";
+
+const RecipeCard = ({
+  recipe,
+  toggleShareRecipe,
+  favoriteRecipe,
+  deleteRecipe,
+  isPrivate
+}) => {
+
   return (
     <div className="recipe-gallery-card-container">
-      {isPrivate ? (
-        <div className="recipe-gallery-remove-container">
-          <Button
-            onClick={() => deleteRecipe(recipe)}
-            className="recipe-remove"
-            type="remove"
-            label="Delete"
-            icon="delete"
-          />
-        </div>
-      ) : null}
+      <div className="recipe-gallery-button-container">
+        {isPrivate ? (
+          <div className="recipe-gallery-button-relative-container">
+            <Button
+              onClick={() => {
+                console.log("TOGGLE!")
+                toggleShareRecipe(recipe)
+                }
+              }
+              className="recipe-share icon-button"
+              type="share"
+              label="Share"
+              icon={ recipe.public ? "lock" : "share"}
+            />
+            <Button
+              onClick={() => deleteRecipe(recipe)}
+              className="recipe-remove icon-button"
+              type="remove"
+              label="Delete"
+              icon="delete"
+            />
+          </div>
+        ) : (
+          null
+        )}
+      </div>
       <Link
         to={`/recipes/${recipe.id}`}
         style={{ textDecoration: "none", color: "var(--font-color)" }}
@@ -43,8 +71,13 @@ const RecipeCard = ({ recipe, deleteRecipe, isPrivate }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteRecipe: async (recipe, jwt = "") =>
-      dispatch(await deleteRecipeAction(recipe, jwt))
+    toggleShareRecipe: async recipe => {
+      console.log(recipe)
+      dispatch(await toggleShareRecipeAction(recipe))
+    },
+    favoriteRecipe: async recipe =>
+      dispatch(await favoriteRecipeAction(recipe)),
+    deleteRecipe: async recipe => dispatch(await deleteRecipeAction(recipe))
   };
 };
 export default connect(

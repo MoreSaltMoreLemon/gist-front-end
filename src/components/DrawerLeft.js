@@ -15,7 +15,7 @@ const DrawerLeft = ({ user }) => {
         <Link className="button-nav" to="/recipes">
           <MenuButton
             label="Recipes"
-            className="recipe-gallery"
+            className="recipe-gallery-all"
             icon="view_module"
           />
         </Link>
@@ -23,7 +23,7 @@ const DrawerLeft = ({ user }) => {
           <Link className="button-nav" to="/my-recipes">
             <MenuButton
               label="My Recipes"
-              className="recipe-gallery"
+              className="recipe-gallery-user"
               icon="view_module"
             />
           </Link>

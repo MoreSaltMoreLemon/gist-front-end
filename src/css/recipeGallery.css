@@ -31,18 +31,29 @@
   transform: scale(.98);
 }
 
-.recipe-gallery-remove-container {
+.recipe-gallery-button-container {
   position: absolute;
+}
+
+.recipe-gallery-button-relative-container { 
+  position: relative;
+  top: 20px;
+  z-index: 4;
+  width: 100%;
+}
+
+.recipe-share,
+.recipe-favorite {
+  position: relative;
+  right: -15px;
 }
 
 .recipe-remove {
   position: relative;
-  top: 20px;
-  right: -265px;
-  z-index: 4;
+  right: -210px;
 }
 
-.recipe-remove .button-block {
+.icon-button .button-block {
   border: 2px solid white;
 }
 

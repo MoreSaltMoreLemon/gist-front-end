@@ -6,7 +6,7 @@ const HomePage = props => {
   return (
     <div className="home-page">
       <header className="home-header">
-        <img className="splash-image" src={bg1} />
+        <img className="splash-image" src={bg1} alt="golden cereal" />
       </header>
       <div className="home-description">
         <ul className="description-points">

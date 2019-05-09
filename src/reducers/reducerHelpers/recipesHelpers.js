@@ -12,6 +12,21 @@ function createRecipe(state, action) {
   return [...newRecipes];
 }
 
+function toggleShareRecipe(state, action) {
+  const newRecipes = state.map(recipe => {
+    // debugger
+    return recipe.id === action.recipe.id ? action.recipe : recipe
+  });
+
+  return [...newRecipes];
+}
+
+function favoriteRecipe(state, action) {
+  const newRecipes = state.slice();
+  newRecipes.push(action.recipe);
+  return [...newRecipes];
+}
+
 function removeRecipe(state, action) {
   const newRecipes = state.filter(recipe => {
     return action.recipe.id !== recipe.id;
@@ -19,4 +34,11 @@ function removeRecipe(state, action) {
   return [...newRecipes];
 }
 
-export { getAllRecipes, getUserRecipes, createRecipe, removeRecipe };
+export {
+  getAllRecipes,
+  getUserRecipes,
+  createRecipe,
+  toggleShareRecipe,
+  favoriteRecipe,
+  removeRecipe
+};
