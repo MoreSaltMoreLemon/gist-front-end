@@ -6,7 +6,7 @@ const Logo = (props) => {
 
   return (
     <Link to='/'>
-      <h1 className='app-logo'>Gist</h1>
+      <h1 className='app-logo'>Roughly</h1>
     </Link>
   )
 }
