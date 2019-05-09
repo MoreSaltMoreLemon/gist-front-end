@@ -5,7 +5,7 @@ import '../css/logo.css'
 const Logo = (props) => {
 
   return (
-    <Link to='/'>
+    <Link to='/recipes'>
       <h1 className='app-logo'>Roughly</h1>
     </Link>
   )
