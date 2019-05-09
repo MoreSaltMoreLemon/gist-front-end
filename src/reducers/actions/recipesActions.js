@@ -18,7 +18,7 @@ async function getUserRecipesAction(userId) {
     "get",
     {},
     "GET_USER_RECIPES",
-    "recipes"
+    "user"
   );
 }
 

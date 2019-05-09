@@ -3,7 +3,7 @@ function getAllRecipes(state, action) {
 }
 
 function getUserRecipes(state, action) {
-  return [...action.recipes];
+  return [...action.user.recipes];
 }
 
 function createRecipe(state, action) {

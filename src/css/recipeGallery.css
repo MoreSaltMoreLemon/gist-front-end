@@ -31,9 +31,13 @@
   transform: scale(.98);
 }
 
+.recipe-gallery-remove-container {
+  position: absolute;
+}
+
 .recipe-remove {
   position: relative;
-  top: 60px;
+  top: 20px;
   right: -265px;
   z-index: 4;
 }

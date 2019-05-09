@@ -21,14 +21,14 @@ const ContentContainer = ({ user, match }) => {
           path="/recipes"
           exact
           render={props => {
-            return <RecipeGallery userId={null} />;
+            return <RecipeGallery userId={null} isPrivate={false}/>;
           }}
         />
         <Route
           path="/my-recipes"
           exact
           render={props => {
-            return <RecipeGallery userId={user.id} />;
+            return <RecipeGallery userId={user.user.id} isPrivate={true}/>;
           }}
         />
         <Route path="/recipes/new" exact component={NewRecipe} />

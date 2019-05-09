@@ -6,16 +6,20 @@ import { deleteRecipeAction } from "../reducers/actions/recipesActions";
 import Button from "./Button";
 import placeholderImage from "../images/placeholder.png";
 
-const RecipeCard = ({ recipe, deleteRecipe }) => {
+const RecipeCard = ({ recipe, deleteRecipe, isPrivate }) => {
   return (
     <div className="recipe-gallery-card-container">
-      <Button
-        onClick={() => deleteRecipe(recipe)}
-        className="recipe-remove"
-        type="remove"
-        label="Delete"
-        icon="delete"
-      />
+      {isPrivate ? (
+        <div className="recipe-gallery-remove-container">
+          <Button
+            onClick={() => deleteRecipe(recipe)}
+            className="recipe-remove"
+            type="remove"
+            label="Delete"
+            icon="delete"
+          />
+        </div>
+      ) : null}
       <Link
         to={`/recipes/${recipe.id}`}
         style={{ textDecoration: "none", color: "var(--font-color)" }}
