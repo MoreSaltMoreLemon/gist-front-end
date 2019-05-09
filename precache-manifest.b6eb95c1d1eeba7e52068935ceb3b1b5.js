@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b5460fb49ca070b8d9e6c6f6665ce47b",
+    "revision": "69ab6a543ddff55b92ec734bcc3becd3",
     "url": "/gist-front-end/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gist-front-end/static/css/2.764ccc25.chunk.css"
   },
   {
-    "revision": "b91c09db215acdaae820",
+    "revision": "02dd135067bb48f2722f",
     "url": "/gist-front-end/static/css/main.78290cf8.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gist-front-end/static/js/2.fe1d0171.chunk.js"
   },
   {
-    "revision": "b91c09db215acdaae820",
-    "url": "/gist-front-end/static/js/main.dc889a54.chunk.js"
+    "revision": "02dd135067bb48f2722f",
+    "url": "/gist-front-end/static/js/main.53647701.chunk.js"
   },
   {
     "revision": "5eb0a67522914cc5fea5",
