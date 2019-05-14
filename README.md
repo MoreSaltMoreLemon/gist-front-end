@@ -1,4 +1,4 @@
-# Roughly.Recipes
+# [Roughly.Recipes](https://roughly.recipes)
 
 ## The Ratio-focused Recipe App
 
