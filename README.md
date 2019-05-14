@@ -11,10 +11,10 @@ Recipes can be shared publicly, and used by other users to create their own dish
 
 # Todos
 
-* Add recipe-step scaling. 
-* Make recipe-step yields either calculated or custom set. Currently only calculated.
-* Improve unit conversions, particularly for yields.
-* Improve form submit so that enter submits the form. Some forms require a click.
-* Make recipes favoritable and appear in user list of ingredients
-* Make list of ingredients suggest from available ingredients
-* Improve error handling for erroneous requests
+- [ ] Add recipe-step scaling. 
+- [ ] Make recipe-step yields either calculated or custom set. Currently only calculated.
+- [ ] Improve unit conversions, particularly for yields.
+- [ ] Improve form submit so that enter submits the form. Some forms require a click.
+- [ ] Make recipes favoritable and appear in user list of ingredients
+- [ ] Make list of ingredients suggest from available ingredients
+- [ ] Improve error handling for erroneous requests
