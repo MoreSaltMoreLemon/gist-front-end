@@ -38,3 +38,5 @@ Note: I violated JavaScript camelcase naming conventions throughout this app in 
 
 ### Styling
 - [x] Reduce the mousover effect on elements. Introduce transition to slow down.
+- [x] Button font-sizing when switching to mobile view.
+- [x] Alignment and bounding-box sizing for home-page bullet points
