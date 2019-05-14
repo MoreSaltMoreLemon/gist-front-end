@@ -68,11 +68,14 @@ class StepIngredientForm extends Component {
       >
         <div className="ingredient-ratio-container">
           <div
+            tabIndex={0}
             className="ingredient-color-swatch"
             style={{ backgroundColor: this.state.color }}
+            onFocus={this.showColorPickerDisplay}
+            onBlur={this.hideColorPickerDisplay}
             onClick={this.showColorPickerDisplay}
             onMouseEnter={this.showColorPickerDisplay}
-            onMouseLeave={this.hideColorPickerDisplay}
+            onMouseLeave={this.hideColorPickerDisplay}        
           >
             {this.state.showColorPicker ? (
               <GithubPicker

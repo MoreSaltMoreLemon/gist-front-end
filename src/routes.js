@@ -1,4 +1,4 @@
-const DEV_URL = "http://localhost:3000";
+// const DEV_URL = "http://localhost:3000";
 const DEPLOY_URL = "https://roughly-recipes.herokuapp.com/";
 const BASE_URL = DEPLOY_URL;
 const API_URL = `${BASE_URL}/api/v1`;

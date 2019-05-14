@@ -14,19 +14,21 @@ Recipes can be shared publicly, and used by other users to create their own dish
 * Custom CSS styling with extensive use of CSS grid for layout.
 * Rails API backend, following RESTful pattern with JWT authentication.
 
+Note: I violated JavaScript camelcase naming conventions throughout this app in order to keep the property names in obvious correllation with the rails backend and the JSON that was served down. This served to reduce errors and make the sourced data obvious. I would however *love* to know a better way to handle this.
+
 ## Todo:
 
 ### Features
-- [ ] Have focus shift intuitively from input to input
+- [x] Have focus shift intuitively from input to input
 - [ ] Recipe Scaling 
-- [ ] Incorporate unit scaling into ratio bar displays
-- [ ] Make recipe-step yields either calculated or custom set. Currently only calculated
-- [ ] Improve form submit so that enter submits the form. Some forms require a click
+- [x] Incorporate unit scaling into ratio bar displays
+- [x] Make recipe-step yields calculate based upon recipe-step unit
+- [x] Improve form submit so that enter submits the form. Some forms require a click
 - [ ] Make recipes favoritable and appear in user list of ingredients
 - [ ] Make auto-suggestion list of ingredients from available ingredients
 - [ ] Improve error handling for erroneous requests
 - [ ] Steamline sub-recipe and ingredient forms
-- [ ] Improve Buttons
+- [x] Improve Buttons
 - [ ] Add Instructions field to step form
 
 ### Error Handling
@@ -36,4 +38,4 @@ Recipes can be shared publicly, and used by other users to create their own dish
 - [ ] Retry request
 
 ### Styling
-- [ ] Reduce the mousover effect on elements. Introduce transition to slow down.
+- [x] Reduce the mousover effect on elements. Introduce transition to slow down.

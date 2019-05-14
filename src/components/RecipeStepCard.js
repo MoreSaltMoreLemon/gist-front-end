@@ -2,6 +2,7 @@ import React from "react";
 import StepIngredientDisplayToggle from "./StepIngredientDisplayToggle";
 import StepContentShowForms from "./StepContentShowForms";
 import RecipeStepForm from "./RecipeStepForm";
+import { convertToGrams } from "../helpers/units";
 
 const RecipeStepCard = ({ recipe_step }) => {
   let contents = [];
@@ -13,8 +14,13 @@ const RecipeStepCard = ({ recipe_step }) => {
       ...recipe_step.step_sub_recipes
     ];
 
-    total = contents.reduce((acc, el) => (acc += Number(el.quantity)), 0);
+    // Calculate the total grams of the ingredients in the recipe step
+    // which can include other recipes, in order to use for the bar graphs.
+    total = contents.reduce((acc, content) => {
+      return acc += convertToGrams(content.unit_id, Number(content.quantity));
+    }, 0);
   }
+
 
   if (contents.length > 0) {
     contents.sort((a, b) => a.sequence_order - b.sequence_order);
