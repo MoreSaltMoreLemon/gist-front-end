@@ -22,9 +22,6 @@ section.auth.sign-up {
   height: 300px;
 }
 
-section.auth:hover {
-  transform: scale(1.01);
-}
 
 header.auth {
   grid-area: header;

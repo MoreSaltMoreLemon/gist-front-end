@@ -4,6 +4,7 @@ button {
 
 .button {
   border: none;
+  transition: all 0.1s ease-in-out;
 }
 
 .button-container {

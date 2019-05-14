@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { SignIn } from "./AuthButtons";
 
 import MenuButton from "./MenuButton";
