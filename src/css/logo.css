@@ -1,9 +1,9 @@
 .app-logo {
   position: absolute;
-  top: -40px;
+  top: -35px;
   left: 10px;
   align-self: start;
-  font-size: 50px;
+  font-size: 45px;
   color: var(--highlight);
   font-weight: bold;
   text-shadow: -0.5px -0.5px 0px white, 3px 2px 3px rgba(0,0,0,0.2);

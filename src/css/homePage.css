@@ -25,26 +25,31 @@ img.splash-image {
   grid-area: body;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-areas: ". descriptions .";
+  grit-template-rows: auto 50px;
+  grid-template-areas: 
+    ". descriptions ."
+    ". register .";
 }
 
 .description-points {
   grid-area: descriptions;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 200px;
+  grid-template-rows: auto;
   list-style: none;
   padding-left: 0px;
   gap: 30px;
+  
 }
 
 .description-point {
   width: calc(100vw / 4);
   max-width: 300px;
-  max-width: 300px;
+  height: 100px;
+  margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
-  align-self: center;
+  align-self: top;
   
 }
 
@@ -54,6 +59,12 @@ img.splash-image {
   margin-right: auto;
   text-align: center;
   
+}
+
+.get-started {
+  grid-area: register;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media screen and (max-width: 900px) {

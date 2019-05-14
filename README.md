@@ -20,20 +20,19 @@ Note: I violated JavaScript camelcase naming conventions throughout this app in 
 
 ### Features
 - [x] Have focus shift intuitively from input to input
-- [ ] Recipe Scaling 
 - [x] Incorporate unit scaling into ratio bar displays
 - [x] Make recipe-step yields calculate based upon recipe-step unit
 - [x] Improve form submit so that enter submits the form. Some forms require a click
+- [ ] Recipe Scaling 
 - [ ] Make recipes favoritable and appear in user list of ingredients
 - [ ] Make auto-suggestion list of ingredients from available ingredients
 - [ ] Improve error handling for erroneous requests
 - [ ] Steamline sub-recipe and ingredient forms
-- [x] Improve Buttons
 - [ ] Add Instructions field to step form
 
 ### Error Handling
-- [ ] Improve error messages upon fetch failure
-- [ ] Capture all failed requests
+- [x] Improve error messages upon fetch failure
+- [x] Capture all failed requests
 - [ ] Show waiting message upon long wait time
 - [ ] Retry request
 

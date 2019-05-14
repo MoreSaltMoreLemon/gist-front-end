@@ -8,7 +8,7 @@ import '../css/button.css'
 function SignUp({className}) {
   return (
     <Link className={className} to="/sign-up">
-      <MenuButton label="Sign Up" icon="account_circle" />
+      <MenuButton className={`${className}-button`}  label="Sign Up" icon="account_circle" />
     </Link>
   );
 }
@@ -17,7 +17,7 @@ function SignUp({className}) {
 function SignIn({className}) {
   return (
     <Link className={className} to="/sign-in">
-      <MenuButton label="Sign In" icon="face" />
+      <MenuButton className={`${className}-button`}  label="Sign In" icon="face" />
     </Link>
   );
 }
@@ -26,9 +26,17 @@ function SignIn({className}) {
 function SignOut({ className, signOut }) {
   return (
     <Link className={className} to="/sign-out">
-      <MenuButton label="Sign Out" icon="exit_to_app" />
+      <MenuButton className={`${className}-button`}  label="Sign Out" icon="exit_to_app" />
     </Link>
   );
 }
 
-export { SignUp, SignIn, SignOut };
+function GetStarted({className}) {
+  return (
+    <Link className={className} to="/sign-up">
+      <MenuButton className={`${className}-button`} label="Let's Get Started!" icon="person_add" />
+    </Link>
+  );
+}
+
+export { SignUp, SignIn, SignOut, GetStarted };

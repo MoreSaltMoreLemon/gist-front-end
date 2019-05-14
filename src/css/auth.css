@@ -84,7 +84,7 @@ form.auth .alternate {
 
 .auth.buttons {
   grid-area: buttons;
-  font-family: var(--text-font);
+  /* font-family: var(--text-font); */
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "submit alternate";
