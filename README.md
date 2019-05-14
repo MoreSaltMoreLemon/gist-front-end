@@ -14,7 +14,7 @@ Recipes can be shared publicly, and used by other users to create their own dish
 * Custom CSS styling with extensive use of CSS grid for layout.
 * Rails API backend, following RESTful pattern with JWT authentication.
 
-Note: I violated JavaScript camelcase naming conventions throughout this app in order to keep the property names in obvious correllation with the rails backend and the JSON that was served down. This served to reduce errors and make the sourced data obvious. I would however *love* to know a better way to handle this.
+Note: I violated JavaScript camelCase naming conventions throughout this app in order to keep the property names in obvious correllation with the Rails backend and the JSON that was served down. This served to reduce errors and make the sourced data obvious. I would however *love* to know a better way to handle this.
 
 ## Todo:
 
