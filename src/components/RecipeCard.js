@@ -12,6 +12,15 @@ import placeholderImage from "../images/placeholder.png";
 
 import "../css/recipeGallery.css";
 
+// Recipe display card for the gallery
+// Shows the image, if any, title and description
+// Clicking redirects to the edit form
+// If the logged in user owns the recipe and the
+// recipe is being displayed in their private gallery,
+// toggle-share and delete buttons are visible.
+
+// Note that nested recipes which are dependencies of other recipes
+// are currently vulnerable when deleted.
 const RecipeCard = ({
   recipe,
   toggleShareRecipe,

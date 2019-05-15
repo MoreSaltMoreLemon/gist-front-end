@@ -1,28 +1,29 @@
 import React, { useState } from 'react';
 import StepIngredientForm from './StepIngredientForm'
 import StepSubRecipeForm from './StepSubRecipeForm'
-import Button from './Button'
+import MenuButton from './MenuButton'
 
 function StepContentShowForms({recipe_step}) {
-  const [showStepIngredientForm, setShowStepIngredientForm] = useState(true)
+  const [showStepIngredientForm, setShowStepIngredientForm] = useState(false)
   const [showStepSubRecipeForm, setShowStepSubRecipeForm] = useState(false)
   
-  // show Add Ingredient/Recipe as Ingredient buttons only if neither form
-  // is diplayed. Pass down setShow... toggle
+  // show Add Ingredient/Sub-Recipe buttons only if neither form
+  // is diplayed. Pass down setShow... toggle to sub forms
+  // so that they can close themselves upon form submission.
   return (
     <div>
       { (showStepIngredientForm || showStepSubRecipeForm) === false ?
         <>
-          <Button
+          <MenuButton
             className='button'
             onClick={() => setShowStepIngredientForm(true)}
             label="Add Ingredient" 
             icon="add"
           />
-          <Button
+          <MenuButton
             className='button'
             onClick={() => setShowStepSubRecipeForm(true)}
-            label="Add Ingredient As Recipe" 
+            label="Add Sub-Recipe" 
             icon="add"
           />
         </>
