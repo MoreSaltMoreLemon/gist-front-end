@@ -31,6 +31,7 @@ function SignOut({ className, signOut }) {
   );
 }
 
+// Link to Sign Up page for Homepage
 function GetStarted({className}) {
   return (
     <Link className={className} to="/sign-up">

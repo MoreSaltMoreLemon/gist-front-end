@@ -18,25 +18,30 @@ Note: I violated JavaScript camelCase naming conventions throughout this app in 
 
 ## Todo:
 
-### Features
+### Bugs:
+
+### Functionality:
+- [ ] Protect recipes used as ingredients from deletion by user.
 - [x] Have focus shift intuitively from input to input
 - [x] Incorporate unit scaling into ratio bar displays
 - [x] Make recipe-step yields calculate based upon recipe-step unit
 - [x] Improve form submit so that enter submits the form. Some forms require a click
+- [ ] Steamline sub-recipe and ingredient forms
+
+### Features:
 - [ ] Recipe Scaling 
 - [ ] Make recipes favoritable and appear in user list of ingredients
 - [ ] Make auto-suggestion list of ingredients from available ingredients
-- [ ] Improve error handling for erroneous requests
-- [ ] Steamline sub-recipe and ingredient forms
 - [ ] Add Instructions field to step form
+- [ ] Drag and drop re-ordering
 
-### Error Handling
+### Error Handling:
 - [x] Improve error messages upon fetch failure
 - [x] Capture all failed requests
 - [ ] Show waiting message upon long wait time
 - [ ] Retry request
 
-### Styling
+### Styling:
 - [x] Reduce the mousover effect on elements. Introduce transition to slow down.
 - [x] Button font-sizing when switching to mobile view.
 - [x] Alignment and bounding-box sizing for home-page bullet points

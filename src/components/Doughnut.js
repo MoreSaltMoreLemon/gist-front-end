@@ -1,21 +1,36 @@
 import React from "react";
 import { ResponsiveSunburst } from "@nivo/sunburst";
+import { string } from "postcss-selector-parser";
 
-// make sure parent container have a defined height when using
+// Make sure parent container have a defined height when using
 // responsive component, otherwise height will be 0 and
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
 
-function mapRecipeStepsToDoughnutData(recipe_steps) {
+// Currently contained with a 300x300 box.
+
+function mapRecipeToSunburstDataFormat(recipe_steps) {
+  // For all recipe steps, create a nested structure containing their 
+  // ingredient components.
+  // {
+  //   color: string,
+  //   name: string,
+  //   children: [
+  //     {
+  //       name: string,
+  //       quantity: number,
+  //       color: string
+  //     }
+  //   ]
+  // }
   return recipe_steps.map(step => ({
-    // id: step.name,
     color: step.color,
     name: step.name,
-    // value: Number(step.yield),
-    // unit: step.yield_unit_id,
     children: [...step.step_ingredients, ...step.step_sub_recipes].map(
       content => {
+        // Need to draw value from different properties depending upon
+        // the source. Toggles between them.
         return {
           name: content.is_sub_recipe
             ? content.sub_recipe.name
@@ -31,7 +46,7 @@ function mapRecipeStepsToDoughnutData(recipe_steps) {
 const Doughnut = ({ recipe }) => {
   const data = {
     name: recipe.name,
-    children: mapRecipeStepsToDoughnutData(recipe.recipe_steps)
+    children: mapRecipeToSunburstDataFormat(recipe.recipe_steps)
   };
   return (
     <ResponsiveSunburst

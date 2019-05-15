@@ -14,8 +14,9 @@ class RecipeHeaderForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    e.stopPropagation();
+    e.stopPropagation(); // to address potential issues with multiple forms on same page
     this.props.editRecipe({ ...this.state }, () =>
+      // close form after saving edits.
       this.props.setShowEditForm(false)
     );
   };
@@ -58,13 +59,6 @@ class RecipeHeaderForm extends Component {
           icon="save"
           value="Submit"
         />
-        {/* <button onClick={() => props.updateRecipe({id: props.recipe.id, name: "RenamedTestRecipe", user_id: 1})}><i class="material-icons button-icon">edit</i></button> */}
-        {/* <Button 
-          className='recipe-remove'
-          label="Delete" 
-          icon="remove"
-          onClick={() => this.props.removeRecipe({id: this.props.recipe.id})}
-        /> */}
       </form>
     );
   }
@@ -74,11 +68,8 @@ const mapDispatchToProps = dispatch => {
   return {
     editRecipe: async (recipe, callbackFn) => {
       dispatch(await editRecipeAction(recipe));
-      callbackFn();
+      callbackFn(); // closes edit form after saving
     }
-    // createRecipe: async (recipe, user, jwt = '') => dispatch(await createRecipeAction(recipe, user, jwt)),
-    // updateRecipe: async (recipe, jwt = '') => dispatch(await editRecipeAction(recipe, jwt)),
-    // removeRecipe: async (recipe, jwt = '') => dispatch(await deleteRecipeAction(recipe, jwt))
   };
 };
 

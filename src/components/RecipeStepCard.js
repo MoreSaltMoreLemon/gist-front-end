@@ -21,7 +21,9 @@ const RecipeStepCard = ({ recipe_step }) => {
     }, 0);
   }
 
-
+  // If there are any ingredients, sort them by their sequence order.
+  // The sequence_order field is intended for later use by a drag/drop
+  // re-ordering mechanism.
   if (contents.length > 0) {
     contents.sort((a, b) => a.sequence_order - b.sequence_order);
   }

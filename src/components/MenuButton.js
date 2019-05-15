@@ -1,29 +1,23 @@
-import React from 'react'
-import '../css/button.css'
+import React from "react";
+import "../css/button.css";
 
-
-function MenuButton({className, id, onClick, type, label, icon}) {
+// Expanded version of the Menu button with room for a label
+function MenuButton({ className, id, onClick, type, label, icon }) {
   return (
-    <button 
+    <button
       id={id || null}
-      className={`menu button ${className}`} 
+      className={`menu button ${className}`}
       type={type}
       onClick={onClick}
     >
-      
-      <div 
-        className='menu button-container'
-      >
-        <div 
-          className="menu button-block"
-        >
+      <div className="menu button-container">
+        <div className="menu button-block">
           <i className="menu material-icons button-icon">{icon}</i>
           <span>{label}</span>
         </div>
       </div>
-      
     </button>
-  )
+  );
 }
 
-export default MenuButton
+export default MenuButton;

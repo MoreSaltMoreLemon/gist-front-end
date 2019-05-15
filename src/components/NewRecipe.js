@@ -6,6 +6,16 @@ import { createRecipeAction } from "../reducers/actions/recipesActions";
 import MenuButton from "./MenuButton";
 import "../css/auth.css";
 
+// New Recipe Menu page using the auth.css formatting. Upon
+// new recipe creation, will redirect to the recipeForm page
+// for that recipe.
+
+// This pattern proved necessary due to the inability to properly
+// wrap a react-router Link component in a redux action and
+// dispatch only after the backend was queried and the record created.
+
+// Upon recipe creation, the component alters state and causes a redirect
+// to the new recipe.
 const NewRecipe = ({ createRecipe, recipe }) => {
   const [newRecipe, setNewRecipe] = useState({ name: "", description: "" });
   const [recipeCreated, setRecipeCreated] = useState(false);

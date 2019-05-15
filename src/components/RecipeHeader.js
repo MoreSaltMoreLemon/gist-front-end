@@ -3,6 +3,8 @@ import RecipeHeaderForm from "./RecipeHeaderForm";
 import Button from "./Button";
 import "../css/recipeHeader.css";
 
+// onClick, show edit form, otherwise show presentation
+// card for recipe general information.
 const RecipeHeader = ({ recipe }) => {
   const [showEditForm, setShowEditForm] = useState(false);
 
@@ -25,7 +27,6 @@ const RecipeHeader = ({ recipe }) => {
         name="toggle-edit"
         value="Edit"
         icon="edit"
-        // onClick={() => setShowEditForm(true)}
       />
     </div>
   );
