@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "56891b472718a6445868af4fadb0a11b",
+    "revision": "8f5f6391456ec4bb2190f32f89a5b742",
     "url": "/gist-front-end/index.html"
   },
   {
-    "revision": "4b595f1eb25860003b72",
+    "revision": "5c4ed2721c0c98443180",
     "url": "/gist-front-end/static/css/2.764ccc25.chunk.css"
   },
   {
-    "revision": "c216c90f92aa37fa1241",
-    "url": "/gist-front-end/static/css/main.e43577e6.chunk.css"
+    "revision": "31ab369953cff39b5196",
+    "url": "/gist-front-end/static/css/main.b78e5c0e.chunk.css"
   },
   {
-    "revision": "4b595f1eb25860003b72",
-    "url": "/gist-front-end/static/js/2.fe1d0171.chunk.js"
+    "revision": "5c4ed2721c0c98443180",
+    "url": "/gist-front-end/static/js/2.b6a9672a.chunk.js"
   },
   {
-    "revision": "c216c90f92aa37fa1241",
-    "url": "/gist-front-end/static/js/main.c4a89a5f.chunk.js"
+    "revision": "31ab369953cff39b5196",
+    "url": "/gist-front-end/static/js/main.794e03bf.chunk.js"
   },
   {
     "revision": "5eb0a67522914cc5fea5",
