@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+
+
 import { GithubPicker } from 'react-color'
 import Button from './Button'
 import { defaultColors, randomColor } from '../helpers/colors'
@@ -63,7 +65,6 @@ class StepSubRecipeForm extends Component {
     return (
       <form 
         className='ingredient-card ingredient-form'
-        // noValidate
         onSubmit={this.handleSubmit}>
         <div className='ingredient-ratio-container'>
           <div 
@@ -143,8 +144,6 @@ class StepSubRecipeForm extends Component {
   }
 }
 
-// const mapStateToProps = state => { user }
-
 const mapDispatchToProps = dispatch => {
   return {
     addStepSubRecipe:    async (recipe_step_uuid, step_sub_recipe, user_id, callbackFn) => {
@@ -162,4 +161,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(undefined, mapDispatchToProps)(StepSubRecipeForm)
+export default connect(null, mapDispatchToProps)(StepSubRecipeForm)

@@ -34,6 +34,7 @@ Note: I violated JavaScript camelCase naming conventions throughout this app in 
 - [ ] Make auto-suggestion list of ingredients from available ingredients
 - [ ] Add Instructions field to step form
 - [ ] Drag and drop re-ordering
+- [ ] Have ratio markers for each bar ratio
 
 ### Error Handling:
 - [x] Improve error messages upon fetch failure

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import "../css/errorModal.css";
+import "../css/modal.css";
 
 // Displayed Modal with click-anywhere-to-hide handler
 // upon an error action being generated within redux.

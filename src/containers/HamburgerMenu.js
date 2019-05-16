@@ -15,7 +15,7 @@ function HamburgerMenu({ loggedIn }) {
     return (
       <div className="hamburger-container" onClick={() => setShowBurger(false)}>
         <nav className="header-menu-burger">
-          <Link className="button-nav" to="/">
+          <Link className="button-nav" to="/Roughly.Recipes/">
             <MenuButton label="Home" className="homepage" icon="home" />
           </Link>
           <Link className="button-nav" to="/recipes">

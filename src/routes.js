@@ -1,9 +1,9 @@
 // Switch between localhost and heroku backend when deployed.
-// const DEV_URL = "http://localhost:3000";
+const DEV_URL = "http://localhost:3000";
 
 const DEPLOY_URL = "https://roughly-recipes.herokuapp.com/";
 
-const BASE_URL = DEPLOY_URL;
+const BASE_URL = DEV_URL;
 const API_URL = `${BASE_URL}/api/v1`;
 
 const USERS_URL = `${API_URL}/users`;

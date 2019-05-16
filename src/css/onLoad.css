@@ -1,0 +1,53 @@
+.onload-heroku-notice {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background-color: var(--bg-color);
+  opacity: 1;
+  font-size: 20px;
+  color: var(--highlight);
+  font-weight: bold;
+  text-shadow: -0.5px -0.5px 0px white, 3px 2px 3px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.heroku-notice-container {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  top: calc(45vh - 100px);
+  left: calc(50vw - 150px);
+}
+
+
+.onload-heroku-notice.hide {
+  animation: fadeToNone 0.6s ease-in-out;
+  opacity: 0;
+}
+
+.heroku-notice-container.hide {
+  animation: fadeToNone 0.8s ease-in-out;
+  opacity: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeToNone {
+  0% {
+    display: block;
+    opacity: 1;
+  }
+  99% {
+    display: block;
+    opacity: 0;
+  }
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}
