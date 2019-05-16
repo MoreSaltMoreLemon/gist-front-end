@@ -2,7 +2,7 @@
   "name": "gist-front-end",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://moresaltmorelemon.github.io/gist-front-end",
+  "homepage": "https://moresaltmorelemon.github.io/Roughly.Recipes",
   "dependencies": {
     "@nivo/pie": "^0.56.2",
     "@nivo/sunburst": "^0.56.2",
