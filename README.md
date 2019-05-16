@@ -1,4 +1,4 @@
-# [Roughly.Recipes](https://roughly.recipes)
+# [Roughly.Recipes](https://moresaltmorelemon.github.io/Roughly.Recipes/)
 
 ## The Ratio-focused Recipe App
 
