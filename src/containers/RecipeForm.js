@@ -40,12 +40,7 @@ const RecipeForm = props => {
     isEmpty(props.recipe) ||
     props.recipe.id !== Number(props.recipeId)
   ) {
-    return (
-      <div
-        className="heroku-loading"
-      >
-        <span>Waiting on Heroku to spool up! Takes about 10-20 seconds.</span>
-      </div>);
+    return null;
   // Otherwise, render RecipeForm
   } else {
     return (
