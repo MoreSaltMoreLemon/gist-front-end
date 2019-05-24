@@ -8,7 +8,7 @@ import MenuButton from "./MenuButton";
 import "../css/auth.css";
 
 const SignIn = ({ signIn, jwt }) => {
-  const [user, setUser] = useState({ username: "", password: "" });
+  const [user, setUser] = useState({ username: "example", password: "password" });
 
   const handleChange = e =>
     setUser({ ...user, [e.target.name]: e.target.value });
