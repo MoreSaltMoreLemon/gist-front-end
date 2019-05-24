@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "46836fab378673a796e536ffcaa391d0",
+    "revision": "bbe1f8063280b6ac6e1d020caeab9ba7",
     "url": "/Roughly.Recipes/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Roughly.Recipes/static/css/2.764ccc25.chunk.css"
   },
   {
-    "revision": "1188dc69a0a10ed6a270",
+    "revision": "5ef849eb783a1f74edea",
     "url": "/Roughly.Recipes/static/css/main.b78e5c0e.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Roughly.Recipes/static/js/2.481b3c94.chunk.js"
   },
   {
-    "revision": "1188dc69a0a10ed6a270",
-    "url": "/Roughly.Recipes/static/js/main.3d08ac34.chunk.js"
+    "revision": "5ef849eb783a1f74edea",
+    "url": "/Roughly.Recipes/static/js/main.1ac3013b.chunk.js"
   },
   {
     "revision": "21e78c400aeefafb2343",
