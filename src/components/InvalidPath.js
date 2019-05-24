@@ -1,9 +1,10 @@
 import React from 'react'
+import { Redirect } from "react-router-dom";
 
 const InvalidPath = (props) => {
 
   return (
-     <div>404</div>
+    <Redirect to="/recipes" />
   )
 }
 
